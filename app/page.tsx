@@ -152,18 +152,18 @@ export default function Home() {
 
         {/* SLIDER LOGOS */}
 
-        <div className="bg-white">
+        <div className="bg-white overflow-hidden">
 
-          <div className="max-w-7xl mx-auto px-4 py-4 overflow-x-auto">
+          <div className="max-w-7xl mx-auto px-4 py-4 overflow-hidden">
 
-            <div className="flex gap-6 min-w-max">
+            <div className="flex gap-6 w-max animate-marquee">
 
-              {teams.map((team)=> (
+              {[...teams, ...teams].map((team, i)=> (
 
                 <Link
-                  key={team.link}
+                  key={`${team.link}-${i}`}
                   href={team.link}
-                  className="flex items-center justify-center bg-white shadow-md hover:shadow-xl rounded-2xl w-[140px] h-[80px] transition-all"
+                  className="flex items-center justify-center bg-white shadow-md hover:shadow-xl rounded-2xl w-[140px] h-[80px] transition-all shrink-0"
                 >
 
                   <img
