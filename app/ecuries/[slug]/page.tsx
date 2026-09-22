@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!team) return {};
 
   const title = `${team.displayName} — Écurie F1 2026`;
-  const description = team.history[0];
+  const description = team.metaDescription;
 
   return {
     title,

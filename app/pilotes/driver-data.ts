@@ -22,6 +22,7 @@ export type DriverPageData = {
   nationality: string;
   subtitle: string;
   age: string;
+  metaDescription: string;
   bio: string[];
   stats: DriverStat[];
   highlights: DriverCareerHighlight[];
@@ -46,6 +47,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Royaume-Uni",
     subtitle: "Pilote Mercedes",
     age: "28 ans",
+    metaDescription: "George Russell (n°63), pilote Mercedes britannique : 6 victoires, 26 podiums et l'ambition d'un premier titre mondial en F1.",
     bio: [
       "George Russell s'est impose comme l'un des pilotes britanniques les plus solides de sa generation, avec une trajectoire construite autour de la vitesse pure et d'une grande regularite.",
       "Apres avoir brille dans les formules de promotion, il a debute en Formule 1 chez Williams avant de rejoindre Mercedes pour s'installer durablement dans le haut de grille.",
@@ -76,6 +78,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Italie",
     subtitle: "Pilote Mercedes",
     age: "19 ans",
+    metaDescription: "Kimi Antonelli (n°12), jeune prodige italien de Mercedes : déjà 5 podiums et 1 victoire à seulement 19 ans en Formule 1.",
     bio: [
       "Kimi Antonelli fait partie des plus grands espoirs de la nouvelle generation italienne. Sa progression fulgurante en karting et en monoplace l'a rapidement place sur le radar des meilleures equipes.",
       "Membre du programme Mercedes, il s'est distingue tres jeune par sa vitesse naturelle et sa capacite d'adaptation.",
@@ -105,6 +108,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Royaume-Uni",
     subtitle: "Pilote Ferrari",
     age: "41 ans",
+    metaDescription: "Lewis Hamilton (n°44), septuple champion du monde chez Ferrari : 105 victoires et 203 podiums, la légende continue en F1.",
     bio: [
       "Lewis Hamilton est l'un des pilotes les plus marquants de l'histoire de la Formule 1, avec un palmares hors norme et une longivite exceptionnelle au plus haut niveau.",
       "Champion du monde a de multiples reprises, il a construit sa legende chez McLaren puis Mercedes avant de se lancer dans un nouveau chapitre avec Ferrari.",
@@ -139,6 +143,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Monaco",
     subtitle: "Pilote Ferrari",
     age: "28 ans",
+    metaDescription: "Charles Leclerc (n°16), pilote Ferrari monégasque : 8 victoires et 51 podiums, l'un des plus rapides sur un tour de la grille.",
     bio: [
       "Charles Leclerc est l'un des pilotes les plus rapides sur un tour de la grille et l'un des symboles de la nouvelle generation Ferrari.",
       "Champion en GP3 puis en F2, il a impressionne des ses debuts en Formule 1 avant de rejoindre la Scuderia.",
@@ -169,6 +174,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Royaume-Uni",
     subtitle: "Pilote McLaren",
     age: "26 ans",
+    metaDescription: "Lando Norris (n°1), champion du monde 2025 avec McLaren : 11 victoires et 44 podiums, le nouveau leader de la F1.",
     bio: [
       "Lando Norris s'est impose comme le visage de la renaissance de McLaren apres plusieurs saisons de progression constante.",
       "Reconnu pour sa vitesse pure, sa regularite et son sens de l'attaque, il a franchi un cap decisif en devenant champion du monde 2025.",
@@ -200,6 +206,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Australie",
     subtitle: "Pilote McLaren",
     age: "24 ans",
+    metaDescription: "Oscar Piastri (n°81), pilote McLaren australien : 9 victoires et 26 podiums, l'un des talents les plus complets de la grille.",
     bio: [
       "Oscar Piastri s'est fait remarquer par un parcours exceptionnel dans les categories juniors, avec des titres remportes en serie avant meme son arrivee en Formule 1.",
       "Chez McLaren, il s'est rapidement adapte au rythme de la discipline et a montre une grande maturite en course.",
@@ -231,6 +238,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Pays-Bas",
     subtitle: "Pilote Red Bull Racing",
     age: "28 ans",
+    metaDescription: "Max Verstappen (n°3), quadruple champion du monde chez Red Bull Racing : 71 victoires et 127 podiums, référence de la F1.",
     bio: [
       "Max Verstappen est l'une des figures dominantes de l'ere moderne de la Formule 1.",
       "Precoce des son arrivee dans la discipline, il est devenu le plus jeune vainqueur de Grand Prix puis a construit un impressionnant palmares avec Red Bull Racing.",
@@ -263,6 +271,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "France",
     subtitle: "Pilote Red Bull Racing",
     age: "21 ans",
+    metaDescription: "Isack Hadjar (n°6), jeune pilote français de Red Bull Racing : premier podium au GP des Pays-Bas 2025, l'un des espoirs de la F1.",
     bio: [
       "Isack Hadjar represente la nouvelle vague du programme Red Bull. Sa progression en filiere junior lui a permis de se faire une place parmi les jeunes pilotes les plus suivis.",
       "Rapide et agressif, il s'est forge une reputation de pilote spectaculaire en monoplace.",
@@ -293,6 +302,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Espagne",
     subtitle: "Pilote Aston Martin",
     age: "44 ans",
+    metaDescription: "Fernando Alonso (n°14), double champion du monde chez Aston Martin : 32 victoires et 106 podiums, l'un des plus grands pilotes.",
     bio: [
       "Fernando Alonso est l'un des pilotes les plus experimentes et les plus respectes de l'histoire recente de la Formule 1.",
       "Double champion du monde avec Renault, il a ensuite poursuivi une carriere exceptionnelle marquee par sa polyvalence et sa science de la course.",
@@ -323,6 +333,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Canada",
     subtitle: "Pilote Aston Martin",
     age: "27 ans",
+    metaDescription: "Lance Stroll (n°18), pilote canadien d'Aston Martin : 3 podiums en Formule 1 et l'ambition de franchir un nouveau cap.",
     bio: [
       "Lance Stroll a debute tres jeune en Formule 1 et a montre sa capacite a signer de gros resultats dans des contextes parfois delicats.",
       "Au fil des saisons, il a accumule de l'experience et plusieurs podiums, tout en participant a la construction du projet Aston Martin.",
@@ -352,6 +363,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Royaume-Uni",
     subtitle: "Pilote Haas",
     age: "21 ans",
+    metaDescription: "Oliver Bearman (n°87), jeune pilote britannique de Haas issu de la filière Ferrari, l'un des espoirs à suivre en F1.",
     bio: [
       "Oliver Bearman est l'un des jeunes pilotes britanniques les plus suivis du paddock.",
       "Issu de la filiere Ferrari, il s'est fait remarquer par sa vitesse en formules de promotion et sa capacite a etre performant rapidement.",
@@ -381,6 +393,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "France",
     subtitle: "Pilote Haas",
     age: "29 ans",
+    metaDescription: "Esteban Ocon (n°31), pilote français de Haas : vainqueur du GP de Hongrie 2021, 4 podiums au compteur en Formule 1.",
     bio: [
       "Esteban Ocon s'est construit un parcours solide en Formule 1, marque par sa combativite et sa capacite a maximiser les opportunites.",
       "Vainqueur d'un Grand Prix avec Alpine, il s'est impose comme un pilote fiable et capable de briller dans des conditions compliquees.",
@@ -410,6 +423,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Nouvelle-Zelande",
     subtitle: "Pilote Racing Bulls",
     age: "24 ans",
+    metaDescription: "Liam Lawson (n°30), pilote néo-zélandais de Racing Bulls issu de la filière Red Bull, rapide dès sa première saison en F1.",
     bio: [
       "Liam Lawson est un produit de la filiere Red Bull connu pour sa capacite a etre rapide sans long temps d'adaptation.",
       "Il s'est illustre dans plusieurs championnats de promotion et a saisi chaque opportunite offerte pour se rapprocher d'un volant durable en F1.",
@@ -439,6 +453,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Royaume-Uni",
     subtitle: "Pilote Racing Bulls",
     age: "18 ans",
+    metaDescription: "Arvid Lindblad (n°41), l'un des plus jeunes talents du programme Red Bull chez Racing Bulls, à seulement 18 ans.",
     bio: [
       "Arvid Lindblad fait partie des tres jeunes talents surveilles de pres par le programme Red Bull.",
       "Ses performances en karting puis en monoplace ont rapidement renforce sa reputation de pilote offensif et naturellement rapide.",
@@ -468,6 +483,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Allemagne",
     subtitle: "Pilote Audi",
     age: "38 ans",
+    metaDescription: "Nico Hulkenberg (n°27), pilote allemand d'Audi et ex-champion GP2 : premier podium F1 obtenu en 2025 après des années d'expérience.",
     bio: [
       "Nico Hulkenberg est l'un des pilotes les plus experimentes de la grille et un technicien reconnu pour sa capacite a faire progresser une equipe.",
       "Champion GP2 avant la Formule 1, il a construit une carriere solide faite de regularite et de grosses performances en qualification.",
@@ -498,6 +514,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Bresil",
     subtitle: "Pilote Audi",
     age: "21 ans",
+    metaDescription: "Gabriel Bortoleto (n°5), jeune pilote brésilien d'Audi, l'un des talents les plus prometteurs de sa génération en Formule 1.",
     bio: [
       "Gabriel Bortoleto s'est impose comme l'un des jeunes pilotes bresiliens les plus prometteurs de sa generation.",
       "Sa progression en junior a mis en avant son intelligence de course et sa capacite a etre performant sur la duree d'un championnat.",
@@ -527,6 +544,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "France",
     subtitle: "Pilote Alpine",
     age: "30 ans",
+    metaDescription: "Pierre Gasly (n°10), pilote français d'Alpine, vainqueur du GP d'Italie 2020 à Monza et ex-champion GP2.",
     bio: [
       "Pierre Gasly est l'un des pilotes francais les plus experimentes de la grille actuelle.",
       "Champion GP2, il a connu plusieurs etapes importantes dans l'univers Red Bull avant de se relancer et de gagner en Italie avec AlphaTauri.",
@@ -556,6 +574,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Argentine",
     subtitle: "Pilote Alpine",
     age: "22 ans",
+    metaDescription: "Franco Colapinto (n°43), pilote argentin d'Alpine qui incarne le retour de l'Argentine sur la grille de Formule 1.",
     bio: [
       "Franco Colapinto incarne le retour d'une forte presence argentine dans l'univers des monoplaces internationales.",
       "Son parcours en formules de promotion a mis en valeur sa vitesse de base et sa capacite a saisir les opportunites.",
@@ -585,6 +604,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Thailande",
     subtitle: "Pilote Williams",
     age: "30 ans",
+    metaDescription: "Alexander Albon (n°23), pilote thaïlandais de Williams : 2 podiums et un rôle clé dans la reconstruction de l'équipe.",
     bio: [
       "Alexander Albon s'est relance avec succes chez Williams apres un debut de carriere mouvemente dans l'univers Red Bull.",
       "Il est reconnu pour sa capacite a tirer le maximum d'une voiture difficile et pour sa regularite en course.",
@@ -614,6 +634,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Espagne",
     subtitle: "Pilote Williams",
     age: "31 ans",
+    metaDescription: "Carlos Sainz (n°55), pilote espagnol de Williams : 4 victoires et 29 podiums, passé par Ferrari, McLaren et Renault.",
     bio: [
       "Carlos Sainz s'est forge une reputation de pilote complet, rapide et tres serieux dans sa preparation.",
       "Passe par Toro Rosso, Renault, McLaren puis Ferrari, il a montre qu'il pouvait etre performant dans des environnements tres differents.",
@@ -643,6 +664,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Mexique",
     subtitle: "Pilote Cadillac",
     age: "36 ans",
+    metaDescription: "Sergio Perez (n°11), pilote mexicain expérimenté de Cadillac : 6 victoires et 39 podiums acquis en Formule 1.",
     bio: [
       "Sergio Perez a longtemps ete l'un des meilleurs specialistes du management des pneus et des courses opportunistes.",
       "Avec plusieurs victoires et une solide experience dans le haut de grille, il apporte une vraie expertise technique a chaque projet.",
@@ -672,6 +694,7 @@ export const driverPages: Record<string, DriverPageData> = {
     nationality: "Finlande",
     subtitle: "Pilote Cadillac",
     age: "36 ans",
+    metaDescription: "Valtteri Bottas (n°77), pilote finlandais de Cadillac : 10 victoires et 67 podiums acquis chez Mercedes, forte expérience.",
     bio: [
       "Valtteri Bottas est un pilote d'experience qui a connu plusieurs saisons au sein d'une equipe championne du monde.",
       "Sa vitesse en qualification et sa capacite a travailler dans un cadre technique exigeant ont fait de lui une valeur sure du paddock.",

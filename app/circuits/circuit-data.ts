@@ -24,6 +24,7 @@ export type CircuitPageData = {
   length: string;
   laps: string;
   firstGrandPrix: string;
+  metaDescription: string;
   summary: string[];
   stats: CircuitStat[];
   highlights: CircuitHighlight[];
@@ -45,6 +46,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "5,278 km",
     laps: "58",
     firstGrandPrix: "1996",
+    metaDescription: "Grand Prix d'Australie à Albert Park (Melbourne) le 8 mars 2026 : le circuit urbain rapide qui ouvre la saison F1 2026.",
     summary: [
       "Melbourne ouvre la saison 2026 avec le decor urbain rapide et spectaculaire d'Albert Park.",
       "Le trace combine longues accelerations, gros freinages et sections fluides qui exigent un bon compromis aerodynamique.",
@@ -77,6 +79,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "5,451 km",
     laps: "56",
     firstGrandPrix: "2004",
+    metaDescription: "Grand Prix de Chine sur le circuit international de Shanghai le 15 mars 2026 : un tracé technique et exigeant en début de saison F1.",
     summary: [
       "Shanghai revient tres tot dans la saison 2026 avec son trace vaste et tres technique.",
       "Le premier virage en spirale et l'immense ligne droite opposee mettent a l'epreuve le train avant comme la vitesse de pointe.",
@@ -109,6 +112,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "5,807 km",
     laps: "53",
     firstGrandPrix: "1987",
+    metaDescription: "Grand Prix du Japon à Suzuka le 29 mars 2026 : le mythique circuit en huit, ses esses rapides et le célèbre virage 130R.",
     summary: [
       "Suzuka reste l'un des circuits les plus respectes du calendrier avec ses esses rapides et son celebre 130R.",
       "Le trace en huit demande precision, engagement et grande confiance dans l'avant de la voiture.",
@@ -141,6 +145,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "5,412 km",
     laps: "57",
     firstGrandPrix: "2004",
+    metaDescription: "Grand Prix de Bahreïn à Sakhir le 12 avril 2026 : piste abrasive et stratégique, référence pour juger le vrai rythme de course.",
     summary: [
       "Sakhir propose une piste abrasive, large et tres utile pour comparer les rythmes de course.",
       "La traction en sortie lente et la gestion thermique des pneus y jouent un role central.",
@@ -173,6 +178,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "6,174 km",
     laps: "50",
     firstGrandPrix: "2021",
+    metaDescription: "Grand Prix d'Arabie saoudite à Djeddah le 19 avril 2026 : le circuit urbain le plus rapide du calendrier de Formule 1.",
     summary: [
       "Djeddah est un trace urbain ultra-rapide, bordure de murs et rythmes tres eleves compris.",
       "La moindre erreur y coute cher, surtout dans les enchainements a haute vitesse qui laissent peu de marge.",
@@ -205,6 +211,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "5,412 km",
     laps: "57",
     firstGrandPrix: "2022",
+    metaDescription: "Grand Prix de Miami le 3 mai 2026 : circuit semi-urbain rapide et ambiance très événementielle au cœur de la Floride.",
     summary: [
       "Miami melange longues lignes droites, gros freinages et une section plus lente autour du stade.",
       "Le circuit favorise les voitures efficaces en pointe mais capables aussi de bien relancer dans le secteur sinueux.",
@@ -237,6 +244,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "4,361 km",
     laps: "70",
     firstGrandPrix: "1978",
+    metaDescription: "Grand Prix du Canada au circuit Gilles-Villeneuve (Montréal) le 24 mai 2026 : chicanes, murs proches et le fameux mur des champions.",
     summary: [
       "Montreal est un classique adore pour ses chicanes, ses murs proches et ses gros freinages.",
       "Les monoplaces doivent bien grimper sur les vibreurs tout en restant stables au freinage et en traction.",
@@ -269,6 +277,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "3,337 km",
     laps: "78",
     firstGrandPrix: "1950",
+    metaDescription: "Grand Prix de Monaco le 7 juin 2026 : le joyau historique de la Formule 1, ses rues étroites et son prestige inégalé.",
     summary: [
       "Monaco reste le joyau historique de la F1 avec sa piste etroite, ses rails et son prestige unique.",
       "La qualification y est souvent decisive, tant depasser en course reste complexe dans les rues de la Principaute.",
@@ -301,6 +310,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "4,657 km",
     laps: "66",
     firstGrandPrix: "1991",
+    metaDescription: "Grand Prix d'Espagne au circuit de Barcelona-Catalunya le 14 juin 2026 : la référence technique pour juger une monoplace.",
     summary: [
       "Barcelone est depuis longtemps une reference technique pour juger l'equilibre general d'une monoplace.",
       "Les virages rapides du premier secteur et les exigences aero du reste du tour en font une piste complete.",
@@ -333,6 +343,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "4,318 km",
     laps: "71",
     firstGrandPrix: "1970",
+    metaDescription: "Grand Prix d'Autriche au Red Bull Ring (Spielberg) le 28 juin 2026 : circuit court, nerveux et intense en pleine montagne.",
     summary: [
       "Spielberg est court, nerveux et tres intense, avec trois gros freinages qui rythment le premier demi-tour.",
       "Le relief et les ecarts souvent tres faibles rendent les qualifications particulierement serrees.",
@@ -365,6 +376,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "5,891 km",
     laps: "52",
     firstGrandPrix: "1950",
+    metaDescription: "Grand Prix de Grande-Bretagne à Silverstone le 5 juillet 2026 : Maggots, Becketts et Copse, le temple de la vitesse pure.",
     summary: [
       "Silverstone est l'un des temples de la vitesse pure avec Maggots, Becketts et Copse comme signatures absolues.",
       "Les appuis, la confiance a haute vitesse et la stabilite dans les changements de direction y sont essentiels.",
@@ -397,6 +409,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "7,004 km",
     laps: "44",
     firstGrandPrix: "1950",
+    metaDescription: "Grand Prix de Belgique à Spa-Francorchamps le 19 juillet 2026 : Eau Rouge, Raidillon et Pouhon, circuit mythique et vallonné.",
     summary: [
       "Spa est une piste longue, vallonnee et imprevisible, adoree pour son caractere naturel.",
       "Eau Rouge, Raidillon, Pouhon ou Blanchimont en font un test complet de courage et d'efficacite aero.",
@@ -429,6 +442,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "4,381 km",
     laps: "70",
     firstGrandPrix: "1986",
+    metaDescription: "Grand Prix de Hongrie au Hungaroring (Budapest) le 26 juillet 2026 : un tracé technique et sinueux, souvent comparé à Monaco.",
     summary: [
       "Le Hungaroring est souvent compare a un Monaco sans murs, tant l'enchainement est dense et technique.",
       "L'appui, l'agilite et la qualite des qualifications y ont une importance capitale.",
@@ -461,6 +475,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "4,259 km",
     laps: "72",
     firstGrandPrix: "1952",
+    metaDescription: "Grand Prix des Pays-Bas à Zandvoort le 23 août 2026 : virages relevés, tracé compact et ambiance orange électrique.",
     summary: [
       "Zandvoort est compact, vallonne et tres spectaculaire avec ses virages releves et son ruban tres etroit.",
       "La qualite du train avant et la precision dans les appuis comptent enormement sur ce trace unique.",
@@ -493,6 +508,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "5,793 km",
     laps: "53",
     firstGrandPrix: "1950",
+    metaDescription: "Grand Prix d'Italie à Monza début septembre 2026 : le temple de la vitesse et l'émotion unique des tifosi pour Ferrari.",
     summary: [
       "Monza est le temple de la vitesse, avec un niveau d'appui minimal et de longues accelerations a pleine charge.",
       "Les freinages des chicanes et la traction en sortie y decident une grande partie du chrono.",
@@ -525,6 +541,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "A confirmer",
     laps: "A confirmer",
     firstGrandPrix: "2026",
+    metaDescription: "Grand Prix d'Espagne à Madrid le 13 septembre 2026 : le tout nouveau circuit urbain qui fait son entrée au calendrier F1 2026.",
     summary: [
       "Madrid doit faire son entree au calendrier 2026 comme nouvelle etape espagnole du championnat.",
       "Le trace est presente ici comme un nouveau rendez-vous urbain, encore en phase de reference pour ses donnees definitives.",
@@ -557,6 +574,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "6,003 km",
     laps: "51",
     firstGrandPrix: "2016",
+    metaDescription: "Grand Prix d'Azerbaïdjan à Bakou fin septembre 2026 : contraste unique entre ruelles étroites et immense ligne droite au bord de la Caspienne.",
     summary: [
       "Bakou combine un secteur historique et tres etroit avec une immense ligne droite au bord de la mer Caspienne.",
       "Ce contraste rend le circuit unique et souvent tres spectaculaire, entre precision lente et vitesse maximale.",
@@ -589,6 +607,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "4,928 km",
     laps: "62",
     firstGrandPrix: "2008",
+    metaDescription: "Grand Prix de Singapour à Marina Bay en octobre 2026 : course nocturne sous forte chaleur et humidité, l'une des plus exigeantes de l'année.",
     summary: [
       "Singapour est l'un des week-ends les plus exigeants physiquement du calendrier avec chaleur, humidite et course nocturne.",
       "Le trace urbain demande traction, patience et une tres grande concentration du premier au dernier tour.",
@@ -621,6 +640,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "5,513 km",
     laps: "56",
     firstGrandPrix: "2012",
+    metaDescription: "Grand Prix des États-Unis au Circuit of the Americas (Austin) en octobre 2026 : tracé moderne et grande ambiance texane.",
     summary: [
       "Austin est un circuit moderne qui emprunte des inspirations a plusieurs grands traces historiques.",
       "Le premier secteur rapide, la longue montee vers le virage 1 et les gros freinages en font une piste tres complete.",
@@ -653,6 +673,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "4,304 km",
     laps: "71",
     firstGrandPrix: "1963",
+    metaDescription: "Grand Prix du Mexique à l'Autodromo Hermanos Rodríguez en octobre 2026 : course en altitude et passage mythique dans le stadium.",
     summary: [
       "Mexico se dispute en altitude, ce qui modifie fortement les besoins de refroidissement et d'appui aerodynamique.",
       "La tres longue ligne droite jusqu'au virage 1 genere souvent des attaques en paquet au depart.",
@@ -685,6 +706,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "4,309 km",
     laps: "71",
     firstGrandPrix: "1973",
+    metaDescription: "Grand Prix du Brésil à Interlagos (Sao Paulo) en novembre 2026 : circuit court et chargé d'histoire, théâtre de grands duels pour le titre.",
     summary: [
       "Interlagos est un circuit court, bosselé et charge d'histoire, souvent theater de grandes batailles pour les titres.",
       "Le sens anti-horaire, les changements d'altitude et la meteo instable renforcent son caractere.",
@@ -717,6 +739,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "6,201 km",
     laps: "50",
     firstGrandPrix: "2023",
+    metaDescription: "Grand Prix de Las Vegas en novembre 2026 : course nocturne spectaculaire sur le Strip, longues lignes droites et show américain.",
     summary: [
       "Las Vegas mise sur une course nocturne ultra-visuelle au coeur du Strip et de ses longues lignes droites.",
       "La temperature souvent fraiche et les freinages appuyes creent une lecture assez specifique de la performance.",
@@ -749,6 +772,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "5,419 km",
     laps: "57",
     firstGrandPrix: "2021",
+    metaDescription: "Grand Prix du Qatar au Lusail International Circuit (Doha) fin novembre 2026 : un tracé rapide et fluide en fin de saison F1.",
     summary: [
       "Lusail est tres fluide et rapide, avec une serie de courbes moyennes et rapides qui sollicitent fort les pneus.",
       "Le vent et le sable peuvent compliquer la lecture de piste, surtout en debut de week-end.",
@@ -781,6 +805,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "5,281 km",
     laps: "58",
     firstGrandPrix: "2009",
+    metaDescription: "Grand Prix d'Abou Dabi à Yas Marina le 6 décembre 2026 : la finale de la saison F1 2026, sous les projecteurs et pleine de dramaturgie.",
     summary: [
       "Abou Dabi cloture la saison 2026 avec un circuit moderne, large et tres suivi pour son final sous les projecteurs.",
       "Les longues lignes droites et les freinages appuyes doivent etre equilibres avec une bonne motricite dans le dernier secteur.",

@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!driver) return {};
 
   const title = `${driver.name} — ${driver.subtitle}`;
-  const description = driver.bio[0];
+  const description = driver.metaDescription;
 
   return {
     title,

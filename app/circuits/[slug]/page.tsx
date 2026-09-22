@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!circuit) return {};
 
   const title = `${circuit.grandPrix} — ${circuit.circuitName}`;
-  const description = circuit.summary[0];
+  const description = circuit.metaDescription;
 
   return {
     title,
