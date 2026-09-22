@@ -44,7 +44,7 @@ export default function Home() {
 
     async function loadRSS() {
       try {
-        const res = await fetch("/api/news");
+        const res = await fetch("/api/news", { cache: "no-store" });
         const data = await res.json();
         setNews(data);
       } catch (err) {
@@ -54,7 +54,7 @@ export default function Home() {
 
     async function loadStandings() {
       try {
-        const res = await fetch("/api/standings");
+        const res = await fetch("/api/standings", { cache: "no-store" });
         const data = await res.json();
         setStandings((data.drivers ?? []).slice(0, 5));
       } catch(e){
@@ -64,6 +64,14 @@ export default function Home() {
 
     loadRSS();
     loadStandings();
+
+    const newsInterval = setInterval(loadRSS, 60 * 1000);
+    const standingsInterval = setInterval(loadStandings, 5 * 60 * 1000);
+
+    return () => {
+      clearInterval(newsInterval);
+      clearInterval(standingsInterval);
+    };
 
   }, []);
 
