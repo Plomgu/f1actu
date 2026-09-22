@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import SiteHeader from "../../components/SiteHeader";
 import AdBanner from "../../components/AdBanner";
@@ -15,12 +15,21 @@ function formatCountdown(nowTimestamp: number, targetIso: string) {
   if (diff <= 0) return "En cours ou passé";
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  return `${days} j ${hours} h`;
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${days} j ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
 }
 
 export default function CircuitPageClient({ circuit }: { circuit: CircuitPageData }) {
   const [currentTimestamp] = useState(() => Date.now());
+  const [now, setNow] = useState(() => Date.now());
   const nextRace = calendar2026.find((race) => new Date(race.raceDateIso).getTime() > currentTimestamp) ?? calendar2026[calendar2026.length - 1];
+
+  useEffect(() => {
+    const tick = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(tick);
+  }, []);
   const flagCodeByCountry: Record<string, string> = {
     Australie: "au",
     Chine: "cn",
@@ -164,31 +173,41 @@ export default function CircuitPageClient({ circuit }: { circuit: CircuitPageDat
           </div>
 
           <div className="space-y-6 lg:-mt-24">
-            <div className="rounded-[1.75rem] border border-gray-100 bg-white/80 p-5 shadow-xl backdrop-blur-sm">
-              <div className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#C41230] mb-3">Prochaine course</div>
+            <div className="rounded-3xl border border-gray-100 bg-white p-5">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#C41230]" />
+                <div className="font-bold text-gray-900 text-sm tracking-wide">Prochain Grand Prix</div>
+              </div>
               <div className="space-y-2">
                 <div className="text-base font-black text-gray-900 leading-tight">{nextRace.grandPrix}</div>
                 <div className="text-sm text-gray-500">{nextRace.location}</div>
-                <div className="rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2.5">
+                <div className="rounded-2xl bg-slate-50 px-3 py-2.5">
                   <div className="text-[10px] uppercase tracking-[0.18em] text-slate-500">Date de course</div>
                   <div className="mt-1 text-sm font-bold text-gray-900">{nextRace.raceDateLabel} · {nextRace.raceTime}</div>
                 </div>
-                <div className="rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2.5">
+                <div className="rounded-2xl bg-slate-50 px-3 py-2.5">
                   <div className="text-[10px] uppercase tracking-[0.18em] text-slate-500">Compte à rebours</div>
                   <div className="mt-1 text-lg font-extrabold text-[#C41230]">
-                    {formatCountdown(currentTimestamp, nextRace.raceDateIso)}
+                    {formatCountdown(now, nextRace.raceDateIso)}
                   </div>
                 </div>
-                <Link
-                  href={`/circuits/${nextRace.circuitSlug}`}
-                  className="mt-1 block text-center rounded-2xl bg-[#0F172A] px-4 py-2.5 text-xs font-bold text-white transition hover:bg-[#C41230]"
-                >
-                  Voir le circuit
-                </Link>
               </div>
-            </div>
 
-            <WeatherCard location={nextRace.location} />
+              <div className="mt-4 pt-4 border-t border-gray-100">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="h-1.5 w-1.5 rounded-full bg-sky-500" />
+                  <div className="text-xs font-bold text-gray-500 tracking-wide">Météo sur place</div>
+                </div>
+                <WeatherCard location={nextRace.location} bare />
+              </div>
+
+              <Link
+                href={`/circuits/${nextRace.circuitSlug}`}
+                className="mt-4 block text-center rounded-2xl bg-[#0F172A] px-4 py-2.5 text-xs font-bold text-white transition hover:bg-[#C41230]"
+              >
+                Voir le circuit
+              </Link>
+            </div>
 
             <div className="bg-white rounded-3xl shadow-xl border border-gray-200 p-6">
               <div className="font-bold text-[#C41230] mb-4 text-sm tracking-wider">AUTRES CIRCUITS 2026</div>
