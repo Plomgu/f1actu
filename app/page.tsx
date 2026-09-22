@@ -120,13 +120,12 @@ export default function Home() {
 
     <div className="bg-[#F0F2F5] min-h-screen py-2 sm:py-6">
 
-      {/* PUB */}
+      <div className="max-w-7xl mx-auto rounded-none sm:rounded-3xl bg-white/70 backdrop-blur-md shadow-2xl border border-white/40 overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-4 pb-4">
-        <AdBanner variant="horizontal" />
-      </div>
+        {/* PUB */}
 
-      <div className="max-w-7xl mx-auto rounded-none sm:rounded-3xl bg-white/70 backdrop-blur-md shadow-2xl border border-white/40">
+        <AdBanner variant="horizontal" bare />
+
         <SiteHeader />
 
 

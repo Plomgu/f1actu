@@ -2,9 +2,10 @@ import Link from "next/link";
 
 interface AdBannerProps {
   variant?: "horizontal" | "vertical";
+  bare?: boolean;
 }
 
-export default function AdBanner({ variant = "horizontal" }: AdBannerProps) {
+export default function AdBanner({ variant = "horizontal", bare = false }: AdBannerProps) {
   if (variant === "vertical") {
     return (
       <Link
@@ -48,7 +49,9 @@ export default function AdBanner({ variant = "horizontal" }: AdBannerProps) {
       href="https://www.ecrindeberck.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="block overflow-hidden rounded-3xl shadow-xl border border-[#C8A96E]/40 hover:shadow-2xl transition-all group"
+      className={`block overflow-hidden transition-all group ${
+        bare ? "" : "rounded-3xl shadow-xl border border-[#C8A96E]/40 hover:shadow-2xl"
+      }`}
     >
       <div className="relative h-24">
         <img
