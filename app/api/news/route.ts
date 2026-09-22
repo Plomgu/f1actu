@@ -7,6 +7,8 @@ const FEEDS = [
   { url: "https://fr.motorsport.com/rss/f1/news/", source: "Motorsport" },
   { url: "https://sports.auto-moto.com/rss/formule-1.html", source: "AutoMoto" },
   { url: "https://www.paddock-gp.com/feed/", source: "Paddock GP" },
+  { url: "https://f1i.autojournal.fr/feed/", source: "F1i" },
+  { url: "https://www.franceinfo.fr/sports/auto-moto/formule-1.rss", source: "France Info" },
 ];
 
 const HTML_ENTITIES: Record<string, string> = {
