@@ -1,0 +1,472 @@
+export type TeamChampion = {
+  year: string;
+  driver: string;
+  img?: string;
+};
+
+export type TeamStat = {
+  label: string;
+  value: string;
+};
+
+export type TeamPageData = {
+  slug: string;
+  navName: string;
+  displayName: string;
+  logo: string;
+  navColor: string;
+  accentColor: string;
+  gradient: string;
+  subtitle: string;
+  subtitleClassName?: string;
+  drivers: string[];
+  titlesHeading: string;
+  historyHeading: string;
+  history: string[];
+  stats: TeamStat[];
+  champions: TeamChampion[];
+  active?: boolean;
+  emptyState?: {
+    title: string;
+    description: string;
+    image: string;
+  };
+};
+
+export const driverMenu = [
+  { name: "George Russell", img: "/drivers/russell.png" },
+  { name: "Kimi Antonelli", img: "/drivers/antonelli.png" },
+  { name: "Lewis Hamilton", img: "/drivers/hamilton.png" },
+  { name: "Charles Leclerc", img: "/drivers/leclerc.png" },
+  { name: "Lando Norris", img: "/drivers/norris.png" },
+  { name: "Oscar Piastri", img: "/drivers/piastri.png" },
+  { name: "Max Verstappen", img: "/drivers/verstappen.png" },
+  { name: "Isack Hadjar", img: "/drivers/hadjar.png" },
+  { name: "Fernando Alonso", img: "/drivers/alonso.png" },
+  { name: "Lance Stroll", img: "/drivers/stroll.png" },
+  { name: "Oliver Bearman", img: "/drivers/bearman.png" },
+  { name: "Esteban Ocon", img: "/drivers/ocon.png" },
+  { name: "Liam Lawson", img: "/drivers/lawson.png" },
+  { name: "Arvid Lindblad", img: "/drivers/lindblad.png" },
+  { name: "Nico Hulkenberg", img: "/drivers/hulkenberg.png" },
+  { name: "Gabriel Bortoleto", img: "/drivers/bortoleto.png" },
+  { name: "Pierre Gasly", img: "/drivers/gasly.png" },
+  { name: "Franco Colapinto", img: "/drivers/colapinto.png" },
+  { name: "Alexander Albon", img: "/drivers/albon.png" },
+  { name: "Carlos Sainz", img: "/drivers/sainz.png" },
+  { name: "Sergio Perez", img: "/logos/f1.png" },
+  { name: "Valtteri Bottas", img: "/drivers/bottas.png" },
+];
+
+export const teamPages: Record<string, TeamPageData> = {
+  alpine: {
+    slug: "alpine",
+    navName: "Alpine",
+    displayName: "ALPINE",
+    logo: "/logos/alpine.png",
+    navColor: "#0090FF",
+    accentColor: "#002A5C",
+    gradient: "linear-gradient(90deg,#000000 0%,#002A5C 20%,#0090FF 60%,#00AEEF 100%)",
+    subtitle: "Formula 1 Team",
+    subtitleClassName: "text-red-200",
+    drivers: ["Pierre Gasly", "Franco Colapinto"],
+    titlesHeading: "Titres mondiaux pilotes Renault / Alpine",
+    historyHeading: "Histoire de Renault et Alpine en Formule 1",
+    history: [
+      "L'equipe Alpine F1 Team est l'heritere directe de Renault F1 Team. L'histoire de cette structure remonte a 1977, lorsque Renault debute en Formule 1 avec le moteur turbo.",
+      "Dans les annees 1980 puis 2000, Renault devient une reference du championnat. L'age d'or arrive avec le rachat de Benetton et les titres mondiaux remportes en 2005 et 2006 avec Fernando Alonso.",
+      "Apres un nouveau retour officiel en 2016, Renault rebaptise l'equipe Alpine en 2021 pour mettre en avant sa marque sportive. La structure decroche sa premiere victoire sous ce nom en Hongrie grace a Esteban Ocon.",
+      "Aujourd'hui, Alpine poursuit sa reconstruction avec l'ambition de retrouver durablement le sommet de la Formule 1.",
+    ],
+    stats: [
+      { label: "Titres constructeurs", value: "2" },
+      { label: "Titres pilotes", value: "2" },
+      { label: "Victoires", value: "21" },
+      { label: "Podiums", value: "60" },
+    ],
+    champions: [
+      { year: "2005", driver: "Alonso", img: "/drivers/alonsorenault.png" },
+      { year: "2006", driver: "Alonso", img: "/drivers/alonsorenault.png" },
+    ],
+  },
+  "aston-martin": {
+    slug: "aston-martin",
+    navName: "Aston Martin",
+    displayName: "ASTON MARTIN",
+    logo: "/logos/astonmartin.png",
+    navColor: "#006F62",
+    accentColor: "#006F62",
+    gradient: "linear-gradient(90deg,#000000 0%,#00352F 20%,#006F62 60%,#00A19B 100%)",
+    subtitle: "Formula 1 Team",
+    drivers: ["Fernando Alonso", "Lance Stroll"],
+    titlesHeading: "Titres mondiaux pilotes Aston Martin",
+    historyHeading: "Histoire d'Aston Martin en Formule 1",
+    history: [
+      "Aston Martin a participe une premiere fois a la Formule 1 en 1959 et 1960. L'equipe moderne apparait en 2021, lorsque Racing Point prend officiellement le nom Aston Martin.",
+      "Depuis ce retour, la structure s'est rapprochee du haut de grille et a retrouve de la visibilite grace a des podiums et a une saison 2023 tres solide avec Fernando Alonso.",
+    ],
+    stats: [
+      { label: "Titres constructeurs", value: "0" },
+      { label: "Titres pilotes", value: "0" },
+      { label: "Victoires", value: "1" },
+      { label: "Podiums", value: "12" },
+    ],
+    champions: [],
+    emptyState: {
+      title: "Toujours aucun titre mondial pour Aston Martin...",
+      description: "Mais l'equipe continue de se battre pour decrocher son premier trophee en Formule 1.",
+      image: "/images/no-trophy.png",
+    },
+  },
+  audi: {
+    slug: "audi",
+    navName: "Audi",
+    displayName: "AUDI",
+    logo: "/logos/audi.png",
+    navColor: "#BB0A30",
+    accentColor: "#BB0A30",
+    gradient: "linear-gradient(90deg,#000000 0%,#6b001c 25%,#BB0A30 60%,#ff244f 100%)",
+    subtitle: "F1 Team",
+    drivers: ["Nico Hulkenberg", "Gabriel Bortoleto"],
+    titlesHeading: "Titres mondiaux pilotes Audi",
+    historyHeading: "Histoire d'Audi en Formule 1",
+    history: [
+      "Audi effectue officiellement ses debuts en Formule 1 en 2026 avec son propre projet d'usine.",
+      "Le constructeur allemand s'appuie sur les infrastructures de Hinwil pour lancer une equipe totalement nouvelle sous l'identite Audi Revolut F1 Team.",
+      "Cette entree marque la premiere participation officielle d'Audi au championnat du monde de Formule 1.",
+    ],
+    stats: [
+      { label: "Titres constructeurs", value: "0" },
+      { label: "Titres pilotes", value: "0" },
+      { label: "Victoires", value: "0" },
+      { label: "Podiums", value: "0" },
+    ],
+    champions: [],
+    emptyState: {
+      title: "Chargement des trophees...",
+      description: "Veuillez patienter quelques saisons.",
+      image: "/images/chargement.png",
+    },
+  },
+  cadillac: {
+    slug: "cadillac",
+    navName: "Cadillac",
+    displayName: "CADILLAC",
+    logo: "/logos/cadillac.png",
+    navColor: "#003A8F",
+    accentColor: "#003A8F",
+    gradient: "linear-gradient(90deg,#000000 0%,#001d4d 20%,#003A8F 60%,#3c6cff 100%)",
+    subtitle: "F1 Team",
+    drivers: ["Valtteri Bottas", "Sergio Perez"],
+    titlesHeading: "Titres mondiaux pilotes Cadillac",
+    historyHeading: "Histoire de Cadillac en Formule 1",
+    history: [
+      "Cadillac fait son entree en Formule 1 dans le cadre du projet soutenu par General Motors.",
+      "Le programme est mene avec une forte ambition americaine et s'appuie sur l'experience d'Andretti dans le sport automobile international.",
+      "L'arrivee de Cadillac marque une etape importante dans l'expansion de la Formule 1 sur le marche americain.",
+    ],
+    stats: [
+      { label: "Titres constructeurs", value: "0" },
+      { label: "Titres pilotes", value: "0" },
+      { label: "Victoires", value: "0" },
+      { label: "Podiums", value: "0" },
+    ],
+    champions: [],
+    emptyState: {
+      title: "Chargement des trophees...",
+      description: "Veuillez patienter quelques saisons.",
+      image: "/images/chargement.png",
+    },
+  },
+  ferrari: {
+    slug: "ferrari",
+    navName: "Ferrari",
+    displayName: "SCUDERIA FERRARI",
+    logo: "/logos/ferrari.png",
+    navColor: "#DC0000",
+    accentColor: "#DC0000",
+    gradient: "linear-gradient(90deg,#000000 0%,#3a0000 10%,#990000 30%,#DC0000 70%,#ff1a1a 100%)",
+    subtitle: "Formula 1 Team",
+    subtitleClassName: "text-red-200",
+    drivers: ["Charles Leclerc", "Lewis Hamilton"],
+    titlesHeading: "Titres mondiaux pilotes Ferrari",
+    historyHeading: "Histoire de Ferrari en Formule 1",
+    history: [
+      "La Scuderia Ferrari est l'equipe la plus ancienne et la plus titree de l'histoire de la Formule 1. Presente depuis 1950, Ferrari n'a jamais quitte le championnat du monde.",
+      "L'equipe italienne a connu plusieurs cycles de domination avec des pilotes comme Alberto Ascari, Niki Lauda, Michael Schumacher ou Kimi Raikkonen.",
+      "Le regne de Schumacher au debut des annees 2000 reste l'une des periodes les plus marquantes de l'histoire moderne de la discipline.",
+    ],
+    stats: [
+      { label: "Titres constructeurs", value: "16" },
+      { label: "Titres pilotes", value: "15" },
+      { label: "Victoires", value: "249" },
+      { label: "Podiums", value: "641" },
+    ],
+    champions: [
+      { year: "1952", driver: "Ascari", img: "/drivers/ascari.png" },
+      { year: "1953", driver: "Ascari", img: "/drivers/ascari.png" },
+      { year: "1956", driver: "Fangio", img: "/drivers/fangio.png" },
+      { year: "1958", driver: "Hawthorn", img: "/drivers/hawthorn.png" },
+      { year: "1961", driver: "Hill", img: "/drivers/hill.png" },
+      { year: "1964", driver: "Surtees", img: "/drivers/surtees.png" },
+      { year: "1975", driver: "Lauda", img: "/drivers/lauda.png" },
+      { year: "1977", driver: "Lauda", img: "/drivers/lauda.png" },
+      { year: "1979", driver: "Scheckter", img: "/drivers/scheckter.png" },
+      { year: "2000", driver: "Schumacher", img: "/drivers/schumacher.png" },
+      { year: "2001", driver: "Schumacher", img: "/drivers/schumacher.png" },
+      { year: "2002", driver: "Schumacher", img: "/drivers/schumacher.png" },
+      { year: "2003", driver: "Schumacher", img: "/drivers/schumacher.png" },
+      { year: "2004", driver: "Schumacher", img: "/drivers/schumacher.png" },
+      { year: "2007", driver: "Raikkonen", img: "/drivers/raikkonen.png" },
+    ],
+  },
+  haas: {
+    slug: "haas",
+    navName: "Haas",
+    displayName: "HAAS",
+    logo: "/logos/haas.png",
+    navColor: "#E6002B",
+    accentColor: "#E6002B",
+    gradient: "linear-gradient(90deg,#000000 0%,#4d0012 20%,#E6002B 60%,#ff3355 100%)",
+    subtitle: "F1 Team",
+    drivers: ["Esteban Ocon", "Oliver Bearman"],
+    titlesHeading: "Titres mondiaux pilotes Haas",
+    historyHeading: "Histoire de Haas en Formule 1",
+    history: [
+      "Haas F1 Team est une equipe americaine fondee par Gene Haas. Elle debute en Formule 1 en 2016.",
+      "La structure adopte un modele tres integre avec un fort partenariat technique avec Ferrari, ce qui lui permet de progresser rapidement lors de ses premieres saisons.",
+      "Depuis, Haas cherche a s'installer durablement dans le milieu de grille et a se rapprocher des equipes de pointe.",
+    ],
+    stats: [
+      { label: "Titres constructeurs", value: "0" },
+      { label: "Titres pilotes", value: "0" },
+      { label: "Victoires", value: "0" },
+      { label: "Podiums", value: "0" },
+    ],
+    champions: [],
+    emptyState: {
+      title: "Chargement des trophees...",
+      description: "Veuillez patienter quelques saisons.",
+      image: "/images/chargement.png",
+    },
+  },
+  mclaren: {
+    slug: "mclaren",
+    navName: "McLaren",
+    displayName: "MCLAREN",
+    logo: "/logos/mclaren.png",
+    navColor: "#FF8700",
+    accentColor: "#FF8700",
+    gradient: "linear-gradient(90deg,#000000 0%,#4d2a00 20%,#FF8700 60%,#ffb347 100%)",
+    subtitle: "Formula 1 Team",
+    subtitleClassName: "text-red-200",
+    drivers: ["Lando Norris", "Oscar Piastri"],
+    titlesHeading: "Titres mondiaux pilotes McLaren",
+    historyHeading: "Histoire de McLaren en Formule 1",
+    history: [
+      "McLaren est l'une des equipes les plus prestigieuses de la discipline. Elle est fondee en 1963 par Bruce McLaren et debute en championnat du monde en 1966.",
+      "L'equipe devient une reference dans les annees 1970 puis vit un age d'or dans les annees 1980 et 1990 avec des pilotes comme Alain Prost et Ayrton Senna.",
+      "McLaren retrouve aussi le succes a la fin des annees 1990 avec Mika Hakkinen puis dans les annees 2000 avec Lewis Hamilton.",
+      "La renaissance moderne se confirme en 2024 avec un premier titre constructeurs depuis 1998, puis en 2025 avec un double sacre: un deuxieme titre constructeurs consecutif et le premier titre pilotes de Lando Norris.",
+    ],
+    stats: [
+      { label: "Titres constructeurs", value: "10" },
+      { label: "Titres pilotes", value: "13" },
+      { label: "Victoires", value: "203" },
+      { label: "Podiums", value: "445" },
+    ],
+    champions: [
+      { year: "1974", driver: "Emerson Fittipaldi", img: "/drivers/fittipaldi.png" },
+      { year: "1976", driver: "James Hunt", img: "/drivers/hunt.png" },
+      { year: "1984", driver: "Niki Lauda", img: "/drivers/lauda.png" },
+      { year: "1985", driver: "Alain Prost", img: "/drivers/prost.png" },
+      { year: "1986", driver: "Alain Prost", img: "/drivers/prost.png" },
+      { year: "1988", driver: "Ayrton Senna", img: "/drivers/senna.png" },
+      { year: "1989", driver: "Alain Prost", img: "/drivers/prost.png" },
+      { year: "1990", driver: "Ayrton Senna", img: "/drivers/senna.png" },
+      { year: "1991", driver: "Ayrton Senna", img: "/drivers/senna.png" },
+      { year: "1998", driver: "Mika Hakkinen", img: "/drivers/hakkinen.png" },
+      { year: "1999", driver: "Mika Hakkinen", img: "/drivers/hakkinen.png" },
+      { year: "2008", driver: "Hamilton", img: "/drivers/hamiltonmclaren.png" },
+      { year: "2025", driver: "Lando Norris", img: "/drivers/norris.png" },
+    ],
+  },
+  mercedes: {
+    slug: "mercedes",
+    navName: "Mercedes",
+    displayName: "MERCEDES",
+    logo: "/logos/mercedes.png",
+    navColor: "#00D2BE",
+    accentColor: "#00D2BE",
+    gradient: "linear-gradient(90deg,#000000 0%,#004d46 20%,#00D2BE 60%,#66fff0 100%)",
+    subtitle: "Formula 1 Team",
+    subtitleClassName: "text-red-200",
+    drivers: ["George Russell", "Andrea Kimi Antonelli"],
+    titlesHeading: "Titres mondiaux pilotes Mercedes",
+    historyHeading: "Histoire de Mercedes en Formule 1",
+    history: [
+      "Mercedes-Benz possede une longue histoire en sport automobile et remporte rapidement des titres en Formule 1 dans les annees 1950 avec Juan Manuel Fangio.",
+      "Apres plusieurs decennies d'absence comme equipe officielle, Mercedes revient comme motoriste avant de racheter Brawn GP en 2010 pour lancer sa structure moderne.",
+      "L'equipe domine l'ere hybride a partir de 2014 et signe une serie record de titres constructeurs consecutifs.",
+      "Mercedes reste aujourd'hui l'une des references du championnat.",
+    ],
+    stats: [
+      { label: "Titres constructeurs", value: "8" },
+      { label: "Titres pilotes", value: "9" },
+      { label: "Victoires", value: "122" },
+      { label: "Podiums", value: "201" },
+    ],
+    champions: [
+      { year: "1954", driver: "Fangio", img: "/drivers/fangio.png" },
+      { year: "1955", driver: "Fangio", img: "/drivers/fangio.png" },
+      { year: "2014", driver: "Hamilton", img: "/drivers/hamiltonmercedes.png" },
+      { year: "2015", driver: "Hamilton", img: "/drivers/hamiltonmercedes.png" },
+      { year: "2016", driver: "Rosberg", img: "/drivers/rosberg.png" },
+      { year: "2017", driver: "Hamilton", img: "/drivers/hamiltonmercedes.png" },
+      { year: "2018", driver: "Hamilton", img: "/drivers/hamiltonmercedes.png" },
+      { year: "2019", driver: "Hamilton", img: "/drivers/hamiltonmercedes.png" },
+      { year: "2020", driver: "Hamilton", img: "/drivers/hamiltonmercedes.png" },
+    ],
+  },
+  rb: {
+    slug: "rb",
+    navName: "Racing Bulls",
+    displayName: "RACING BULLS",
+    logo: "/logos/rb.png",
+    navColor: "#1E41FF",
+    accentColor: "#1E41FF",
+    gradient: "linear-gradient(90deg,#000000 0%,#0B1A5A 20%,#1E41FF 60%,#4c6fff 100%)",
+    subtitle: "Formula One Team",
+    drivers: ["Liam Lawson", "Arvid Lindblad"],
+    titlesHeading: "Titres mondiaux pilotes Racing Bulls",
+    historyHeading: "Histoire de Racing Bulls en Formule 1",
+    history: [
+      "Racing Bulls est l'equipe soeur de Red Bull Racing. Son histoire remonte a 2006, lorsque Red Bull rachete Minardi pour creer Toro Rosso.",
+      "La structure sert de tremplin a de jeunes pilotes du programme Red Bull. Plusieurs stars de la discipline y ont fait leurs debuts avant de rejoindre l'equipe principale.",
+      "Apres les noms Toro Rosso puis AlphaTauri, l'equipe adopte ensuite l'identite Racing Bulls dans une nouvelle phase de son developpement.",
+    ],
+    stats: [
+      { label: "Titres constructeurs", value: "0" },
+      { label: "Titres pilotes", value: "0" },
+      { label: "Victoires", value: "2" },
+      { label: "Podiums", value: "6" },
+    ],
+    champions: [],
+    emptyState: {
+      title: "Chargement des trophees...",
+      description: "Veuillez patienter quelques saisons.",
+      image: "/images/chargement.png",
+    },
+  },
+  redbull: {
+    slug: "redbull",
+    navName: "Red Bull",
+    displayName: "Red Bull Racing",
+    logo: "/logos/redbull.png",
+    navColor: "#0600EF",
+    accentColor: "#0600EF",
+    gradient: "linear-gradient(90deg,#000000 0%,#02006b 20%,#0600EF 60%,#4d4dff 100%)",
+    subtitle: "Formula 1 Team",
+    subtitleClassName: "text-white/80",
+    drivers: ["Max Verstappen", "Isack Hadjar"],
+    titlesHeading: "Titres mondiaux pilotes Red Bull",
+    historyHeading: "Histoire de Red Bull en Formule 1",
+    history: [
+      "Red Bull Racing nait en 2005 lorsque le groupe Red Bull reprend l'equipe Jaguar.",
+      "Avec Adrian Newey, l'equipe devient rapidement une reference et domine la Formule 1 entre 2010 et 2013 avec Sebastian Vettel.",
+      "Apres une phase plus difficile, Red Bull revient au sommet a partir de 2021 avec Max Verstappen et redevient l'equipe de reference de l'ere moderne.",
+      "La structure reste aujourd'hui l'une des plus puissantes du championnat.",
+    ],
+    stats: [
+      { label: "Titres constructeurs", value: "6" },
+      { label: "Titres pilotes", value: "8" },
+      { label: "Victoires", value: "130" },
+      { label: "Podiums", value: "233" },
+    ],
+    champions: [
+      { year: "2010", driver: "Sebastian Vettel", img: "/drivers/vettel.png" },
+      { year: "2011", driver: "Sebastian Vettel", img: "/drivers/vettel.png" },
+      { year: "2012", driver: "Sebastian Vettel", img: "/drivers/vettel.png" },
+      { year: "2013", driver: "Sebastian Vettel", img: "/drivers/vettel.png" },
+      { year: "2021", driver: "Max Verstappen", img: "/drivers/verstappen.png" },
+      { year: "2022", driver: "Max Verstappen", img: "/drivers/verstappen.png" },
+      { year: "2023", driver: "Max Verstappen", img: "/drivers/verstappen.png" },
+      { year: "2024", driver: "Max Verstappen", img: "/drivers/verstappen.png" },
+    ],
+  },
+  stake: {
+    slug: "stake",
+    navName: "Stake",
+    displayName: "STAKE F1 TEAM",
+    logo: "/logos/stake.png",
+    navColor: "#52E252",
+    accentColor: "#1F8F3A",
+    gradient: "linear-gradient(90deg,#000000 0%,#123c16 20%,#2ebd3f 60%,#7dff8f 100%)",
+    subtitle: "Kick Sauber",
+    subtitleClassName: "text-white/80",
+    drivers: ["Nico Hulkenberg", "Gabriel Bortoleto"],
+    titlesHeading: "Titres mondiaux pilotes Stake / Sauber",
+    historyHeading: "Histoire de Stake / Sauber en Formule 1",
+    history: [
+      "Stake reprend l'identite commerciale recente de Sauber avant la transition complete vers Audi.",
+      "La structure suisse, fondee par Peter Sauber, est presente en Formule 1 depuis 1993 et s'est forge une solide reputation dans le milieu de grille.",
+      "Cette periode de transition sert de passerelle entre l'ere Sauber et le projet usine d'Audi.",
+    ],
+    stats: [
+      { label: "Titres constructeurs", value: "0" },
+      { label: "Titres pilotes", value: "0" },
+      { label: "Victoires", value: "1" },
+      { label: "Podiums", value: "27" },
+    ],
+    champions: [],
+    active: false,
+    emptyState: {
+      title: "Chargement des trophees...",
+      description: "Veuillez patienter quelques saisons.",
+      image: "/images/chargement.png",
+    },
+  },
+  williams: {
+    slug: "williams",
+    navName: "Williams",
+    displayName: "WILLIAMS",
+    logo: "/logos/williams.png",
+    navColor: "#005AFF",
+    accentColor: "#005AFF",
+    gradient: "linear-gradient(90deg,#000000 0%,#002b73 20%,#005AFF 60%,#6aa3ff 100%)",
+    subtitle: "Formula 1 Team",
+    subtitleClassName: "text-white/80",
+    drivers: ["Alexander Albon", "Carlos Sainz"],
+    titlesHeading: "Titres mondiaux pilotes Williams",
+    historyHeading: "Histoire de Williams en Formule 1",
+    history: [
+      "Williams Grand Prix Engineering est fondee en 1977 par Frank Williams et Patrick Head. L'equipe devient l'une des grandes puissances de la Formule 1 des annees 1980 et 1990.",
+      "La structure britannique remporte de nombreux titres avec des pilotes comme Alan Jones, Keke Rosberg, Nigel Mansell, Alain Prost, Damon Hill et Jacques Villeneuve.",
+      "Apres des annees plus difficiles, Williams cherche a retrouver durablement le haut du plateau tout en conservant un statut historique unique dans le paddock.",
+    ],
+    stats: [
+      { label: "Titres constructeurs", value: "9" },
+      { label: "Titres pilotes", value: "7" },
+      { label: "Victoires", value: "114" },
+      { label: "Podiums", value: "245" },
+    ],
+    champions: [
+      { year: "1980", driver: "Alan Jones" },
+      { year: "1982", driver: "Keke Rosberg" },
+      { year: "1987", driver: "Nelson Piquet" },
+      { year: "1992", driver: "Nigel Mansell" },
+      { year: "1993", driver: "Alain Prost" },
+      { year: "1996", driver: "Damon Hill" },
+      { year: "1997", driver: "Jacques Villeneuve" },
+    ],
+  },
+};
+
+export const teams = Object.values(teamPages)
+  .filter((team) => team.active !== false)
+  .map((team) => ({
+  name: team.navName,
+  color: team.navColor,
+  link: `/ecuries/${team.slug}`,
+  logo: team.logo,
+}));
