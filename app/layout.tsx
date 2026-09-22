@@ -72,10 +72,7 @@ export const metadata: Metadata = {
     images: ["/logos/f1actu.png"],
   },
 
-  icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
-  },
+  manifest: "/manifest.json",
 
   alternates: {
     canonical: SITE_URL,
