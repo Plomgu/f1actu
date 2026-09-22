@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import SiteHeader from "../components/SiteHeader";
 import WeatherCard from "../components/WeatherCard";
+import { LeaderCardSkeleton, StandingsRowsSkeleton, Skeleton } from "../components/Skeleton";
 import { teams } from "../ecuries/team-data";
 import { calendar2026 } from "../calendrier/calendar-data";
 
@@ -133,7 +134,15 @@ export default function ClassementPage() {
             <h2 className="text-lg font-bold mb-4 text-[#C41230]">Classement pilotes</h2>
 
             {loading ? (
-              <div className="text-xs text-gray-400 mb-6">Chargement du classement...</div>
+              <div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-3">
+                  <LeaderCardSkeleton />
+                  <LeaderCardSkeleton />
+                </div>
+                <StandingsRowsSkeleton rows={10} />
+                <Skeleton className="h-5 w-56 mt-8 mb-4" />
+                <StandingsRowsSkeleton rows={10} />
+              </div>
             ) : (
               <>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-3">

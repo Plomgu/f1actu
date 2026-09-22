@@ -7,6 +7,7 @@ import SiteHeader from "./components/SiteHeader";
 import AdBanner from "./components/AdBanner";
 import WeatherCard from "./components/WeatherCard";
 import NewsHero from "./components/NewsHero";
+import { NewsListSkeleton, StandingsSidebarSkeleton } from "./components/Skeleton";
 import { teams } from "./ecuries/team-data";
 import { calendar2026 } from "./calendrier/calendar-data";
 
@@ -197,6 +198,8 @@ export default function Home() {
 
           <div className="lg:col-span-2 bg-white/80 backdrop-blur-sm p-4 sm:p-6 shadow-2xl rounded-3xl border border-gray-100">
 
+            {news.length === 0 && <NewsListSkeleton />}
+
             {Object.entries(groupedNews).map(([day,items]) => (
 
               <div key={day} className="mb-5 last:mb-0">
@@ -266,9 +269,7 @@ export default function Home() {
                 </Link>
               </div>
 
-              {standings.length === 0 && (
-                <div className="text-xs text-gray-400">Chargement du classement...</div>
-              )}
+              {standings.length === 0 && <StandingsSidebarSkeleton />}
 
               <div className="space-y-1.5">
                 {standings.map((d, i) => {
