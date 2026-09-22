@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import SiteHeader from "./components/SiteHeader";
 import AdBanner from "./components/AdBanner";
 import WeatherCard from "./components/WeatherCard";
+import NewsHero from "./components/NewsHero";
 import { teams } from "./ecuries/team-data";
 import { calendar2026 } from "./calendrier/calendar-data";
 
@@ -121,6 +122,13 @@ export default function Home() {
 
       <div className="max-w-7xl mx-auto rounded-none sm:rounded-3xl bg-white/70 backdrop-blur-md shadow-2xl border border-white/40">
         <SiteHeader />
+
+
+        {/* HERO ACTUS */}
+
+        <div className="px-4 pt-4">
+          <NewsHero items={news} />
+        </div>
 
 
         {/* PUB */}

@@ -33,8 +33,29 @@ function extractText(tag: string, xml: string): string {
   return plainMatch ? decodeEntities(plainMatch[1].trim()) : "";
 }
 
+function stripHtml(html: string): string {
+  return decodeEntities(html.replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
+}
+
+function extractExcerpt(block: string): string {
+  const raw = extractText("description", block);
+  const text = stripHtml(raw);
+  if (text.length <= 160) return text;
+  return text.slice(0, 160).replace(/\s+\S*$/, "") + "…";
+}
+
+function extractImage(block: string): string | null {
+  const enclosure = block.match(/<enclosure\b[^>]*\burl="([^"]+)"/i);
+  if (enclosure) return enclosure[1];
+  const mediaContent = block.match(/<media:content\b[^>]*\burl="([^"]+)"/i);
+  if (mediaContent) return mediaContent[1];
+  const img = block.match(/<img\b[^>]*\bsrc="([^"]+)"/i);
+  if (img) return img[1];
+  return null;
+}
+
 function parseItems(xml: string, source: string) {
-  const items: { title: string; link: string; timestamp: number; time: string; source: string }[] = [];
+  const items: { title: string; link: string; timestamp: number; time: string; source: string; excerpt: string; image: string | null }[] = [];
 
   const itemBlocks = xml.split(/<item[\s>]/);
   for (let i = 1; i < itemBlocks.length; i++) {
@@ -54,6 +75,8 @@ function parseItems(xml: string, source: string) {
       timestamp: date.getTime(),
       time: date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Paris" }),
       source,
+      excerpt: extractExcerpt(block),
+      image: extractImage(block),
     });
   }
 
