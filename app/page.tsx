@@ -208,7 +208,7 @@ export default function Home() {
                   {day}
                 </div>
 
-                <div className="divide-y divide-gray-100">
+                <div>
 
                   {(items as any[]).map((item,index)=> (
 
@@ -234,7 +234,7 @@ export default function Home() {
                           </span>
                         )}
 
-                        <span className="block text-[11px] text-gray-400 mt-0.5">{item.source}</span>
+                        <span className="ml-2 text-[11px] text-gray-400">- {item.source}</span>
 
                       </span>
 
