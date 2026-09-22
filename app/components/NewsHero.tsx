@@ -62,6 +62,7 @@ export default function NewsHero({ items }: { items: NewsItem[] }) {
               alt=""
               referrerPolicy="no-referrer"
               className="h-full w-full object-cover"
+              style={{ objectPosition: "50% 20%" }}
             />
           ) : (
             <div
