@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import SiteHeader from "../components/SiteHeader";
+import AdBanner from "../components/AdBanner";
 import WeatherCard from "../components/WeatherCard";
 import { LeaderCardSkeleton, StandingsRowsSkeleton, Skeleton } from "../components/Skeleton";
 import { teams } from "../ecuries/team-data";
@@ -101,9 +102,7 @@ export default function ClassementPage() {
   return (
     <div className="bg-[#F0F2F5] min-h-screen py-6">
       <div className="max-w-7xl mx-auto rounded-3xl bg-white/70 backdrop-blur-md shadow-2xl border border-white/40 overflow-hidden">
-        <div className="bg-gray-100 border-b border-gray-200 h-24 flex items-center justify-center font-bold text-gray-500">
-          ESPACE PUBLICITÉ HORIZONTALE
-        </div>
+        <AdBanner variant="horizontal" bare />
 
         <SiteHeader />
 
@@ -256,9 +255,7 @@ export default function ClassementPage() {
 
             <WeatherCard location={nextRace.location} />
 
-            <div className="sticky top-6 bg-gray-100 p-8 shadow-xl flex items-center justify-center min-h-[500px] border border-gray-200 rounded-3xl">
-              ESPACE PUBLICITÉ
-            </div>
+            <AdBanner variant="vertical" />
 
           </div>
 
