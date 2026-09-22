@@ -4,5 +4,5 @@ Allow: /
 Disallow: /api/
 Disallow: /_next/
 
-Sitemap: https://f1actu.fr/sitemap.xml
-Host: https://f1actu.fr
+Sitemap: https://www.f1actu.fr/sitemap.xml
+Host: https://www.f1actu.fr
