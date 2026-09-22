@@ -76,7 +76,7 @@ export default function ClassementPage() {
   useEffect(() => {
     async function loadStandings() {
       try {
-        const res = await fetch("/api/standings");
+        const res = await fetch("/api/standings", { cache: "no-store" });
         const data = await res.json();
         if (data.drivers) setDrivers(data.drivers);
         if (data.constructors) setConstructors(data.constructors);
@@ -86,7 +86,10 @@ export default function ClassementPage() {
         setLoading(false);
       }
     }
+
     loadStandings();
+    const interval = setInterval(loadStandings, 5 * 60 * 1000);
+    return () => clearInterval(interval);
   }, []);
 
   const topDriver = drivers[0];
