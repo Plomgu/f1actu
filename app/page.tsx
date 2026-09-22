@@ -39,7 +39,9 @@ const driverVisuals: Record<string, { team: string; color: string; logo: string;
 export default function Home() {
   const [standings, setStandings] = useState<any[]>([]);
   const [news, setNews] = useState<any[]>([]);
+  const [newsPage, setNewsPage] = useState(1);
   const [currentTimestamp] = useState(() => Date.now());
+  const NEWS_PAGE_SIZE = 20;
   const nextRace = calendar2026.find((race) => new Date(race.raceDateIso).getTime() > currentTimestamp) ?? calendar2026[calendar2026.length - 1];
 
   useEffect(() => {
@@ -114,7 +116,9 @@ export default function Home() {
   }
 
 
-  const groupedNews = groupByDay(news);
+  const newsTotalPages = Math.max(1, Math.ceil(news.length / NEWS_PAGE_SIZE));
+  const paginatedNews = news.slice((newsPage - 1) * NEWS_PAGE_SIZE, newsPage * NEWS_PAGE_SIZE);
+  const groupedNews = groupByDay(paginatedNews);
 
 
   return (
@@ -247,6 +251,50 @@ export default function Home() {
               </div>
 
             ))}
+
+            {newsTotalPages > 1 && (
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5 text-sm">
+                {newsPage > 1 && (
+                  <button
+                    onClick={() => setNewsPage((p) => p - 1)}
+                    className="rounded border border-[#C41230]/30 px-2.5 py-1 text-[#C41230] hover:bg-[#C41230]/5 transition-colors"
+                  >
+                    Précédent
+                  </button>
+                )}
+
+                {Array.from({ length: newsTotalPages }).map((_, i) => {
+                  const p = i + 1;
+                  return (
+                    <span key={p} className="flex items-center gap-1.5">
+                      {i > 0 && <span className="text-gray-300">-</span>}
+                      {p === newsPage ? (
+                        <span className="px-1 font-bold text-gray-700">{p}</span>
+                      ) : (
+                        <button
+                          onClick={() => setNewsPage(p)}
+                          className="rounded border border-[#C41230]/30 px-2.5 py-1 text-[#C41230] hover:bg-[#C41230]/5 transition-colors"
+                        >
+                          {p}
+                        </button>
+                      )}
+                    </span>
+                  );
+                })}
+
+                {newsPage < newsTotalPages && (
+                  <>
+                    <span className="text-gray-300">-</span>
+                    <button
+                      onClick={() => setNewsPage((p) => p + 1)}
+                      className="rounded border border-[#C41230]/30 px-2.5 py-1 font-semibold text-[#C41230] hover:bg-[#C41230]/5 transition-colors"
+                    >
+                      Suivant
+                    </button>
+                  </>
+                )}
+              </div>
+            )}
 
           </div>
 
