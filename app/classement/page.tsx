@@ -99,14 +99,12 @@ export default function ClassementPage() {
 
   return (
     <div className="bg-[#F0F2F5] min-h-screen py-6">
-      <div className="max-w-7xl mx-auto rounded-3xl bg-white/70 backdrop-blur-md shadow-2xl border border-white/40">
-        <SiteHeader />
-
-        <div className="px-4 py-4">
-          <div className="bg-gray-100 border border-gray-200 rounded-3xl shadow-xl h-24 flex items-center justify-center font-bold text-gray-500">
-            ESPACE PUBLICITÉ HORIZONTALE
-          </div>
+      <div className="max-w-7xl mx-auto rounded-3xl bg-white/70 backdrop-blur-md shadow-2xl border border-white/40 overflow-hidden">
+        <div className="bg-gray-100 border-b border-gray-200 h-24 flex items-center justify-center font-bold text-gray-500">
+          ESPACE PUBLICITÉ HORIZONTALE
         </div>
+
+        <SiteHeader />
 
         <div className="bg-white">
           <div className="max-w-7xl mx-auto px-4 py-4 overflow-x-auto">

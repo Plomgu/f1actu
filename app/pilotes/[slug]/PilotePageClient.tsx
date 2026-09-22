@@ -27,12 +27,10 @@ export default function PilotePageClient({ driver }: { driver: DriverPageData })
 
   return (
     <div className="bg-[#F0F2F5] min-h-screen py-2 sm:py-6">
-      <div className="max-w-7xl mx-auto rounded-none sm:rounded-3xl bg-white/70 backdrop-blur-md shadow-2xl border border-white/40">
-        <SiteHeader />
+      <div className="max-w-7xl mx-auto rounded-none sm:rounded-3xl bg-white/70 backdrop-blur-md shadow-2xl border border-white/40 overflow-hidden">
+        <AdBanner variant="horizontal" bare />
 
-        <div className="px-4 py-4">
-          <AdBanner variant="horizontal" />
-        </div>
+        <SiteHeader />
 
         <div className="bg-white">
           <div className="max-w-7xl mx-auto px-4 py-4 overflow-x-auto">
