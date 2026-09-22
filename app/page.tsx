@@ -195,45 +195,51 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 px-4 py-6">
 
 
-          <div className="lg:col-span-2 bg-white/80 backdrop-blur-sm p-4 sm:p-10 shadow-2xl rounded-3xl border border-gray-100">
+          <div className="lg:col-span-2 bg-white/80 backdrop-blur-sm p-4 sm:p-6 shadow-2xl rounded-3xl border border-gray-100">
 
             {Object.entries(groupedNews).map(([day,items]) => (
 
-              <div key={day} className="mb-6">
+              <div key={day} className="mb-5 last:mb-0">
 
-                <div className="font-bold text-[#C41230] border-b pb-2 mb-2">
+                <div className="text-[11px] font-bold uppercase tracking-wider text-[#C41230] pb-1.5 mb-1 border-b border-gray-100">
                   {day}
                 </div>
 
-                {(items as any[]).map((item,index)=> (
+                <div className="divide-y divide-gray-100">
 
-                  <a
-                    key={index}
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex gap-4 py-4 px-4 border-b border-black/25 hover:bg-white hover:shadow-md transition text-sm rounded-xl"
-                  >
+                  {(items as any[]).map((item,index)=> (
 
-                    <span className="text-[#C41230] font-bold w-12">{item.time}</span>
+                    <a
+                      key={index}
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-baseline gap-3 py-2.5 px-2 -mx-2 rounded-lg hover:bg-gray-50 transition-colors"
+                    >
 
-                    <span className="flex-1">
+                      <span className="shrink-0 w-10 text-[11px] font-semibold text-gray-400 tabular-nums">{item.time}</span>
 
-                      {item.title}
+                      <span className="flex-1 min-w-0">
 
-                      {isNew(item.timestamp) && (
-  <span className="ml-2 bg-[#C41230] text-white text-[10px] font-bold px-2 py-1 rounded animate-neonPulse">
-    NEW
-  </span>
-)}
+                        <span className="text-[13.5px] leading-snug font-medium text-gray-800 group-hover:text-[#C41230] transition-colors">
+                          {item.title}
+                        </span>
 
-                      <span className="text-gray-400 text-xs ml-2">- {item.source}</span>
+                        {isNew(item.timestamp) && (
+                          <span className="ml-2 inline-block rounded-full bg-[#C41230]/10 text-[#C41230] text-[9px] font-bold tracking-wide px-2 py-0.5 align-middle">
+                            NOUVEAU
+                          </span>
+                        )}
 
-                    </span>
+                        <span className="block text-[11px] text-gray-400 mt-0.5">{item.source}</span>
 
-                  </a>
+                      </span>
 
-                ))}
+                    </a>
+
+                  ))}
+
+                </div>
 
               </div>
 
