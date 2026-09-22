@@ -24,7 +24,7 @@ function getWeatherInfo(code: number): { emoji: string; label: string } {
   return { emoji: "🌤️", label: "Variable" };
 }
 
-export default function WeatherCard({ location }: { location: string }) {
+export default function WeatherCard({ location, bare = false }: { location: string; bare?: boolean }) {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -58,47 +58,48 @@ export default function WeatherCard({ location }: { location: string }) {
 
   const info = weather ? getWeatherInfo(weather.code) : null;
 
+  const content = (
+    <>
+      {loading ? (
+        <div className="py-6 text-center text-sm text-gray-400">Chargement météo...</div>
+      ) : weather && info ? (
+        <>
+          <div className="grid grid-cols-3 gap-2">
+            <div className="rounded-2xl bg-sky-50 p-3 text-center">
+              <div className="text-xl">{info.emoji}</div>
+              <div className="mt-1.5 text-[11px] font-bold text-gray-700 leading-tight">{info.label}</div>
+            </div>
+            <div className="rounded-2xl bg-sky-50 p-3 text-center">
+              <div className="text-xl">🌡️</div>
+              <div className="mt-1.5 text-[13px] font-bold text-gray-700">{weather.tempC}°C</div>
+            </div>
+            <div className="rounded-2xl bg-sky-50 p-3 text-center">
+              <div className="text-xl">💨</div>
+              <div className="mt-1.5 text-[13px] font-bold text-gray-700">{weather.windKmph} km/h</div>
+            </div>
+          </div>
+          <div className="mt-3 text-[11px] text-gray-400 text-center">
+            Humidité {weather.humidity}%
+          </div>
+        </>
+      ) : (
+        <div className="py-6 text-center text-sm text-gray-400">Météo indisponible</div>
+      )}
+    </>
+  );
+
+  if (bare) return content;
+
   return (
-    <div className="overflow-hidden rounded-3xl border border-sky-100 bg-white shadow-xl">
-      <div className="bg-gradient-to-r from-sky-100 via-cyan-50 to-blue-100 px-6 py-4 border-b border-sky-100">
-        <div className="font-bold text-sky-700 text-sm tracking-wider">METEO EN DIRECT — PROCHAIN GRAND PRIX</div>
-      </div>
-
-      <div className="p-6">
-        <div className="mb-4 rounded-2xl border border-sky-100 bg-sky-50/70 px-4 py-3">
-          <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-sky-600">Lieu</div>
-          <div className="mt-1 text-sm font-semibold text-gray-900">{location}</div>
+    <div className="rounded-3xl border border-gray-100 bg-white p-5">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-sky-500" />
+          <div className="font-bold text-gray-900 text-sm tracking-wide">Météo en direct</div>
         </div>
-
-        {loading ? (
-          <div className="py-6 text-center text-sm text-gray-400">Chargement météo...</div>
-        ) : weather && info ? (
-          <>
-            <div className="grid grid-cols-3 gap-3">
-              <div className="rounded-2xl bg-sky-50 border border-sky-100 p-4 text-center">
-                <div className="text-2xl">{info.emoji}</div>
-                <div className="mt-2 text-xs font-bold text-gray-800 leading-tight">{info.label}</div>
-                <div className="text-[10px] text-gray-500 mt-0.5">Conditions</div>
-              </div>
-              <div className="rounded-2xl bg-blue-50 border border-blue-100 p-4 text-center">
-                <div className="text-2xl">🌡️</div>
-                <div className="mt-2 text-sm font-bold text-gray-800">{weather.tempC}°C</div>
-                <div className="text-xs text-gray-500">Air</div>
-              </div>
-              <div className="rounded-2xl bg-cyan-50 border border-cyan-100 p-4 text-center">
-                <div className="text-2xl">💨</div>
-                <div className="mt-2 text-sm font-bold text-gray-800">{weather.windKmph} km/h</div>
-                <div className="text-xs text-gray-500">Vent</div>
-              </div>
-            </div>
-            <div className="mt-4 rounded-2xl border border-sky-100 bg-sky-50/70 px-4 py-3 text-sm text-gray-700">
-              {info.label} · {weather.tempC}°C · Vent {weather.windKmph} km/h · Humidité {weather.humidity}%
-            </div>
-          </>
-        ) : (
-          <div className="py-6 text-center text-sm text-gray-400">Météo indisponible</div>
-        )}
+        <div className="text-[11px] font-semibold text-gray-400 truncate max-w-[45%]">{location}</div>
       </div>
+      {content}
     </div>
   );
 }

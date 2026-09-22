@@ -41,8 +41,14 @@ export default function Home() {
   const [news, setNews] = useState<any[]>([]);
   const [newsPage, setNewsPage] = useState(1);
   const [currentTimestamp] = useState(() => Date.now());
+  const [now, setNow] = useState(() => Date.now());
   const NEWS_PAGE_SIZE = 20;
   const nextRace = calendar2026.find((race) => new Date(race.raceDateIso).getTime() > currentTimestamp) ?? calendar2026[calendar2026.length - 1];
+
+  useEffect(() => {
+    const tick = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(tick);
+  }, []);
 
   useEffect(() => {
 
@@ -85,7 +91,10 @@ export default function Home() {
     if (diff <= 0) return "En cours ou passé";
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    return `${days} j ${hours} h`;
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+    const pad = (n: number) => String(n).padStart(2, "0");
+    return `${days} j ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
   }
 
   function isNew(timestamp:number){
@@ -303,47 +312,48 @@ export default function Home() {
 
             {/* CLASSEMENT PILOTES */}
 
-            <div className="bg-white rounded-3xl shadow-xl border border-gray-200 p-4 overflow-hidden">
+            <div className="bg-white rounded-3xl border border-gray-100 p-5">
 
-              <div className="flex items-center justify-between mb-3">
-                <div className="font-bold text-[#C41230] text-sm tracking-wider">
-                  CLASSEMENT PILOTES
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#C41230]" />
+                  <div className="font-bold text-gray-900 text-sm tracking-wide">
+                    Classement pilotes
+                  </div>
                 </div>
                 <Link
                   href="/classement"
                   className="text-[11px] font-semibold text-[#C41230] hover:text-[#9B0E22] transition"
                 >
-                  Voir tout
+                  Voir tout →
                 </Link>
               </div>
 
               {standings.length === 0 && <StandingsSidebarSkeleton />}
 
-              <div className="space-y-1.5">
+              <div className="divide-y divide-gray-50">
                 {standings.map((d, i) => {
                   const v = driverVisuals[d.driverId];
                   return (
-                    <div key={i} className="flex items-center gap-2 border-b border-gray-100 py-1.5 hover:bg-gray-50/80 transition rounded-xl px-1.5">
-                      <div className="w-1 h-8 rounded" style={{ background: v?.color ?? "#ccc" }} />
-                      <span className={`flex h-7 w-7 items-center justify-center rounded-full text-[11px] font-extrabold ${
-                        d.position === 1 ? "bg-yellow-100 text-yellow-700"
-                        : d.position === 2 ? "bg-gray-200 text-gray-700"
-                        : d.position === 3 ? "bg-orange-100 text-orange-700"
-                        : "bg-gray-100 text-gray-600"
+                    <div key={i} className="group flex items-center gap-3 py-2.5 -mx-1.5 px-1.5 rounded-lg hover:bg-gray-50/70 transition-colors">
+                      <div className="w-1 h-9 rounded-full shrink-0" style={{ background: v?.color ?? "#ccc" }} />
+                      <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-bold ${
+                        d.position === 1 ? "bg-yellow-50 text-yellow-700"
+                        : d.position === 2 ? "bg-gray-100 text-gray-600"
+                        : d.position === 3 ? "bg-orange-50 text-orange-700"
+                        : "text-gray-400"
                       }`}>{d.position}</span>
-                      <div className="flex items-center flex-1 gap-2 min-w-0">
-                        <img src={v?.photo ?? "/logos/f1.png"} alt={d.name} className="h-8 w-8 rounded-full object-cover border border-gray-200" />
-                        <div className="flex flex-col min-w-0">
-                          <span className="font-semibold leading-none truncate text-[13px]">{d.name}</span>
-                          <span className="text-gray-400 text-[11px] flex items-center gap-1 truncate">
-                            {v && <img src={v.logo} alt={v.team} className="h-3" />}
-                            {v?.team ?? ""}
-                          </span>
+                      <img src={v?.photo ?? "/logos/f1.png"} alt={d.name} className="h-8 w-8 rounded-full object-cover shrink-0" />
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold leading-tight truncate text-[13px] text-gray-900">{d.name}</div>
+                        <div className="text-gray-400 text-[11px] flex items-center gap-1 truncate">
+                          {v && <img src={v.logo} alt={v.team} className="h-2.5" />}
+                          {v?.team ?? ""}
                         </div>
                       </div>
-                      <div className="text-right">
-                        <div className="text-[13px] font-extrabold text-[#C41230] tabular-nums">{d.points}</div>
-                        <div className="text-[10px] uppercase tracking-wide text-gray-400">pts</div>
+                      <div className="text-right shrink-0">
+                        <span className="text-[13px] font-extrabold text-[#C41230] tabular-nums">{d.points}</span>
+                        <span className="text-[10px] text-gray-400 ml-0.5">pts</span>
                       </div>
                     </div>
                   );
@@ -353,36 +363,43 @@ export default function Home() {
             </div>
 
 
-            {/* PROCHAIN GRAND PRIX */}
+            {/* PROCHAIN GRAND PRIX + METEO */}
 
-            <div className="rounded-[1.75rem] border border-gray-100 bg-white/80 p-5 shadow-xl backdrop-blur-sm">
-              <div className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#C41230] mb-3">Prochaine course</div>
+            <div className="rounded-3xl border border-gray-100 bg-white p-5">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#C41230]" />
+                <div className="font-bold text-gray-900 text-sm tracking-wide">Prochain Grand Prix</div>
+              </div>
               <div className="space-y-2">
                 <div className="text-base font-black text-gray-900 leading-tight">{nextRace.grandPrix}</div>
                 <div className="text-sm text-gray-500">{nextRace.location}</div>
-                <div className="rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2.5">
+                <div className="rounded-2xl bg-slate-50 px-3 py-2.5">
                   <div className="text-[10px] uppercase tracking-[0.18em] text-slate-500">Date de course</div>
                   <div className="mt-1 text-sm font-bold text-gray-900">{nextRace.raceDateLabel} · {nextRace.raceTime}</div>
                 </div>
-                <div className="rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2.5">
+                <div className="rounded-2xl bg-slate-50 px-3 py-2.5">
                   <div className="text-[10px] uppercase tracking-[0.18em] text-slate-500">Compte à rebours</div>
                   <div className="mt-1 text-lg font-extrabold text-[#C41230]">
-                    {formatCountdown(currentTimestamp, nextRace.raceDateIso)}
+                    {formatCountdown(now, nextRace.raceDateIso)}
                   </div>
                 </div>
-                <Link
-                  href={`/circuits/${nextRace.circuitSlug}`}
-                  className="mt-1 block text-center rounded-2xl bg-[#0F172A] px-4 py-2.5 text-xs font-bold text-white transition hover:bg-[#C41230]"
-                >
-                  Voir le circuit
-                </Link>
               </div>
+
+              <div className="mt-4 pt-4 border-t border-gray-100">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="h-1.5 w-1.5 rounded-full bg-sky-500" />
+                  <div className="text-xs font-bold text-gray-500 tracking-wide">Météo sur place</div>
+                </div>
+                <WeatherCard location={nextRace.location} bare />
+              </div>
+
+              <Link
+                href={`/circuits/${nextRace.circuitSlug}`}
+                className="mt-4 block text-center rounded-2xl bg-[#0F172A] px-4 py-2.5 text-xs font-bold text-white transition hover:bg-[#C41230]"
+              >
+                Voir le circuit
+              </Link>
             </div>
-
-
-            {/* METEO */}
-
-            <WeatherCard location={nextRace.location} />
 
 
             {/* PUB */}
