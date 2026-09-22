@@ -106,11 +106,11 @@ export default function ClassementPage() {
 
         <SiteHeader />
 
-        <div className="bg-white">
-          <div className="max-w-7xl mx-auto px-4 py-4 overflow-x-auto">
-            <div className="flex gap-6 min-w-max">
-              {teams.map((team, i) => (
-                <a key={i} href={team.link} className="flex items-center justify-center bg-white shadow-md hover:shadow-xl rounded-2xl w-[140px] h-[80px] transition-all">
+        <div className="bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 py-4 overflow-hidden">
+            <div className="flex gap-6 w-max animate-marquee">
+              {[...teams, ...teams].map((team, i) => (
+                <a key={i} href={team.link} className="flex items-center justify-center bg-white shadow-md hover:shadow-xl rounded-2xl w-[140px] h-[80px] transition-all shrink-0">
                   <img src={team.logo} alt={team.name} className="max-h-[40px] max-w-[100px] object-contain" />
                 </a>
               ))}
