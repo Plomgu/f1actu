@@ -86,7 +86,7 @@ export default function Home() {
   }
 
   function isNew(timestamp:number){
-    return Date.now() - timestamp < 3 * 60 * 60 * 1000;
+    return Date.now() - timestamp < 60 * 60 * 1000;
   }
 
 
