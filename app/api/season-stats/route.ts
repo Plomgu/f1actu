@@ -10,12 +10,16 @@ type SeasonRace = {
 type RaceResult = {
   position: string;
   driver: { driverId: string };
+  team: { teamId: string };
 };
 
 type QualyResult = {
   driverId: string;
+  teamId: string;
   gridPosition: number;
 };
+
+type Summary = { wins: number; podiums: number; poles: number };
 
 async function fetchJson(url: string) {
   const res = await fetch(url, { next: { revalidate } });
@@ -33,11 +37,12 @@ export async function GET() {
       .filter((r) => r.winner)
       .map((r) => r.round);
 
-    const stats: Record<string, { wins: number; podiums: number; poles: number }> = {};
+    const drivers: Record<string, Summary> = {};
+    const teams: Record<string, Summary> = {};
 
-    function bump(driverId: string, key: "wins" | "podiums" | "poles") {
-      if (!stats[driverId]) stats[driverId] = { wins: 0, podiums: 0, poles: 0 };
-      stats[driverId][key] += 1;
+    function bump(store: Record<string, Summary>, id: string, key: keyof Summary) {
+      if (!store[id]) store[id] = { wins: 0, podiums: 0, poles: 0 };
+      store[id][key] += 1;
     }
 
     await Promise.all(
@@ -51,17 +56,26 @@ export async function GET() {
         for (const r of results) {
           const position = Number(r.position);
           if (!r.driver?.driverId || !position) continue;
-          if (position === 1) bump(r.driver.driverId, "wins");
-          if (position <= 3) bump(r.driver.driverId, "podiums");
+          if (position === 1) {
+            bump(drivers, r.driver.driverId, "wins");
+            if (r.team?.teamId) bump(teams, r.team.teamId, "wins");
+          }
+          if (position <= 3) {
+            bump(drivers, r.driver.driverId, "podiums");
+            if (r.team?.teamId) bump(teams, r.team.teamId, "podiums");
+          }
         }
 
         const qualyResults = (qualyData?.races?.qualyResults ?? []) as QualyResult[];
         const poleSitter = qualyResults.find((q) => q.gridPosition === 1);
-        if (poleSitter) bump(poleSitter.driverId, "poles");
+        if (poleSitter) {
+          bump(drivers, poleSitter.driverId, "poles");
+          if (poleSitter.teamId) bump(teams, poleSitter.teamId, "poles");
+        }
       })
     );
 
-    return NextResponse.json({ season, roundsCompleted: completedRounds.length, stats });
+    return NextResponse.json({ season, roundsCompleted: completedRounds.length, drivers, teams });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "Erreur interne" }, { status: 500 });
