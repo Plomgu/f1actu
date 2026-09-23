@@ -9,7 +9,20 @@ const FEEDS = [
   { url: "https://www.paddock-gp.com/feed/", source: "Paddock GP" },
   { url: "https://f1i.autojournal.fr/feed/", source: "F1i" },
   { url: "https://www.franceinfo.fr/sports/auto-moto/formule-1.rss", source: "France Info" },
+  { url: "https://fr.motorsport.com/rss/fia-f2/news/", source: "Motorsport F2" },
+  { url: "https://fr.motorsport.com/rss/fia-f3/news/", source: "Motorsport F3" },
+  { url: "https://fr.motorsport.com/rss/f1-academy/news/", source: "Motorsport F1 Academy" },
 ];
+
+const EXCLUDE_KEYWORDS = [
+  "motogp", "moto2", "moto3", "wsbk", "superbike", "supersport",
+  "motocross", "motoe", "endurance moto", "trial fim",
+];
+
+function isOffTopic(title: string, excerpt: string): boolean {
+  const text = `${title} ${excerpt}`.toLowerCase();
+  return EXCLUDE_KEYWORDS.some((keyword) => text.includes(keyword));
+}
 
 const HTML_ENTITIES: Record<string, string> = {
   amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ",
@@ -69,13 +82,16 @@ function parseItems(xml: string, source: string) {
     const date = new Date(pubDate);
     if (isNaN(date.getTime())) continue;
 
+    const excerpt = extractExcerpt(block);
+    if (isOffTopic(title, excerpt)) continue;
+
     items.push({
       title,
       link,
       timestamp: date.getTime(),
       time: date.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Paris" }),
       source,
-      excerpt: extractExcerpt(block),
+      excerpt,
       image: extractImage(block),
     });
   }
