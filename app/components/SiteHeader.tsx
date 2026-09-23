@@ -46,9 +46,9 @@ export default function SiteHeader() {
             {/* Écuries */}
             <div className="relative group cursor-pointer">
               <span className="hover:text-red-200 transition whitespace-nowrap">Ecuries ▾</span>
-              <div className="absolute left-0 top-full mt-0 hidden group-hover:block bg-black text-white rounded-2xl shadow-2xl p-4 min-w-[220px] z-50">
+              <div className="absolute left-0 top-full mt-0 hidden group-hover:block bg-black text-white rounded-2xl shadow-2xl p-2 min-w-[180px] z-50">
                 {teams.map((team) => (
-                  <Link key={team.link} href={team.link} className="block px-3 py-2 rounded-lg hover:bg-red-600/20 transition">
+                  <Link key={team.link} href={team.link} className="block px-2.5 py-1.5 rounded-lg text-sm hover:bg-red-600/20 transition">
                     {team.name}
                   </Link>
                 ))}
@@ -58,15 +58,15 @@ export default function SiteHeader() {
             {/* Pilotes */}
             <div className="relative group cursor-pointer">
               <span className="hover:text-red-200 transition whitespace-nowrap">Pilotes ▾</span>
-              <div className="absolute left-0 top-full hidden group-hover:block bg-black text-white rounded-2xl shadow-2xl p-5 min-w-[420px] z-50">
-                <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+              <div className="absolute left-0 top-full hidden group-hover:block bg-black text-white rounded-2xl shadow-2xl p-3 min-w-[340px] z-50">
+                <div className="grid grid-cols-2 gap-x-3 gap-y-1">
                   {driverMenu.map((driver) => (
                     <Link
                       key={driver.slug}
                       href={`/pilotes/${driver.slug}`}
-                      className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#C41230]/20 transition"
+                      className="flex items-center gap-2 px-2 py-1.5 rounded-lg text-sm hover:bg-[#C41230]/20 transition"
                     >
-                      <img src={driver.img} alt={driver.name} className="w-8 h-8 rounded-full object-cover" />
+                      <img src={driver.img} alt={driver.name} className="w-6 h-6 rounded-full object-cover" />
                       <span>{driver.name}</span>
                     </Link>
                   ))}
