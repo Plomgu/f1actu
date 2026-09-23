@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "./lib/seo";
+import SiteFooter from "./components/SiteFooter";
+import CookieConsentBanner from "./components/CookieConsentBanner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -92,6 +94,8 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
+        <SiteFooter />
+        <CookieConsentBanner />
       </body>
     </html>
   );
