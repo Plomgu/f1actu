@@ -59,6 +59,21 @@ export function StandingsRowsSkeleton({ rows = 8 }: { rows?: number }) {
   );
 }
 
+export function PodiumSkeleton() {
+  return (
+    <div className="grid grid-cols-3 gap-3 items-end">
+      {[0, 1, 2].map((i) => (
+        <div key={i} className={`flex flex-col items-center rounded-2xl border border-gray-100 bg-gray-50 px-2 ${i === 1 ? "pb-4 pt-7" : "pb-3 pt-5"}`}>
+          <Skeleton className={`rounded-full ${i === 1 ? "h-16 w-16" : "h-12 w-12"}`} />
+          <Skeleton className="mt-2.5 h-3 w-16" />
+          <Skeleton className="mt-1.5 h-2.5 w-12" />
+          <Skeleton className="mt-2 h-4 w-10" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function LeaderCardSkeleton() {
   return (
     <div className="rounded-2xl border border-gray-100 bg-gray-50 px-3 py-2.5">

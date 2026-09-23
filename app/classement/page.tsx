@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import SiteHeader from "../components/SiteHeader";
 import AdBanner from "../components/AdBanner";
 import WeatherCard from "../components/WeatherCard";
-import { LeaderCardSkeleton, StandingsRowsSkeleton, Skeleton } from "../components/Skeleton";
+import { PodiumSkeleton, StandingsRowsSkeleton, Skeleton } from "../components/Skeleton";
 import { teams } from "../ecuries/team-data";
 import { calendar2026 } from "../calendrier/calendar-data";
 
@@ -21,15 +21,131 @@ function formatCountdown(nowTimestamp: number, targetIso: string) {
   return `${days} j ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
 }
 
-function getPodiumClass(position: number) {
-  if (position === 1) return "bg-yellow-100 text-yellow-700";
-  if (position === 2) return "bg-gray-200 text-gray-700";
-  if (position === 3) return "bg-orange-100 text-orange-700";
-  return "bg-gray-100 text-gray-700";
-}
-
 type DriverEntry = { position: number; driverId: string; name: string; points: number };
 type ConstructorEntry = { position: number; teamId: string; name: string; points: number };
+
+type StandingRow = {
+  position: number;
+  name: string;
+  subtitle: string;
+  points: number;
+  color: string;
+  image: string;
+  imageShape: "circle" | "logo";
+};
+
+function medalColor(position: number) {
+  if (position === 1) return "#D4AF37";
+  if (position === 2) return "#A7ADB4";
+  return "#B5651D";
+}
+
+function PodiumImage({ row, size, color }: { row: StandingRow; size: "xs" | "sm" | "lg"; color?: string }) {
+  const dimension = size === "lg" ? "h-16 w-16" : size === "sm" ? "h-12 w-12" : "h-7 w-7";
+  const borderColor = color ?? row.color;
+  if (row.imageShape === "circle") {
+    return (
+      <img
+        src={row.image}
+        alt={row.name}
+        className={`${dimension} rounded-full object-cover border-2`}
+        style={{ borderColor }}
+      />
+    );
+  }
+  return (
+    <div
+      className={`${dimension} flex items-center justify-center rounded-full border-2 bg-white ${size === "xs" ? "p-1" : "p-1.5"}`}
+      style={{ borderColor }}
+    >
+      <img src={row.image} alt={row.name} className="max-h-full max-w-full object-contain" />
+    </div>
+  );
+}
+
+function StandingsRow({ row }: { row: StandingRow }) {
+  return (
+    <div className="flex items-center gap-2 rounded-lg px-1.5 py-1 transition hover:bg-gray-50/80">
+      <span className="w-4 shrink-0 text-center text-[11px] font-bold text-gray-400">{row.position}</span>
+      <div className="h-6 w-1 shrink-0 rounded-full" style={{ background: row.color }} />
+      <PodiumImage row={row} size="xs" />
+      <div className="min-w-0 flex-1">
+        <div className="truncate text-[12.5px] font-semibold leading-tight text-gray-900">{row.name}</div>
+        <div className="truncate text-[10.5px] leading-tight text-gray-400">{row.subtitle}</div>
+      </div>
+      <span className="shrink-0 text-[12.5px] font-bold tabular-nums text-gray-900">
+        {row.points}
+      </span>
+    </div>
+  );
+}
+
+function StandingsSection({
+  title,
+  caption,
+  rows,
+}: {
+  title: string;
+  caption: string;
+  rows: StandingRow[];
+}) {
+  const top3 = rows.slice(0, 3);
+  const half = Math.ceil(rows.length / 2);
+  const colLeft = rows.slice(0, half);
+  const colRight = rows.slice(half);
+
+  return (
+    <div className="rounded-3xl border border-gray-100 bg-white/90 p-4 sm:p-5 shadow-lg">
+      <div className="mb-4">
+        <h2 className="text-base font-bold leading-tight text-gray-900">{title}</h2>
+        <p className="text-[11px] text-gray-400">{caption}</p>
+      </div>
+
+      {top3.length === 3 && (
+        <div className="relative mb-4 overflow-hidden rounded-2xl" style={{ background: "linear-gradient(135deg,#0A0F1E 0%,#131E30 55%,#2a0a13 100%)" }}>
+          <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full blur-3xl" style={{ background: `${top3[0].color}33` }} />
+          <div className="pointer-events-none absolute -left-10 -bottom-10 h-32 w-32 rounded-full bg-white/5 blur-3xl" />
+          <div className="relative grid grid-cols-3 divide-x divide-white/10 px-1 py-5 sm:py-6">
+            {[top3[1], top3[0], top3[2]].map((row, i) => {
+              const isLeader = i === 1;
+              const medal = medalColor(row.position);
+              return (
+                <div key={row.position} className={`flex flex-col items-center px-1.5 text-center ${isLeader ? "" : "opacity-95"}`}>
+                  <div className="flex h-16 items-end justify-center">
+                    <div
+                      className="rounded-full"
+                      style={{ boxShadow: `0 0 0 2px ${medal}, 0 0 18px ${medal}66` }}
+                    >
+                      <PodiumImage row={row} size={isLeader ? "lg" : "sm"} color={medal} />
+                    </div>
+                  </div>
+                  <div className="mt-2.5 text-[10px] font-bold uppercase tracking-wider" style={{ color: medal }}>
+                    {row.position === 1 ? "Leader" : row.position === 2 ? "2e place" : "3e place"}
+                  </div>
+                  <div className="mt-0.5 w-full truncate text-sm sm:text-base font-bold text-white">{row.name}</div>
+                  <div className="w-full truncate text-[10px] sm:text-[11px] text-gray-300">{row.subtitle}</div>
+                  <div className="mt-1.5 text-lg sm:text-xl font-extrabold text-white">
+                    {row.points}
+                    <span className="ml-1 text-[10px] font-semibold text-white/70">pts</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4">
+        <div>
+          {colLeft.map((row) => <StandingsRow key={row.position} row={row} />)}
+        </div>
+        <div>
+          {colRight.map((row) => <StandingsRow key={row.position} row={row} />)}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const driverVisuals: Record<string, { team: string; color: string; logo: string; photo: string }> = {
   russell:       { team: "Mercedes",        color: "#00D2BE", logo: "/logos/mercedes.png",    photo: "/drivers/russell.png" },
@@ -103,10 +219,31 @@ export default function ClassementPage() {
     return () => clearInterval(interval);
   }, []);
 
-  const topDriver = drivers[0];
-  const topConstructor = constructors[0];
-  const topDriverVisual = topDriver ? driverVisuals[topDriver.driverId] : null;
-  const topConstructorVisual = topConstructor ? constructorVisuals[topConstructor.teamId] : null;
+  const driverRows: StandingRow[] = drivers.map((d) => {
+    const v = driverVisuals[d.driverId];
+    return {
+      position: d.position,
+      name: d.name,
+      subtitle: v?.team ?? "",
+      points: d.points,
+      color: v?.color ?? "#ccc",
+      image: v?.photo ?? "/logos/f1.png",
+      imageShape: "circle",
+    };
+  });
+
+  const constructorRows: StandingRow[] = constructors.map((c) => {
+    const v = constructorVisuals[c.teamId];
+    return {
+      position: c.position,
+      name: c.name,
+      subtitle: v?.drivers.join(" • ") ?? "",
+      points: c.points,
+      color: v?.color ?? "#ccc",
+      image: v?.logo ?? "/logos/f1.png",
+      imageShape: "logo",
+    };
+  });
 
   return (
     <div className="bg-[#F0F2F5] min-h-screen py-6">
@@ -129,109 +266,45 @@ export default function ClassementPage() {
 
         <div className="max-w-7xl mx-auto px-4">
           <div
-            className="w-full lg:w-2/3 text-white font-extrabold py-5 rounded-2xl tracking-widest text-lg flex items-center justify-center gap-3"
+            className="w-full lg:w-2/3 rounded-2xl py-5 text-center text-white shadow-lg"
             style={{ background: "linear-gradient(90deg,#0A0F1E 0%,#C41230 30%,#C41230 70%,#0A0F1E 100%)" }}
           >
-            🔥 CLASSEMENT PILOTES & ECURIES
+            <div className="text-lg font-extrabold tracking-widest">CLASSEMENT PILOTES & ÉCURIES</div>
           </div>
         </div>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 px-4 py-6">
 
-          <div className="lg:col-span-2 bg-white/80 backdrop-blur-sm p-5 shadow-2xl rounded-3xl border border-gray-100">
-            <h2 className="text-lg font-bold mb-4 text-[#C41230]">Classement pilotes</h2>
-
+          <div className="lg:col-span-2 space-y-6">
             {loading ? (
-              <div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-3">
-                  <LeaderCardSkeleton />
-                  <LeaderCardSkeleton />
+              <>
+                <div className="rounded-3xl border border-gray-100 bg-white/90 p-5 shadow-lg">
+                  <Skeleton className="h-5 w-40 mb-5" />
+                  <PodiumSkeleton />
+                  <div className="mt-4">
+                    <StandingsRowsSkeleton rows={8} />
+                  </div>
                 </div>
-                <StandingsRowsSkeleton rows={10} />
-                <Skeleton className="h-5 w-56 mt-8 mb-4" />
-                <StandingsRowsSkeleton rows={10} />
-              </div>
+                <div className="rounded-3xl border border-gray-100 bg-white/90 p-5 shadow-lg">
+                  <Skeleton className="h-5 w-40 mb-5" />
+                  <PodiumSkeleton />
+                  <div className="mt-4">
+                    <StandingsRowsSkeleton rows={7} />
+                  </div>
+                </div>
+              </>
             ) : (
               <>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-3">
-                  {topDriver && topDriverVisual && (
-                    <div className="rounded-2xl border border-yellow-200 bg-yellow-50 px-3 py-2.5">
-                      <div className="text-[10px] font-bold tracking-wider text-yellow-700">LEADER PILOTES</div>
-                      <div className="mt-1 flex items-center justify-between gap-3">
-                        <div className="min-w-0">
-                          <div className="text-sm font-extrabold text-gray-900 truncate">{topDriver.name}</div>
-                          <div className="text-[11px] text-gray-500 truncate">{topDriverVisual.team}</div>
-                        </div>
-                        <div className="text-sm font-semibold text-yellow-800 whitespace-nowrap">{topDriver.points} pts</div>
-                      </div>
-                    </div>
-                  )}
-                  {topConstructor && topConstructorVisual && (
-                    <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2.5">
-                      <div className="text-[10px] font-bold tracking-wider text-slate-700">LEADER CONSTRUCTEURS</div>
-                      <div className="mt-1 flex items-center justify-between gap-3">
-                        <div className="min-w-0">
-                          <div className="text-sm font-extrabold text-gray-900 truncate">{topConstructor.name}</div>
-                          <div className="text-[11px] text-gray-500 truncate">{topConstructorVisual.drivers.join(" • ")}</div>
-                        </div>
-                        <div className="text-sm font-semibold text-slate-800 whitespace-nowrap">{topConstructor.points} pts</div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-gray-400 border-b pb-2 mb-1">
-                  <span className="w-7 text-center">#</span>
-                  <span className="flex-1">Pilote</span>
-                  <span className="w-11 text-right">Pts</span>
-                </div>
-
-                {drivers.map((d, i) => {
-                  const v = driverVisuals[d.driverId];
-                  return (
-                    <div key={i} className="flex items-center gap-2 border-b border-gray-100 py-1.5 text-sm hover:bg-gray-50/80 transition rounded-xl px-1.5">
-                      <div className="w-1 h-8 rounded" style={{ background: v?.color ?? "#ccc" }} />
-                      <span className={`w-7 h-7 flex items-center justify-center rounded-full text-[11px] font-bold ${getPodiumClass(d.position)}`}>{d.position}</span>
-                      <div className="flex items-center flex-1 gap-2 min-w-0">
-                        <img src={v?.photo ?? "/logos/f1.png"} alt={d.name} className="h-8 w-8 rounded-full object-cover border border-gray-200" />
-                        <div className="flex flex-col min-w-0">
-                          <span className="font-semibold leading-none truncate text-[13px]">{d.name}</span>
-                          <span className="text-gray-400 text-[11px] flex items-center gap-1 truncate">
-                            {v && <img src={v.logo} alt={v.team} className="h-3" />}
-                            {v?.team ?? ""}
-                          </span>
-                        </div>
-                      </div>
-                      <span className="font-bold text-[#C41230] tabular-nums w-11 text-right text-[13px]">{d.points}</span>
-                    </div>
-                  );
-                })}
-
-                <h2 className="text-lg font-bold mt-8 mb-4 text-[#C41230]">Classement constructeurs</h2>
-
-                <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-gray-400 border-b pb-2 mb-1">
-                  <span className="w-7 text-center">#</span>
-                  <span className="flex-1">Ecurie</span>
-                  <span className="w-11 text-right">Pts</span>
-                </div>
-
-                {constructors.map((c, i) => {
-                  const v = constructorVisuals[c.teamId];
-                  return (
-                    <div key={i} className="flex items-center gap-2 border-b border-gray-100 py-1.5 text-sm hover:bg-gray-50/80 transition rounded-xl px-1.5">
-                      <div className="w-1 h-8 rounded" style={{ background: v?.color ?? "#ccc" }} />
-                      <span className={`w-7 h-7 flex items-center justify-center rounded-full text-[11px] font-bold ${getPodiumClass(c.position)}`}>{c.position}</span>
-                      <div className="flex flex-col flex-1 min-w-0">
-                        <div className="flex items-center gap-2">
-                          <span className="font-semibold truncate text-[13px]">{c.name}</span>
-                          {v && <img src={v.logo} alt={c.name} className="h-3.5 opacity-80" />}
-                        </div>
-                        {v && <span className="text-gray-400 text-[11px] mt-0.5 truncate">{v.drivers.join(" • ")}</span>}
-                      </div>
-                      <span className="font-bold text-[#C41230] tabular-nums w-11 text-right text-[13px]">{c.points}</span>
-                    </div>
-                  );
-                })}
+                <StandingsSection
+                  title="Classement pilotes"
+                  caption="Points cumulés sur la saison"
+                  rows={driverRows}
+                />
+                <StandingsSection
+                  title="Classement constructeurs"
+                  caption="Points cumulés par écurie"
+                  rows={constructorRows}
+                />
               </>
             )}
           </div>
