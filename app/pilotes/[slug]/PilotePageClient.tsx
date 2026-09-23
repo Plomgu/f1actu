@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Calendar, MapPin, Ruler, Weight, Flag } from "lucide-react";
 
 import SiteHeader from "../../components/SiteHeader";
 import AdBanner from "../../components/AdBanner";
@@ -21,18 +22,117 @@ function formatCountdown(nowTimestamp: number, targetIso: string) {
   return `${days} j ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
 }
 
+function statValue(stats: DriverPageData["stats"], label: string) {
+  return stats.find((s) => s.label === label)?.value ?? "0";
+}
+
+function FactCell({ icon: Icon, label, value, sub }: { icon: typeof Calendar; label: string; value: string; sub?: string }) {
+  return (
+    <div className="flex items-start gap-2.5 px-3 py-3 sm:px-4">
+      <Icon className="h-4 w-4 shrink-0 mt-0.5 text-gray-300" />
+      <div className="min-w-0">
+        <div className="truncate text-[10px] font-semibold uppercase tracking-wide text-gray-300">{label}</div>
+        <div className="text-xs sm:text-sm font-bold text-white leading-snug">{value}</div>
+        {sub && <div className="text-[11px] font-medium text-gray-300 leading-snug">{sub}</div>}
+      </div>
+    </div>
+  );
+}
+
+function StatPanel({
+  title,
+  live,
+  rows,
+}: {
+  title: string;
+  live?: boolean;
+  rows: { label: string; value: string }[];
+}) {
+  return (
+    <div className="rounded-2xl border border-white/15 bg-white/[0.07] p-4">
+      <div className="mb-2 flex items-center gap-2">
+        {live && (
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+          </span>
+        )}
+        <div className="text-xs font-bold uppercase tracking-wide text-gray-200">{title}</div>
+      </div>
+      <div className="divide-y divide-white/10">
+        {rows.map((row) => (
+          <div key={row.label} className="flex items-center justify-between py-1.5 text-sm">
+            <span className="text-gray-300">{row.label}</span>
+            <span className="font-bold tabular-nums text-white">{row.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function PilotePageClient({ driver }: { driver: DriverPageData }) {
   const [currentTimestamp] = useState(() => Date.now());
   const [now, setNow] = useState(() => Date.now());
   const nextRace = calendar2026.find((race) => new Date(race.raceDateIso).getTime() > currentTimestamp) ?? calendar2026[calendar2026.length - 1];
+
+  const [seasonStanding, setSeasonStanding] = useState<{ position: number; points: number } | null>(null);
+  const [seasonSummary, setSeasonSummary] = useState<{ wins: number; podiums: number; poles: number } | null>(null);
 
   useEffect(() => {
     const tick = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(tick);
   }, []);
 
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadStanding() {
+      try {
+        const res = await fetch("/api/standings", { cache: "no-store" });
+        const data = await res.json();
+        const entry = (data.drivers ?? []).find((d: { driverId: string }) => d.driverId === driver.standingsId);
+        if (!cancelled && entry) setSeasonStanding({ position: entry.position, points: entry.points });
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function loadSeasonSummary() {
+      try {
+        const res = await fetch("/api/driver-season-stats", { cache: "no-store" });
+        const data = await res.json();
+        const entry = data.stats?.[driver.standingsId];
+        if (!cancelled) setSeasonSummary(entry ?? { wins: 0, podiums: 0, poles: 0 });
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    loadStanding();
+    loadSeasonSummary();
+    return () => {
+      cancelled = true;
+    };
+  }, [driver.standingsId]);
+
   const hasHighlights = driver.highlights.length > 0;
-  const timelineMinWidth = Math.max(420, driver.highlights.length * 180);
+
+  const palmares = [
+    { label: "Titre mondial", value: statValue(driver.stats, "Titres mondiaux") },
+    { label: "Victoires", value: statValue(driver.stats, "Victoires") },
+    { label: "Podiums", value: statValue(driver.stats, "Podiums") },
+    { label: "Poles", value: driver.poles },
+    { label: "Meilleurs tours", value: driver.fastestLaps },
+  ];
+
+  const seasonRows = [
+    { label: "Position au championnat", value: seasonStanding ? `${seasonStanding.position}e` : "…" },
+    { label: "Points", value: seasonStanding ? String(seasonStanding.points) : "…" },
+    { label: "Victoires", value: seasonSummary ? String(seasonSummary.wins) : "…" },
+    { label: "Podiums", value: seasonSummary ? String(seasonSummary.podiums) : "…" },
+    { label: "Poles", value: seasonSummary ? String(seasonSummary.poles) : "…" },
+  ];
 
   return (
     <div className="bg-[#F0F2F5] min-h-screen py-2 sm:py-6">
@@ -57,52 +157,98 @@ export default function PilotePageClient({ driver }: { driver: DriverPageData })
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4">
-          <div
-            className="w-full lg:w-2/3 text-white rounded-2xl shadow-xl px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-2"
-            style={{ background: driver.gradient }}
-          >
-            <div className="flex items-center gap-4">
-              <img src={driver.image} alt={driver.name} className="h-14 w-14 rounded-full object-cover border border-white/30" />
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 px-4 py-6">
+          <div className="lg:col-span-2 space-y-6">
 
-              <div className="flex flex-col">
-                <span className="text-lg font-extrabold tracking-wide">{driver.name}</span>
-                <span className="text-xs text-white/80">{driver.subtitle}</span>
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl" style={{ background: "#0A0F1E" }}>
+              <div
+                className="pointer-events-none absolute inset-x-0 top-0 h-48 sm:h-60 w-full sm:w-2/3 opacity-70"
+                style={{ background: `linear-gradient(115deg, ${driver.accentColor} 0%, ${driver.accentColor}99 30%, transparent 55%)` }}
+              />
+              <div className="pointer-events-none absolute -left-2 -top-6 select-none text-[7rem] sm:text-[9rem] font-black italic leading-none text-white/10">
+                {driver.number}
+              </div>
+
+              <div className="relative flex flex-col sm:flex-row items-center sm:items-end gap-4 sm:gap-6 px-5 sm:px-8 pt-6 sm:pt-8">
+                <img
+                  src={driver.image}
+                  alt={driver.name}
+                  className="h-32 w-32 sm:h-44 sm:w-44 rounded-2xl object-cover object-top shadow-xl ring-1 ring-white/10"
+                />
+
+                <div className="min-w-0 flex-1 text-center sm:text-left">
+                  <div className="truncate text-2xl sm:text-4xl font-black italic tracking-tight text-white leading-none">
+                    {driver.name}
+                  </div>
+                  <div className="mt-2 inline-flex items-center gap-2 rounded bg-white/15 px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest text-white">
+                    {driver.nationality}
+                  </div>
+                </div>
+
+                <Link href={`/ecuries/${driver.teamSlug}`} className="flex shrink-0 items-center gap-3 group">
+                  <img src={driver.teamLogo} alt={driver.teamName} className="h-10 w-10 sm:h-12 sm:w-12 object-contain" />
+                  <div className="text-right">
+                    <div className="text-sm font-bold text-white group-hover:underline">{driver.teamName}</div>
+                    <div className="text-xs text-gray-300">N°{driver.number}</div>
+                  </div>
+                </Link>
+              </div>
+
+              <div className="relative mt-6 grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-white/10 border-t border-white/10 bg-black/30">
+                <FactCell icon={Calendar} label="Date de naissance" value={driver.birthDate} sub={driver.age} />
+                <FactCell icon={MapPin} label="Lieu de naissance" value={driver.birthPlace} />
+                <FactCell icon={Ruler} label="Taille" value={driver.height} />
+                <FactCell icon={Weight} label="Poids" value={driver.weight} />
+              </div>
+
+              <div className="relative flex items-center gap-2.5 border-t border-white/10 px-3 sm:px-4 py-3 text-xs text-gray-300">
+                <Flag className="h-4 w-4 shrink-0" />
+                Débuts en F1 : <span className="font-semibold text-white">{driver.debutYear}</span> avec{" "}
+                <span className="font-semibold text-white">{driver.debutTeam}</span>
+              </div>
+
+              <div className="relative grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-white/10 p-5 sm:p-6">
+                <StatPanel title="Palmarès" rows={palmares} />
+                <StatPanel title="Cette saison" live rows={seasonRows} />
               </div>
             </div>
 
-            <div className="text-right text-sm">
-              <div className="font-semibold">#{driver.number}</div>
-              <div className="font-semibold">{driver.teamName}</div>
-            </div>
-          </div>
-        </div>
+            <div className="bg-white/80 backdrop-blur-sm p-4 sm:p-8 shadow-2xl rounded-3xl border border-gray-100">
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 px-4 py-6">
-          <div className="lg:col-span-2 bg-white/80 backdrop-blur-sm p-4 sm:p-10 shadow-2xl rounded-3xl border border-gray-100">
-            <h2 className="text-xl font-bold mt-4 sm:mt-10 mb-6" style={{ color: driver.accentColor }}>
-              Parcours et faits marquants
-            </h2>
+              <h2 className="text-xl font-bold mb-4" style={{ color: driver.accentColor }}>
+                Biographie
+              </h2>
 
-            <div className="overflow-x-auto pb-8">
+              <div className="space-y-3 border-l-2 pl-4 mb-8 sm:mb-10" style={{ borderColor: `${driver.accentColor}55` }}>
+                {driver.bio.map((paragraph) => (
+                  <p key={paragraph} className="text-sm text-gray-700 leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              <h2 className="text-xl font-bold mb-6" style={{ color: driver.accentColor }}>
+                Parcours et faits marquants
+              </h2>
+
               {hasHighlights ? (
-                <div className="relative mx-auto" style={{ minWidth: `${timelineMinWidth}px` }}>
-                  <div className="absolute top-10 left-0 w-full h-1" style={{ background: driver.accentColor }} />
-
-                  <div className="flex justify-between gap-6">
-                    {driver.highlights.map((item) => (
-                      <div key={`${item.year}-${item.title}`} className="flex flex-col items-center text-center group min-w-[160px]">
-                        <div className="text-xs font-bold text-gray-700 mb-3">{item.year}</div>
-                        <div
-                          className="w-5 h-5 rounded-full border-4 border-white shadow-lg z-10"
-                          style={{ background: driver.accentColor }}
-                        />
-                        <div className="text-lg mt-2">🏎</div>
-                        <div className="text-sm font-semibold text-gray-800 mt-2">{item.title}</div>
-                        <div className="text-xs text-gray-500 mt-2">{item.description}</div>
+                <div>
+                  {driver.highlights.map((item, i) => (
+                    <div key={`${item.year}-${item.title}`} className="relative flex gap-4 pb-6 last:pb-0">
+                      {i < driver.highlights.length - 1 && (
+                        <span className="absolute left-[7px] top-4 bottom-0 w-px bg-gray-200" />
+                      )}
+                      <span
+                        className="relative z-10 mt-1.5 h-3.5 w-3.5 shrink-0 rounded-full border-2 border-white shadow"
+                        style={{ background: driver.accentColor }}
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-bold" style={{ color: driver.accentColor }}>{item.year}</div>
+                        <div className="mt-0.5 text-sm font-semibold text-gray-900">{item.title}</div>
+                        <div className="mt-1 text-xs text-gray-500 leading-relaxed">{item.description}</div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
               ) : (
                 <div className="relative w-[300px] mx-auto text-center">
@@ -120,50 +266,9 @@ export default function PilotePageClient({ driver }: { driver: DriverPageData })
                 </div>
               )}
             </div>
-
-            <h2 className="text-xl font-bold mt-6 sm:mt-10 mb-6" style={{ color: driver.accentColor }}>
-              Biographie
-            </h2>
-
-            {driver.bio.map((paragraph) => (
-              <p key={paragraph} className="text-sm text-gray-700 leading-relaxed mb-4">
-                {paragraph}
-              </p>
-            ))}
-
-            <h2 className="text-xl font-bold mt-6 sm:mt-10 mb-6" style={{ color: driver.accentColor }}>
-              Chiffres cles
-            </h2>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mb-6">
-              {driver.stats.map((stat) => (
-                <div key={stat.label} className="bg-gray-50 p-4 rounded-xl text-center">
-                  <div className="text-2xl font-extrabold" style={{ color: driver.accentColor }}>
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-500 text-xs">{stat.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
 
-          <div className="space-y-6 lg:-mt-24">
-            <div className="bg-white rounded-3xl shadow-xl border border-gray-200 p-6">
-              <div className="font-bold text-[#C41230] mb-4 text-sm tracking-wider">FICHE PILOTE</div>
-
-              <div className="space-y-3 text-sm text-gray-700">
-                <div className="flex items-center gap-3">
-                  <img src={driver.teamLogo} alt={driver.teamName} className="h-8 w-8 object-contain" />
-                  <Link href={`/ecuries/${driver.teamSlug}`} className="font-semibold hover:text-[#C41230] transition">
-                    {driver.teamName}
-                  </Link>
-                </div>
-                <div>Nationalite: {driver.nationality}</div>
-                <div>Age: {driver.age}</div>
-                <div>Numero: #{driver.number}</div>
-              </div>
-            </div>
-
+          <div className="space-y-6">
             <div className="rounded-3xl border border-gray-100 bg-white p-5">
               <div className="flex items-center gap-2 mb-4">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#C41230]" />
