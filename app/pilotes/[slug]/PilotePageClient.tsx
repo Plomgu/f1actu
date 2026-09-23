@@ -171,7 +171,7 @@ export default function PilotePageClient({ driver }: { driver: DriverPageData })
 
               <div className="relative flex flex-col sm:flex-row items-center sm:items-end gap-4 sm:gap-6 px-5 sm:px-8 pt-6 sm:pt-8">
                 <img
-                  src={driver.image}
+                  src={driver.profileImage ?? driver.image}
                   alt={driver.name}
                   className="h-32 w-32 sm:h-44 sm:w-44 rounded-2xl object-cover object-top shadow-xl ring-1 ring-white/10"
                 />
