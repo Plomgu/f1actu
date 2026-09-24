@@ -63,7 +63,7 @@ function formatCountdown(nowTimestamp: number, targetIso: string) {
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
   const seconds = Math.floor((diff / 1000) % 60);
   const pad = (n: number) => String(n).padStart(2, "0");
-  return `${days} j ${pad(hours)} h ${pad(minutes)} min ${pad(seconds)} s`;
+  return `${days}j ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
 }
 
 export default function ProgrammeTVPage() {
@@ -139,14 +139,14 @@ export default function ProgrammeTVPage() {
                 <div className="mt-1 text-sm text-white/75">
                   {nextRace.location} · {nextRace.dateRange}
                 </div>
-                <div className="mt-3 grid grid-cols-2 gap-2">
+                <div className="mt-3 grid grid-cols-[auto_1fr] gap-2">
                   <div className="rounded-2xl bg-white/10 px-3 py-2">
                     <div className="text-[10px] uppercase tracking-[0.18em] text-white/50">Course</div>
                     <div className="mt-1 text-lg font-extrabold">{nextRace.raceTime}</div>
                   </div>
                   <div className="rounded-2xl bg-white/10 px-3 py-2">
                     <div className="text-[10px] uppercase tracking-[0.18em] text-white/50">Compte à rebours</div>
-                    <div className="mt-1 text-lg font-extrabold tabular-nums" suppressHydrationWarning>{formatCountdown(currentTimestamp, nextRace.raceDateIso)}</div>
+                    <div className="mt-1 text-base sm:text-lg font-extrabold tabular-nums whitespace-nowrap" suppressHydrationWarning>{formatCountdown(currentTimestamp, nextRace.raceDateIso)}</div>
                   </div>
                 </div>
               </div>
@@ -312,7 +312,7 @@ export default function ProgrammeTVPage() {
                 </div>
                 <div className="rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2.5">
                   <div className="text-[10px] uppercase tracking-[0.18em] text-slate-500">Compte à rebours</div>
-                  <div className="mt-1 text-lg font-extrabold tabular-nums text-[#C41230]" suppressHydrationWarning>
+                  <div className="mt-1 text-lg font-extrabold tabular-nums whitespace-nowrap text-[#C41230]" suppressHydrationWarning>
                     {formatCountdown(currentTimestamp, nextRace.raceDateIso)}
                   </div>
                 </div>
