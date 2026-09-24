@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import SiteHeader from "../components/SiteHeader";
 import AdBanner from "../components/AdBanner";
@@ -60,11 +60,19 @@ function formatCountdown(nowTimestamp: number, targetIso: string) {
   if (diff <= 0) return "En cours ou passé";
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  return `${days} j ${hours} h`;
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${days} j ${pad(hours)} h ${pad(minutes)} min ${pad(seconds)} s`;
 }
 
 export default function ProgrammeTVPage() {
-  const [currentTimestamp] = useState(() => Date.now());
+  const [currentTimestamp, setCurrentTimestamp] = useState(() => Date.now());
+
+  useEffect(() => {
+    const interval = setInterval(() => setCurrentTimestamp(Date.now()), 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const nextRace =
     calendar2026.find((race) => new Date(race.raceDateIso).getTime() > currentTimestamp) ??
@@ -138,7 +146,7 @@ export default function ProgrammeTVPage() {
                   </div>
                   <div className="rounded-2xl bg-white/10 px-3 py-2">
                     <div className="text-[10px] uppercase tracking-[0.18em] text-white/50">Compte à rebours</div>
-                    <div className="mt-1 text-lg font-extrabold">{formatCountdown(currentTimestamp, nextRace.raceDateIso)}</div>
+                    <div className="mt-1 text-lg font-extrabold tabular-nums" suppressHydrationWarning>{formatCountdown(currentTimestamp, nextRace.raceDateIso)}</div>
                   </div>
                 </div>
               </div>
@@ -304,7 +312,7 @@ export default function ProgrammeTVPage() {
                 </div>
                 <div className="rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2.5">
                   <div className="text-[10px] uppercase tracking-[0.18em] text-slate-500">Compte à rebours</div>
-                  <div className="mt-1 text-lg font-extrabold text-[#C41230]">
+                  <div className="mt-1 text-lg font-extrabold tabular-nums text-[#C41230]" suppressHydrationWarning>
                     {formatCountdown(currentTimestamp, nextRace.raceDateIso)}
                   </div>
                 </div>
