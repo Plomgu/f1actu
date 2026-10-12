@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "./lib/seo";
 import SiteFooter from "./components/SiteFooter";
@@ -96,6 +97,7 @@ export default function RootLayout({
         {children}
         <SiteFooter />
         <CookieConsentBanner />
+        <Analytics />
       </body>
     </html>
   );
