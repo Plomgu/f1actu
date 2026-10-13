@@ -124,9 +124,9 @@ export default function EcuriePageClient({ team }: { team: TeamPageData }) {
                 </div>
 
                 <div className="min-w-0 flex-1 text-center sm:text-left">
-                  <div className="truncate text-2xl sm:text-4xl font-black italic tracking-tight text-white leading-none">
+                  <h1 className="truncate text-2xl sm:text-4xl font-black italic tracking-tight text-white leading-none">
                     {team.displayName}
-                  </div>
+                  </h1>
                   <div className="mt-2 inline-flex items-center gap-2 rounded bg-white/15 px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest text-white">
                     {team.subtitle}
                   </div>

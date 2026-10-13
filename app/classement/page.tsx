@@ -269,7 +269,7 @@ export default function ClassementPage() {
             className="w-full lg:w-2/3 rounded-2xl py-5 text-center text-white shadow-lg"
             style={{ background: "linear-gradient(90deg,#0A0F1E 0%,#C41230 30%,#C41230 70%,#0A0F1E 100%)" }}
           >
-            <div className="text-lg font-extrabold tracking-widest">CLASSEMENT PILOTES & ÉCURIES</div>
+            <h1 className="text-lg font-extrabold tracking-widest">CLASSEMENT PILOTES & ÉCURIES</h1>
           </div>
         </div>
 

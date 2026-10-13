@@ -94,7 +94,7 @@ export default function CircuitPageClient({ circuit }: { circuit: CircuitPageDat
               />
 
               <div className="flex flex-col">
-                <span className="text-lg font-extrabold tracking-wide">{circuit.grandPrix}</span>
+                <h1 className="text-lg font-extrabold tracking-wide">{circuit.grandPrix}</h1>
                 <span className="text-xs text-white/80">
                   {circuit.circuitName} • {circuit.location}
                 </span>
