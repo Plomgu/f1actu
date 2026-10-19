@@ -5,7 +5,7 @@ import { SITE_NAME, SITE_URL, EDITOR_NAME, CONTACT_EMAIL, HOSTING_NAME } from ".
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité",
-  description: `Comment ${SITE_NAME} collecte, utilise et protège vos données personnelles.`,
+  description: `Comment ${SITE_NAME} collecte, utilise et protège vos données personnelles, combien de temps elles sont conservées et comment exercer vos droits RGPD.`,
   alternates: { canonical: `${SITE_URL}/confidentialite` },
 };
 

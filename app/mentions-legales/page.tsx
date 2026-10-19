@@ -13,7 +13,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Mentions légales",
-  description: `Mentions légales du site ${SITE_NAME} : éditeur, hébergeur et informations légales.`,
+  description: `Mentions légales du site ${SITE_NAME} : identité de l’éditeur, directeur de la publication, hébergeur, contact et informations légales obligatoires.`,
   alternates: { canonical: `${SITE_URL}/mentions-legales` },
 };
 

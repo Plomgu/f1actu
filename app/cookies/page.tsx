@@ -6,7 +6,7 @@ import { SITE_NAME, SITE_URL } from "../lib/legal";
 
 export const metadata: Metadata = {
   title: "Politique de cookies",
-  description: `Quels cookies utilise ${SITE_NAME} et comment gérer vos préférences.`,
+  description: `Quels cookies utilise ${SITE_NAME}, à quoi servent-ils et comment gérer ou retirer votre consentement à tout moment depuis le site.`,
   alternates: { canonical: `${SITE_URL}/cookies` },
 };
 

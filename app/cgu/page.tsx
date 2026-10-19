@@ -5,7 +5,7 @@ import { SITE_NAME, SITE_URL, CONTACT_EMAIL } from "../lib/legal";
 
 export const metadata: Metadata = {
   title: "Conditions Générales d’Utilisation",
-  description: `Conditions générales d’utilisation du site ${SITE_NAME}.`,
+  description: `Conditions générales d’utilisation du site ${SITE_NAME} : accès au service, propriété intellectuelle, responsabilités et règles d’usage du contenu F1.`,
   alternates: { canonical: `${SITE_URL}/cgu` },
 };
 

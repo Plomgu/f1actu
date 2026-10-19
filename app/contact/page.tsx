@@ -6,7 +6,7 @@ import { SITE_NAME, SITE_URL, CONTACT_EMAIL } from "../lib/legal";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Contactez l’équipe de ${SITE_NAME}.`,
+  description: `Contactez l’équipe de ${SITE_NAME} pour une question, une suggestion, un signalement d’erreur ou une demande de partenariat autour de la Formule 1.`,
   alternates: { canonical: `${SITE_URL}/contact` },
 };
 
