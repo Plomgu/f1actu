@@ -20,6 +20,22 @@ export function absoluteUrl(path: string) {
   return `${SITE_URL}${path.startsWith("/") ? "" : "/"}${encodeURI(path)}`;
 }
 
+/** Liste ordonnée de pages (utilisée par les pages récapitulatives). */
+export function itemList(name: string, items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: absoluteUrl(item.path),
+    })),
+  };
+}
+
 /** Fil d'Ariane : Accueil > … > page courante. */
 export function breadcrumb(items: { name: string; path: string }[]) {
   const all = [{ name: SITE_NAME, path: "/" }, ...items];

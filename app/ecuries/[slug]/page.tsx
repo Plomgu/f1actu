@@ -62,7 +62,7 @@ export default async function TeamPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd data={[teamJsonLd, breadcrumb([{ name: team.navName, path: `/ecuries/${slug}` }])]} />
+      <JsonLd data={[teamJsonLd, breadcrumb([{ name: "Écuries F1 2026", path: "/ecuries" }, { name: team.navName, path: `/ecuries/${slug}` }])]} />
       <EcuriePageClient team={team} />
     </>
   );
