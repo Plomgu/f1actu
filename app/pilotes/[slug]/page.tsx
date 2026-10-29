@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { SITE_NAME, SITE_URL } from "../../lib/seo";
 import PilotePageClient from "./PilotePageClient";
+import JsonLd, { absoluteUrl, breadcrumb } from "../../components/JsonLd";
 import { driverPages } from "../driver-data";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -44,5 +45,29 @@ export default async function DriverPage({ params }: Props) {
 
   if (!driver) notFound();
 
-  return <PilotePageClient driver={driver} />;
+  const url = `${SITE_URL}/pilotes/${slug}`;
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: driver.name,
+    url,
+    image: absoluteUrl(driver.profileImage ?? driver.image),
+    description: driver.metaDescription,
+    jobTitle: "Pilote de Formule 1",
+    nationality: driver.nationality,
+    birthPlace: driver.birthPlace,
+    memberOf: {
+      "@type": "SportsTeam",
+      name: driver.teamName,
+      sport: "Formule 1",
+      url: `${SITE_URL}/ecuries/${driver.teamSlug}`,
+    },
+  };
+
+  return (
+    <>
+      <JsonLd data={[personJsonLd, breadcrumb([{ name: driver.name, path: `/pilotes/${slug}` }])]} />
+      <PilotePageClient driver={driver} />
+    </>
+  );
 }
