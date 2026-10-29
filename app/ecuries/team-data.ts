@@ -88,9 +88,9 @@ export const teamPages: Record<string, TeamPageData> = {
     historyHeading: "Histoire de Renault et Alpine en Formule 1",
     metaDescription: "Alpine F1 Team, héritière de Renault : 2 titres pilotes avec Fernando Alonso (2005-2006), aujourd'hui avec Gasly et Colapinto.",
     history: [
-      "L'equipe Alpine F1 Team est l'heritere directe de Renault F1 Team. L'histoire de cette structure remonte a 1977, lorsque Renault debute en Formule 1 avec le moteur turbo.",
-      "Dans les annees 1980 puis 2000, Renault devient une reference du championnat. L'age d'or arrive avec le rachat de Benetton et les titres mondiaux remportes en 2005 et 2006 avec Fernando Alonso.",
-      "Apres un nouveau retour officiel en 2016, Renault rebaptise l'equipe Alpine en 2021 pour mettre en avant sa marque sportive. La structure decroche sa premiere victoire sous ce nom en Hongrie grace a Esteban Ocon.",
+      "L'équipe Alpine F1 Team est l'héritière directe de Renault F1 Team. L'histoire de cette structure remonte à 1977, lorsque Renault débute en Formule 1 avec le moteur turbo.",
+      "Dans les années 1980 puis 2000, Renault devient une référence du championnat. L'âge d'or arrive avec le rachat de Benetton et les titres mondiaux remportés en 2005 et 2006 avec Fernando Alonso.",
+      "Après un nouveau retour officiel en 2016, Renault rebaptise l'équipe Alpine en 2021 pour mettre en avant sa marque sportive. La structure décroche sa première victoire sous ce nom en Hongrie grâce à Esteban Ocon.",
       "Aujourd'hui, Alpine poursuit sa reconstruction avec l'ambition de retrouver durablement le sommet de la Formule 1.",
     ],
     stats: [
@@ -124,8 +124,8 @@ export const teamPages: Record<string, TeamPageData> = {
     historyHeading: "Histoire d'Aston Martin en Formule 1",
     metaDescription: "Aston Martin F1 Team, avec Fernando Alonso et Lance Stroll : une équipe ambitieuse toujours en quête de son premier titre mondial.",
     history: [
-      "Aston Martin a participe une premiere fois a la Formule 1 en 1959 et 1960. L'equipe moderne apparait en 2021, lorsque Racing Point prend officiellement le nom Aston Martin.",
-      "Depuis ce retour, la structure s'est rapprochee du haut de grille et a retrouve de la visibilite grace a des podiums et a une saison 2023 tres solide avec Fernando Alonso.",
+      "Aston Martin a participé une première fois à la Formule 1 en 1959 et 1960. L'équipe moderne apparaît en 2021, lorsque Racing Point prend officiellement le nom Aston Martin.",
+      "Depuis ce retour, la structure s'est rapprochée du haut de grille et a retrouvé de la visibilité grâce à des podiums et à une saison 2023 très solide avec Fernando Alonso.",
     ],
     stats: [
       { label: "Titres constructeurs", value: "0" },
@@ -136,7 +136,7 @@ export const teamPages: Record<string, TeamPageData> = {
     champions: [],
     emptyState: {
       title: "Toujours aucun titre mondial pour Aston Martin...",
-      description: "Mais l'equipe continue de se battre pour decrocher son premier trophee en Formule 1.",
+      description: "Mais l'équipe continue de se battre pour décrocher son premier trophée en Formule 1.",
       image: "/images/no-trophy.png",
     },
   },
@@ -159,9 +159,9 @@ export const teamPages: Record<string, TeamPageData> = {
     historyHeading: "Histoire d'Audi en Formule 1",
     metaDescription: "Audi F1 Team fait ses débuts en Formule 1 en 2026 comme projet d'usine, avec Nico Hulkenberg et Gabriel Bortoleto au volant.",
     history: [
-      "Audi effectue officiellement ses debuts en Formule 1 en 2026 avec son propre projet d'usine.",
-      "Le constructeur allemand s'appuie sur les infrastructures de Hinwil pour lancer une equipe totalement nouvelle sous l'identite Audi Revolut F1 Team.",
-      "Cette entree marque la premiere participation officielle d'Audi au championnat du monde de Formule 1.",
+      "Audi effectue officiellement ses débuts en Formule 1 en 2026 avec son propre projet d'usine.",
+      "Le constructeur allemand s'appuie sur les infrastructures de Hinwil pour lancer une équipe totalement nouvelle sous l'identité Audi Revolut F1 Team.",
+      "Cette entrée marque la première participation officielle d'Audi au championnat du monde de Formule 1.",
     ],
     stats: [
       { label: "Titres constructeurs", value: "0" },
@@ -171,7 +171,7 @@ export const teamPages: Record<string, TeamPageData> = {
     ],
     champions: [],
     emptyState: {
-      title: "Chargement des trophees...",
+      title: "Chargement des trophées...",
       description: "Veuillez patienter quelques saisons.",
       image: "/images/chargement.png",
     },
@@ -197,9 +197,9 @@ export const teamPages: Record<string, TeamPageData> = {
     historyHeading: "Histoire de Cadillac en Formule 1",
     metaDescription: "Cadillac, nouvelle équipe américaine de Formule 1 soutenue par General Motors, avec Valtteri Bottas et Sergio Perez.",
     history: [
-      "Cadillac fait son entree en Formule 1 dans le cadre du projet soutenu par General Motors.",
-      "Le programme est mene avec une forte ambition americaine et s'appuie sur l'experience d'Andretti dans le sport automobile international.",
-      "L'arrivee de Cadillac marque une etape importante dans l'expansion de la Formule 1 sur le marche americain.",
+      "Cadillac fait son entrée en Formule 1 dans le cadre du projet soutenu par General Motors.",
+      "Le programme est mené avec une forte ambition américaine et s'appuie sur l'expérience d'Andretti dans le sport automobile international.",
+      "L'arrivée de Cadillac marque une étape importante dans l'expansion de la Formule 1 sur le marché américain.",
     ],
     stats: [
       { label: "Titres constructeurs", value: "0" },
@@ -209,7 +209,7 @@ export const teamPages: Record<string, TeamPageData> = {
     ],
     champions: [],
     emptyState: {
-      title: "Chargement des trophees...",
+      title: "Chargement des trophées...",
       description: "Veuillez patienter quelques saisons.",
       image: "/images/chargement.png",
     },
@@ -235,9 +235,9 @@ export const teamPages: Record<string, TeamPageData> = {
     historyHeading: "Histoire de Ferrari en Formule 1",
     metaDescription: "Scuderia Ferrari, équipe la plus titrée de l'histoire de la F1 avec 16 titres constructeurs, aujourd'hui avec Leclerc et Hamilton.",
     history: [
-      "La Scuderia Ferrari est l'equipe la plus ancienne et la plus titree de l'histoire de la Formule 1. Presente depuis 1950, Ferrari n'a jamais quitte le championnat du monde.",
-      "L'equipe italienne a connu plusieurs cycles de domination avec des pilotes comme Alberto Ascari, Niki Lauda, Michael Schumacher ou Kimi Raikkonen.",
-      "Le regne de Schumacher au debut des annees 2000 reste l'une des periodes les plus marquantes de l'histoire moderne de la discipline.",
+      "La Scuderia Ferrari est l'équipe la plus ancienne et la plus titrée de l'histoire de la Formule 1. Présente depuis 1950, Ferrari n'a jamais quitté le championnat du monde.",
+      "L'équipe italienne a connu plusieurs cycles de domination avec des pilotes comme Alberto Ascari, Niki Lauda, Michael Schumacher ou Kimi Räikkönen.",
+      "Le règne de Schumacher au début des années 2000 reste l'une des périodes les plus marquantes de l'histoire moderne de la discipline.",
     ],
     stats: [
       { label: "Titres constructeurs", value: "16" },
@@ -284,9 +284,9 @@ export const teamPages: Record<string, TeamPageData> = {
     historyHeading: "Histoire de Haas en Formule 1",
     metaDescription: "Haas F1 Team, équipe américaine liée techniquement à Ferrari depuis 2016, avec Esteban Ocon et Oliver Bearman.",
     history: [
-      "Haas F1 Team est une equipe americaine fondee par Gene Haas. Elle debute en Formule 1 en 2016.",
-      "La structure adopte un modele tres integre avec un fort partenariat technique avec Ferrari, ce qui lui permet de progresser rapidement lors de ses premieres saisons.",
-      "Depuis, Haas cherche a s'installer durablement dans le milieu de grille et a se rapprocher des equipes de pointe.",
+      "Haas F1 Team est une équipe américaine fondée par Gene Haas. Elle débute en Formule 1 en 2016.",
+      "La structure adopte un modèle très intégré avec un fort partenariat technique avec Ferrari, ce qui lui permet de progresser rapidement lors de ses premières saisons.",
+      "Depuis, Haas cherche à s'installer durablement dans le milieu de grille et à se rapprocher des équipes de pointe.",
     ],
     stats: [
       { label: "Titres constructeurs", value: "0" },
@@ -296,7 +296,7 @@ export const teamPages: Record<string, TeamPageData> = {
     ],
     champions: [],
     emptyState: {
-      title: "Chargement des trophees...",
+      title: "Chargement des trophées...",
       description: "Veuillez patienter quelques saisons.",
       image: "/images/chargement.png",
     },
@@ -323,10 +323,10 @@ export const teamPages: Record<string, TeamPageData> = {
     historyHeading: "Histoire de McLaren en Formule 1",
     metaDescription: "McLaren, 10 titres constructeurs et double champion 2024-2025, aujourd'hui avec Lando Norris (champion 2025) et Oscar Piastri.",
     history: [
-      "McLaren est l'une des equipes les plus prestigieuses de la discipline. Elle est fondee en 1963 par Bruce McLaren et debute en championnat du monde en 1966.",
-      "L'equipe devient une reference dans les annees 1970 puis vit un age d'or dans les annees 1980 et 1990 avec des pilotes comme Alain Prost et Ayrton Senna.",
-      "McLaren retrouve aussi le succes a la fin des annees 1990 avec Mika Hakkinen puis dans les annees 2000 avec Lewis Hamilton.",
-      "La renaissance moderne se confirme en 2024 avec un premier titre constructeurs depuis 1998, puis en 2025 avec un double sacre: un deuxieme titre constructeurs consecutif et le premier titre pilotes de Lando Norris.",
+      "McLaren est l'une des équipes les plus prestigieuses de la discipline. Elle est fondée en 1963 par Bruce McLaren et débute en championnat du monde en 1966.",
+      "L'équipe devient une référence dans les années 1970 puis vit un âge d'or dans les années 1980 et 1990 avec des pilotes comme Alain Prost et Ayrton Senna.",
+      "McLaren retrouve aussi le succès à la fin des années 1990 avec Mika Häkkinen puis dans les années 2000 avec Lewis Hamilton.",
+      "La renaissance moderne se confirme en 2024 avec un premier titre constructeurs depuis 1998, puis en 2025 avec un double sacre : un deuxième titre constructeurs consécutif et le premier titre pilotes de Lando Norris.",
     ],
     stats: [
       { label: "Titres constructeurs", value: "10" },
@@ -372,10 +372,10 @@ export const teamPages: Record<string, TeamPageData> = {
     historyHeading: "Histoire de Mercedes en Formule 1",
     metaDescription: "Mercedes F1, 8 titres constructeurs et dominatrice de l'ère hybride depuis 2014, aujourd'hui avec George Russell et Kimi Antonelli.",
     history: [
-      "Mercedes-Benz possede une longue histoire en sport automobile et remporte rapidement des titres en Formule 1 dans les annees 1950 avec Juan Manuel Fangio.",
-      "Apres plusieurs decennies d'absence comme equipe officielle, Mercedes revient comme motoriste avant de racheter Brawn GP en 2010 pour lancer sa structure moderne.",
-      "L'equipe domine l'ere hybride a partir de 2014 et signe une serie record de titres constructeurs consecutifs.",
-      "Mercedes reste aujourd'hui l'une des references du championnat.",
+      "Mercedes-Benz possède une longue histoire en sport automobile et remporte rapidement des titres en Formule 1 dans les années 1950 avec Juan Manuel Fangio.",
+      "Après plusieurs décennies d'absence comme équipe officielle, Mercedes revient comme motoriste avant de racheter Brawn GP en 2010 pour lancer sa structure moderne.",
+      "L'équipe domine l'ère hybride à partir de 2014 et signe une série record de titres constructeurs consécutifs.",
+      "Mercedes reste aujourd'hui l'une des références du championnat.",
     ],
     stats: [
       { label: "Titres constructeurs", value: "8" },
@@ -416,9 +416,9 @@ export const teamPages: Record<string, TeamPageData> = {
     historyHeading: "Histoire de Racing Bulls en Formule 1",
     metaDescription: "Racing Bulls (ex-Toro Rosso, AlphaTauri), équipe sœur de Red Bull et tremplin pour ses jeunes pilotes, avec Lawson et Lindblad.",
     history: [
-      "Racing Bulls est l'equipe soeur de Red Bull Racing. Son histoire remonte a 2006, lorsque Red Bull rachete Minardi pour creer Toro Rosso.",
-      "La structure sert de tremplin a de jeunes pilotes du programme Red Bull. Plusieurs stars de la discipline y ont fait leurs debuts avant de rejoindre l'equipe principale.",
-      "Apres les noms Toro Rosso puis AlphaTauri, l'equipe adopte ensuite l'identite Racing Bulls dans une nouvelle phase de son developpement.",
+      "Racing Bulls est l'équipe sœur de Red Bull Racing. Son histoire remonte à 2006, lorsque Red Bull rachète Minardi pour créer Toro Rosso.",
+      "La structure sert de tremplin à de jeunes pilotes du programme Red Bull. Plusieurs stars de la discipline y ont fait leurs débuts avant de rejoindre l'équipe principale.",
+      "Après les noms Toro Rosso puis AlphaTauri, l'équipe adopte ensuite l'identité Racing Bulls dans une nouvelle phase de son développement.",
     ],
     stats: [
       { label: "Titres constructeurs", value: "0" },
@@ -428,7 +428,7 @@ export const teamPages: Record<string, TeamPageData> = {
     ],
     champions: [],
     emptyState: {
-      title: "Chargement des trophees...",
+      title: "Chargement des trophées...",
       description: "Veuillez patienter quelques saisons.",
       image: "/images/chargement.png",
     },
@@ -455,9 +455,9 @@ export const teamPages: Record<string, TeamPageData> = {
     historyHeading: "Histoire de Red Bull en Formule 1",
     metaDescription: "Red Bull Racing, 6 titres constructeurs et 8 titres pilotes dont 4 consécutifs avec Max Verstappen, aujourd'hui avec Isack Hadjar.",
     history: [
-      "Red Bull Racing nait en 2005 lorsque le groupe Red Bull reprend l'equipe Jaguar.",
-      "Avec Adrian Newey, l'equipe devient rapidement une reference et domine la Formule 1 entre 2010 et 2013 avec Sebastian Vettel.",
-      "Apres une phase plus difficile, Red Bull revient au sommet a partir de 2021 avec Max Verstappen et redevient l'equipe de reference de l'ere moderne.",
+      "Red Bull Racing naît en 2005 lorsque le groupe Red Bull reprend l'équipe Jaguar.",
+      "Avec Adrian Newey, l'équipe devient rapidement une référence et domine la Formule 1 entre 2010 et 2013 avec Sebastian Vettel.",
+      "Après une phase plus difficile, Red Bull revient au sommet à partir de 2021 avec Max Verstappen et redevient l'équipe de référence de l'ère moderne.",
       "La structure reste aujourd'hui l'une des plus puissantes du championnat.",
     ],
     stats: [
@@ -497,9 +497,9 @@ export const teamPages: Record<string, TeamPageData> = {
     historyHeading: "Histoire de Stake / Sauber en Formule 1",
     metaDescription: "Stake F1 Team (ex-Sauber), présente en Formule 1 depuis 1993, en pleine transition vers le futur projet d'usine Audi.",
     history: [
-      "Stake reprend l'identite commerciale recente de Sauber avant la transition complete vers Audi.",
-      "La structure suisse, fondee par Peter Sauber, est presente en Formule 1 depuis 1993 et s'est forge une solide reputation dans le milieu de grille.",
-      "Cette periode de transition sert de passerelle entre l'ere Sauber et le projet usine d'Audi.",
+      "Stake reprend l'identité commerciale récente de Sauber avant la transition complète vers Audi.",
+      "La structure suisse, fondée par Peter Sauber, est présente en Formule 1 depuis 1993 et s'est forgé une solide réputation dans le milieu de grille.",
+      "Cette période de transition sert de passerelle entre l'ère Sauber et le projet usine d'Audi.",
     ],
     stats: [
       { label: "Titres constructeurs", value: "0" },
@@ -510,7 +510,7 @@ export const teamPages: Record<string, TeamPageData> = {
     champions: [],
     active: false,
     emptyState: {
-      title: "Chargement des trophees...",
+      title: "Chargement des trophées...",
       description: "Veuillez patienter quelques saisons.",
       image: "/images/chargement.png",
     },
@@ -537,9 +537,9 @@ export const teamPages: Record<string, TeamPageData> = {
     historyHeading: "Histoire de Williams en Formule 1",
     metaDescription: "Williams, 9 titres constructeurs et 7 titres pilotes dans les années 1980-1990, aujourd'hui avec Alexander Albon et Carlos Sainz.",
     history: [
-      "Williams Grand Prix Engineering est fondee en 1977 par Frank Williams et Patrick Head. L'equipe devient l'une des grandes puissances de la Formule 1 des annees 1980 et 1990.",
+      "Williams Grand Prix Engineering est fondée en 1977 par Frank Williams et Patrick Head. L'équipe devient l'une des grandes puissances de la Formule 1 des années 1980 et 1990.",
       "La structure britannique remporte de nombreux titres avec des pilotes comme Alan Jones, Keke Rosberg, Nigel Mansell, Alain Prost, Damon Hill et Jacques Villeneuve.",
-      "Apres des annees plus difficiles, Williams cherche a retrouver durablement le haut du plateau tout en conservant un statut historique unique dans le paddock.",
+      "Après des années plus difficiles, Williams cherche à retrouver durablement le haut du plateau tout en conservant un statut historique unique dans le paddock.",
     ],
     stats: [
       { label: "Titres constructeurs", value: "9" },

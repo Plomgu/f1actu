@@ -19,14 +19,14 @@ export type CalendarRace = {
 
 export const cancelledRaces2026 = [
   {
-    grandPrix: "Grand Prix de Bahrein",
+    grandPrix: "Grand Prix de Bahreïn",
     plannedDate: "12 avril 2026",
-    note: "Annule selon la mise a jour du 15 mars 2026 publiee par F1.",
+    note: "Annulé selon la mise à jour du 15 mars 2026 publiée par la F1.",
   },
   {
     grandPrix: "Grand Prix d'Arabie saoudite",
     plannedDate: "19 avril 2026",
-    note: "Annule selon la mise a jour du 15 mars 2026 publiee par F1.",
+    note: "Annulé selon la mise à jour du 15 mars 2026 publiée par la F1.",
   },
 ];
 
@@ -299,7 +299,7 @@ export const calendar2026: CalendarRace[] = [
   },
   {
     round: 15,
-    grandPrix: "Grand Prix d'Azerbaidjan",
+    grandPrix: "Grand Prix d'Azerbaïdjan",
     location: "Bakou",
     country: "Azerbaidjan",
     circuitSlug: "bakou",
@@ -337,7 +337,7 @@ export const calendar2026: CalendarRace[] = [
   },
   {
     round: 17,
-    grandPrix: "Grand Prix des Etats-Unis",
+    grandPrix: "Grand Prix des États-Unis",
     location: "Austin",
     country: "Etats-Unis",
     circuitSlug: "austin",
@@ -375,7 +375,7 @@ export const calendar2026: CalendarRace[] = [
   },
   {
     round: 19,
-    grandPrix: "Grand Prix du Bresil",
+    grandPrix: "Grand Prix du Brésil",
     location: "Sao Paulo",
     country: "Bresil",
     circuitSlug: "saopaulo",

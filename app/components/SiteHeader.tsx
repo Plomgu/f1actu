@@ -45,7 +45,7 @@ export default function SiteHeader() {
 
             {/* Écuries */}
             <div className="relative group cursor-pointer">
-              <span className="hover:text-red-200 transition whitespace-nowrap">Ecuries ▾</span>
+              <span className="hover:text-red-200 transition whitespace-nowrap">Écuries ▾</span>
               <div className="absolute left-0 top-full mt-0 hidden group-hover:block bg-black text-white rounded-2xl shadow-2xl p-2 min-w-[180px] z-50">
                 {teams.map((team) => (
                   <Link key={team.link} href={team.link} className="block px-2.5 py-1.5 rounded-lg text-sm hover:bg-red-600/20 transition">
@@ -121,7 +121,7 @@ export default function SiteHeader() {
               onClick={() => toggleSection("ecuries")}
               className="w-full flex items-center justify-between text-white font-bold py-4 px-5 hover:bg-white/5 transition"
             >
-              Ecuries
+              Écuries
               <span className={`text-xs transition-transform duration-200 ${openSection === "ecuries" ? "rotate-180" : ""}`}>▾</span>
             </button>
             {openSection === "ecuries" && (
