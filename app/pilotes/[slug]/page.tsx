@@ -66,7 +66,7 @@ export default async function DriverPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd data={[personJsonLd, breadcrumb([{ name: driver.name, path: `/pilotes/${slug}` }])]} />
+      <JsonLd data={[personJsonLd, breadcrumb([{ name: "Pilotes F1 2026", path: "/pilotes" }, { name: driver.name, path: `/pilotes/${slug}` }])]} />
       <PilotePageClient driver={driver} />
     </>
   );

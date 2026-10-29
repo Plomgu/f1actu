@@ -13,11 +13,11 @@ const monthAccent: Record<string, string> = {
   mai: "from-emerald-500 to-teal-600",
   juin: "from-slate-500 to-slate-700",
   juillet: "from-indigo-500 to-blue-600",
-  aout: "from-teal-500 to-cyan-600",
+  "août": "from-teal-500 to-cyan-600",
   septembre: "from-orange-500 to-rose-600",
   octobre: "from-amber-500 to-orange-600",
   novembre: "from-rose-500 to-red-700",
-  decembre: "from-slate-500 to-slate-700",
+  "décembre": "from-slate-500 to-slate-700",
 };
 
 function getMonthLabel(dateLabel: string) {

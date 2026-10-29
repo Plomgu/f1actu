@@ -24,6 +24,9 @@ export default function SiteFooter() {
             <li><Link href="/" className="hover:text-white transition">Actu</Link></li>
             <li><Link href="/classement" className="hover:text-white transition">Classement</Link></li>
             <li><Link href="/calendrier" className="hover:text-white transition">Calendrier</Link></li>
+            <li><Link href="/pilotes" className="hover:text-white transition">Pilotes F1 2026</Link></li>
+            <li><Link href="/ecuries" className="hover:text-white transition">Écuries F1 2026</Link></li>
+            <li><Link href="/circuits" className="hover:text-white transition">Circuits F1 2026</Link></li>
             <li><Link href="/programme-tv" className="hover:text-white transition">Programme TV</Link></li>
           </ul>
         </div>

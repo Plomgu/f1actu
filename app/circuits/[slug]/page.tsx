@@ -84,7 +84,7 @@ export default async function CircuitPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd data={[mainJsonLd, breadcrumb([{ name: circuit.grandPrix, path: `/circuits/${slug}` }])]} />
+      <JsonLd data={[mainJsonLd, breadcrumb([{ name: "Circuits F1 2026", path: "/circuits" }, { name: circuit.grandPrix, path: `/circuits/${slug}` }])]} />
       <CircuitPageClient circuit={circuit} />
     </>
   );

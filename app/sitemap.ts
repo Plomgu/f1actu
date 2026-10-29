@@ -21,6 +21,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/classement`, lastModified: now, priority: 0.9, changeFrequency: "hourly" },
     { url: `${SITE_URL}/calendrier`, lastModified: now, priority: 0.8, changeFrequency: "daily" },
     { url: `${SITE_URL}/programme-tv`, lastModified: now, priority: 0.7, changeFrequency: "daily" },
+    { url: `${SITE_URL}/pilotes`, lastModified: PROFILES_UPDATED, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${SITE_URL}/ecuries`, lastModified: PROFILES_UPDATED, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${SITE_URL}/circuits`, lastModified: PROFILES_UPDATED, priority: 0.8, changeFrequency: "weekly" },
   ];
 
   const circuitUrls: MetadataRoute.Sitemap = Object.keys(circuitPages).map((slug) => ({

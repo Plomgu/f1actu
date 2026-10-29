@@ -45,7 +45,7 @@ export default function SiteHeader() {
 
             {/* Écuries */}
             <div className="relative group cursor-pointer">
-              <span className="hover:text-red-200 transition whitespace-nowrap">Écuries ▾</span>
+              <Link href="/ecuries" className="hover:text-red-200 transition whitespace-nowrap">Écuries ▾</Link>
               <div className="absolute left-0 top-full mt-0 hidden group-hover:block bg-black text-white rounded-2xl shadow-2xl p-2 min-w-[180px] z-50">
                 {teams.map((team) => (
                   <Link key={team.link} href={team.link} className="block px-2.5 py-1.5 rounded-lg text-sm hover:bg-red-600/20 transition">
@@ -57,7 +57,7 @@ export default function SiteHeader() {
 
             {/* Pilotes */}
             <div className="relative group cursor-pointer">
-              <span className="hover:text-red-200 transition whitespace-nowrap">Pilotes ▾</span>
+              <Link href="/pilotes" className="hover:text-red-200 transition whitespace-nowrap">Pilotes ▾</Link>
               <div className="absolute left-0 top-full hidden group-hover:block bg-black text-white rounded-2xl shadow-2xl p-3 min-w-[340px] z-50">
                 <div className="grid grid-cols-2 gap-x-3 gap-y-1">
                   {driverMenu.map((driver) => (
@@ -79,7 +79,7 @@ export default function SiteHeader() {
 
             {/* Circuits */}
             <div className="relative group cursor-pointer">
-              <span className="hover:text-red-200 transition whitespace-nowrap">Circuit ▾</span>
+              <Link href="/circuits" className="hover:text-red-200 transition whitespace-nowrap">Circuits ▾</Link>
               <div className="absolute left-0 top-full hidden group-hover:block bg-black text-white rounded-2xl shadow-2xl p-4 min-w-[340px] max-h-[460px] overflow-y-auto z-50">
                 {circuitMenu.map((circuit) => (
                   <Link key={circuit.slug} href={`/circuits/${circuit.slug}`} className="block px-3 py-2 rounded-xl hover:bg-red-600/20 transition">
@@ -126,6 +126,10 @@ export default function SiteHeader() {
             </button>
             {openSection === "ecuries" && (
               <div className="bg-[#0F172A] px-4 pb-3 space-y-0.5">
+                <Link href="/ecuries" onClick={closeAll}
+                  className="block text-white font-semibold py-2.5 px-3 rounded-lg hover:bg-white/10 transition text-sm">
+                  Toutes les écuries →
+                </Link>
                 {teams.map((team) => (
                   <Link key={team.link} href={team.link} onClick={closeAll}
                     className="block text-white/75 py-2.5 px-3 rounded-lg hover:bg-white/10 hover:text-white transition text-sm">
@@ -147,6 +151,10 @@ export default function SiteHeader() {
             </button>
             {openSection === "pilotes" && (
               <div className="bg-[#0F172A] px-4 pb-3 grid grid-cols-2 gap-1">
+                <Link href="/pilotes" onClick={closeAll}
+                  className="col-span-2 block text-white font-semibold py-2.5 px-2 rounded-lg hover:bg-white/10 transition text-sm">
+                  Tous les pilotes →
+                </Link>
                 {driverMenu.map((driver) => (
                   <Link key={driver.slug} href={`/pilotes/${driver.slug}`} onClick={closeAll}
                     className="flex items-center gap-2 text-white/75 py-2 px-2 rounded-lg hover:bg-white/10 hover:text-white transition">
@@ -172,11 +180,15 @@ export default function SiteHeader() {
               onClick={() => toggleSection("circuits")}
               className="w-full flex items-center justify-between text-white font-bold py-4 px-5 hover:bg-white/5 transition"
             >
-              Circuit
+              Circuits
               <span className={`text-xs transition-transform duration-200 ${openSection === "circuits" ? "rotate-180" : ""}`}>▾</span>
             </button>
             {openSection === "circuits" && (
               <div className="bg-[#0F172A] px-4 pb-3 max-h-64 overflow-y-auto space-y-0.5">
+                <Link href="/circuits" onClick={closeAll}
+                  className="block text-white font-semibold py-2.5 px-3 rounded-lg hover:bg-white/10 transition text-sm">
+                  Tous les circuits →
+                </Link>
                 {circuitMenu.map((circuit) => (
                   <Link key={circuit.slug} href={`/circuits/${circuit.slug}`} onClick={closeAll}
                     className="block text-white/75 py-2.5 px-3 rounded-lg hover:bg-white/10 hover:text-white transition text-sm">
