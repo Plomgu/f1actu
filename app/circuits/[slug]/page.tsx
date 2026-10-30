@@ -5,6 +5,19 @@ import { SITE_NAME, SITE_URL } from "../../lib/seo";
 import CircuitPageClient from "./CircuitPageClient";
 import JsonLd, { absoluteUrl, breadcrumb } from "../../components/JsonLd";
 import { calendar2026 } from "../../calendrier/calendar-data";
+import { teamPages } from "../../ecuries/team-data";
+
+// Un Grand Prix dure au maximum 2 heures (règlement sportif FIA).
+const RACE_DURATION_MS = 2 * 60 * 60 * 1000;
+
+// Les écuries engagées en 2026, déclarées comme participants de chaque Grand Prix.
+const competingTeams = Object.values(teamPages)
+  .filter((team) => team.active !== false)
+  .map((team) => ({
+    "@type": "SportsTeam",
+    name: team.navName,
+    url: `${SITE_URL}/ecuries/${team.slug}`,
+  }));
 import { circuitPages } from "../circuit-data";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -69,9 +82,12 @@ export default async function CircuitPage({ params }: Props) {
         image: absoluteUrl(circuit.image),
         description: circuit.metaDescription,
         startDate: race.raceDateIso,
+        endDate: new Date(new Date(race.raceDateIso).getTime() + RACE_DURATION_MS).toISOString(),
         eventStatus: "https://schema.org/EventScheduled",
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
         location: place,
+        performer: competingTeams,
+        competitor: competingTeams,
         organizer: { "@type": "Organization", name: "Formula 1", url: "https://www.formula1.com" },
       }
     : {
