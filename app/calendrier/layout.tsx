@@ -5,7 +5,7 @@ import { SITE_NAME, SITE_URL } from "../lib/seo";
 export const metadata: Metadata = {
   title: "Calendrier F1 2026 — Dates et horaires des Grands Prix",
   description:
-    "Retrouvez le calendrier complet de la saison F1 2026 : dates, horaires, circuits et sessions de chaque Grand Prix.",
+    "Calendrier F1 2026 complet : dates et horaires en heure française des essais, qualifications, sprints et courses de chaque Grand Prix de la saison.",
   alternates: { canonical: `${SITE_URL}/calendrier` },
   openGraph: {
     title: `Calendrier F1 2026 | ${SITE_NAME}`,
