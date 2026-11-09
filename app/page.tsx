@@ -142,9 +142,12 @@ export default function Home() {
 
         <SiteHeader />
 
-        <h1 className="sr-only">
-          F1 Actu — Actualités, classements, calendrier et programme TV de la Formule 1 2026
-        </h1>
+        <div className="px-4 pt-4 flex items-center gap-3">
+          <span className="h-6 w-1.5 shrink-0 rounded-full bg-[#C41230]" aria-hidden="true" />
+          <h1 className="text-base sm:text-lg font-extrabold tracking-tight text-[#0A0F1E]">
+            Actualités F1 2026 : news, classements, calendrier et programme TV
+          </h1>
+        </div>
 
 
         {/* HERO ACTUS */}
