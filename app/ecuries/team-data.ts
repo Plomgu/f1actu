@@ -195,7 +195,7 @@ export const teamPages: Record<string, TeamPageData> = {
     standingsId: "cadillac",
     titlesHeading: "Titres mondiaux pilotes Cadillac",
     historyHeading: "Histoire de Cadillac en Formule 1",
-    metaDescription: "Cadillac, nouvelle équipe américaine de Formule 1 soutenue par General Motors, avec Valtteri Bottas et Sergio Perez.",
+    metaDescription: "Cadillac, nouvelle équipe américaine de Formule 1 soutenue par General Motors : pilotes Valtteri Bottas et Sergio Perez, projet et saison 2026.",
     history: [
       "Cadillac fait son entrée en Formule 1 dans le cadre du projet soutenu par General Motors.",
       "Le programme est mené avec une forte ambition américaine et s'appuie sur l'expérience d'Andretti dans le sport automobile international.",
@@ -282,7 +282,7 @@ export const teamPages: Record<string, TeamPageData> = {
     standingsId: "haas",
     titlesHeading: "Titres mondiaux pilotes Haas",
     historyHeading: "Histoire de Haas en Formule 1",
-    metaDescription: "Haas F1 Team, équipe américaine liée techniquement à Ferrari depuis 2016, avec Esteban Ocon et Oliver Bearman.",
+    metaDescription: "Haas F1 Team, équipe américaine liée à Ferrari depuis 2016 : pilotes Esteban Ocon et Oliver Bearman, histoire, palmarès et saison F1 2026.",
     history: [
       "Haas F1 Team est une équipe américaine fondée par Gene Haas. Elle débute en Formule 1 en 2016.",
       "La structure adopte un modèle très intégré avec un fort partenariat technique avec Ferrari, ce qui lui permet de progresser rapidement lors de ses premières saisons.",
@@ -495,7 +495,7 @@ export const teamPages: Record<string, TeamPageData> = {
     standingsId: "audi",
     titlesHeading: "Titres mondiaux pilotes Stake / Sauber",
     historyHeading: "Histoire de Stake / Sauber en Formule 1",
-    metaDescription: "Stake F1 Team (ex-Sauber), présente en Formule 1 depuis 1993, en pleine transition vers le futur projet d'usine Audi.",
+    metaDescription: "Stake F1 Team (ex-Sauber), présente en Formule 1 de 1993 à 2025 : histoire de l'écurie suisse de Hinwil et transition vers le projet d'usine Audi.",
     history: [
       "Stake reprend l'identité commerciale récente de Sauber avant la transition complète vers Audi.",
       "La structure suisse, fondée par Peter Sauber, est présente en Formule 1 depuis 1993 et s'est forgé une solide réputation dans le milieu de grille.",

@@ -46,7 +46,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "5,278 km",
     laps: "58",
     firstGrandPrix: "1996",
-    metaDescription: "Grand Prix d'Australie à Albert Park (Melbourne) le 8 mars 2026 : le circuit urbain rapide qui ouvre la saison F1 2026.",
+    metaDescription: "Grand Prix d'Australie à Albert Park (Melbourne) le 8 mars 2026 : horaires, caractéristiques du circuit urbain et chiffres clés de l'ouverture.",
     summary: [
       "Melbourne ouvre la saison 2026 avec le décor urbain rapide et spectaculaire d'Albert Park.",
       "Le tracé combine longues accélérations, gros freinages et sections fluides qui exigent un bon compromis aérodynamique.",
@@ -178,7 +178,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "6,174 km",
     laps: "50",
     firstGrandPrix: "2021",
-    metaDescription: "Grand Prix d'Arabie saoudite à Djeddah le 19 avril 2026 : le circuit urbain le plus rapide du calendrier de Formule 1.",
+    metaDescription: "Grand Prix d'Arabie saoudite à Djeddah, annulé en 2026 : caractéristiques, chiffres clés et points forts du circuit urbain le plus rapide de la F1.",
     summary: [
       "Djeddah est un tracé urbain ultra-rapide, bordé de murs, où les vitesses sont très élevées.",
       "La moindre erreur y coûte cher, surtout dans les enchaînements à haute vitesse qui laissent peu de marge.",
@@ -211,7 +211,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "5,412 km",
     laps: "57",
     firstGrandPrix: "2022",
-    metaDescription: "Grand Prix de Miami le 3 mai 2026 : circuit semi-urbain rapide et ambiance très événementielle au cœur de la Floride.",
+    metaDescription: "Grand Prix de Miami le 3 mai 2026 : horaires du week-end sprint, caractéristiques du circuit semi-urbain et ambiance au cœur de la Floride.",
     summary: [
       "Miami mélange longues lignes droites, gros freinages et une section plus lente autour du stade.",
       "Le circuit favorise les voitures efficaces en pointe mais capables aussi de bien relancer dans le secteur sinueux.",
@@ -277,7 +277,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "3,337 km",
     laps: "78",
     firstGrandPrix: "1950",
-    metaDescription: "Grand Prix de Monaco le 7 juin 2026 : le joyau historique de la Formule 1, ses rues étroites et son prestige inégalé.",
+    metaDescription: "Grand Prix de Monaco le 7 juin 2026 : horaires, caractéristiques du circuit en ville et chiffres clés du joyau historique de la Formule 1.",
     summary: [
       "Monaco reste le joyau historique de la F1 avec sa piste étroite, ses rails et son prestige unique.",
       "La qualification y est souvent décisive, tant dépasser en course reste complexe dans les rues de la Principauté.",
@@ -475,7 +475,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "4,259 km",
     laps: "72",
     firstGrandPrix: "1952",
-    metaDescription: "Grand Prix des Pays-Bas à Zandvoort le 23 août 2026 : virages relevés, tracé compact et ambiance orange électrique.",
+    metaDescription: "Grand Prix des Pays-Bas à Zandvoort le 23 août 2026 : horaires, virages relevés, chiffres clés du circuit et ambiance orange électrique.",
     summary: [
       "Zandvoort est compact, vallonné et très spectaculaire avec ses virages relevés et son ruban très étroit.",
       "La qualité du train avant et la précision dans les appuis comptent énormément sur ce tracé unique.",
@@ -508,7 +508,7 @@ export const circuitPages: Record<string, CircuitPageData> = {
     length: "5,793 km",
     laps: "53",
     firstGrandPrix: "1950",
-    metaDescription: "Grand Prix d'Italie à Monza début septembre 2026 : le temple de la vitesse et l'émotion unique des tifosi pour Ferrari.",
+    metaDescription: "Grand Prix d'Italie à Monza en septembre 2026 : horaires, caractéristiques et chiffres clés du temple de la vitesse, cher aux tifosi de Ferrari.",
     summary: [
       "Monza est le temple de la vitesse, avec un niveau d'appui minimal et de longues accélérations à pleine charge.",
       "Les freinages des chicanes et la traction en sortie y décident une grande partie du chrono.",

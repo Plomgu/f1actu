@@ -234,7 +234,7 @@ export const driverPages: Record<string, DriverPageData> = {
     poles: "13",
     fastestLaps: "9",
     standingsId: "norris",
-    metaDescription: "Lando Norris (n°1), champion du monde 2025 avec McLaren : 11 victoires et 44 podiums, le nouveau leader de la F1.",
+    metaDescription: "Lando Norris (n°1), champion du monde 2025 avec McLaren : biographie, palmarès, 11 victoires, 44 podiums et résultats de sa saison F1 2026.",
     bio: [
       "Lando Norris s'est imposé comme le visage de la renaissance de McLaren après plusieurs saisons de progression constante.",
       "Reconnu pour sa vitesse pure, sa régularité et son sens de l'attaque, il a franchi un cap décisif en devenant champion du monde 2025.",
@@ -443,7 +443,7 @@ export const driverPages: Record<string, DriverPageData> = {
     poles: "1",
     fastestLaps: "1",
     standingsId: "stroll",
-    metaDescription: "Lance Stroll (n°18), pilote canadien d'Aston Martin : 3 podiums en Formule 1 et l'ambition de franchir un nouveau cap.",
+    metaDescription: "Lance Stroll (n°18), pilote canadien d'Aston Martin : biographie, carrière, 3 podiums en Formule 1 et résultats de sa saison F1 2026.",
     bio: [
       "Lance Stroll a débuté très jeune en Formule 1 et a montré sa capacité à signer de gros résultats dans des contextes parfois délicats.",
       "Au fil des saisons, il a accumulé de l'expérience et plusieurs podiums, tout en participant à la construction du projet Aston Martin.",
@@ -483,7 +483,7 @@ export const driverPages: Record<string, DriverPageData> = {
     poles: "0",
     fastestLaps: "0",
     standingsId: "bearman",
-    metaDescription: "Oliver Bearman (n°87), jeune pilote britannique de Haas issu de la filière Ferrari, l'un des espoirs à suivre en F1.",
+    metaDescription: "Oliver Bearman (n°87), jeune pilote britannique de Haas issu de la filière Ferrari : biographie, carrière et résultats de sa saison F1 2026.",
     bio: [
       "Oliver Bearman est l'un des jeunes pilotes britanniques les plus suivis du paddock.",
       "Issu de la filière Ferrari, il s'est fait remarquer par sa vitesse en formules de promotion et sa capacité à être performant rapidement.",
@@ -523,7 +523,7 @@ export const driverPages: Record<string, DriverPageData> = {
     poles: "0",
     fastestLaps: "1",
     standingsId: "ocon",
-    metaDescription: "Esteban Ocon (n°31), pilote français de Haas : vainqueur du GP de Hongrie 2021, 4 podiums au compteur en Formule 1.",
+    metaDescription: "Esteban Ocon (n°31), pilote français de Haas, vainqueur du GP de Hongrie 2021 : biographie, palmarès, 4 podiums et résultats de la saison 2026.",
     bio: [
       "Esteban Ocon s'est construit un parcours solide en Formule 1, marqué par sa combativité et sa capacité à maximiser les opportunités.",
       "Vainqueur d'un Grand Prix avec Alpine, il s'est imposé comme un pilote fiable et capable de briller dans des conditions compliquées.",
@@ -603,7 +603,7 @@ export const driverPages: Record<string, DriverPageData> = {
     poles: "0",
     fastestLaps: "0",
     standingsId: "lindblad",
-    metaDescription: "Arvid Lindblad (n°41), l'un des plus jeunes talents du programme Red Bull chez Racing Bulls, à seulement 18 ans.",
+    metaDescription: "Arvid Lindblad (n°41), 18 ans, l'un des plus jeunes talents du programme Red Bull chez Racing Bulls : biographie, carrière et résultats en 2026.",
     bio: [
       "Arvid Lindblad fait partie des très jeunes talents surveillés de près par le programme Red Bull.",
       "Ses performances en karting puis en monoplace ont rapidement renforcé sa réputation de pilote offensif et naturellement rapide.",
@@ -724,7 +724,7 @@ export const driverPages: Record<string, DriverPageData> = {
     poles: "0",
     fastestLaps: "1",
     standingsId: "gasly",
-    metaDescription: "Pierre Gasly (n°10), pilote français d'Alpine, vainqueur du GP d'Italie 2020 à Monza et ex-champion GP2.",
+    metaDescription: "Pierre Gasly (n°10), pilote français d'Alpine, vainqueur du GP d'Italie 2020 à Monza et champion GP2 : biographie, palmarès et saison F1 2026.",
     bio: [
       "Pierre Gasly est l'un des pilotes français les plus expérimentés de la grille actuelle.",
       "Champion GP2, il a connu plusieurs étapes importantes dans l'univers Red Bull avant de se relancer et de gagner en Italie avec AlphaTauri.",
@@ -764,7 +764,7 @@ export const driverPages: Record<string, DriverPageData> = {
     poles: "0",
     fastestLaps: "0",
     standingsId: "colapinto",
-    metaDescription: "Franco Colapinto (n°43), pilote argentin d'Alpine qui incarne le retour de l'Argentine sur la grille de Formule 1.",
+    metaDescription: "Franco Colapinto (n°43), pilote argentin d'Alpine qui incarne le retour de l'Argentine en Formule 1 : biographie, carrière et résultats 2026.",
     bio: [
       "Franco Colapinto incarne le retour d'une forte présence argentine dans l'univers des monoplaces internationales.",
       "Son parcours en formules de promotion a mis en valeur sa vitesse de base et sa capacité à saisir les opportunités.",
@@ -804,7 +804,7 @@ export const driverPages: Record<string, DriverPageData> = {
     poles: "0",
     fastestLaps: "0",
     standingsId: "albon",
-    metaDescription: "Alexander Albon (n°23), pilote thaïlandais de Williams : 2 podiums et un rôle clé dans la reconstruction de l'équipe.",
+    metaDescription: "Alexander Albon (n°23), pilote thaïlandais de Williams, pilier de la reconstruction de l'équipe : biographie, 2 podiums et saison F1 2026.",
     bio: [
       "Alexander Albon s'est relancé avec succès chez Williams après un début de carrière mouvementé dans l'univers Red Bull.",
       "Il est reconnu pour sa capacité à tirer le maximum d'une voiture difficile et pour sa régularité en course.",
@@ -844,7 +844,7 @@ export const driverPages: Record<string, DriverPageData> = {
     poles: "5",
     fastestLaps: "3",
     standingsId: "sainz",
-    metaDescription: "Carlos Sainz (n°55), pilote espagnol de Williams : 4 victoires et 29 podiums, passé par Ferrari, McLaren et Renault.",
+    metaDescription: "Carlos Sainz (n°55), pilote espagnol de Williams passé par Ferrari, McLaren et Renault : biographie, 4 victoires, 29 podiums et saison 2026.",
     bio: [
       "Carlos Sainz s'est forgé une réputation de pilote complet, rapide et très sérieux dans sa préparation.",
       "Passé par Toro Rosso, Renault, McLaren puis Ferrari, il a montré qu'il pouvait être performant dans des environnements très différents.",
@@ -884,7 +884,7 @@ export const driverPages: Record<string, DriverPageData> = {
     poles: "3",
     fastestLaps: "11",
     standingsId: "perez",
-    metaDescription: "Sergio Perez (n°11), pilote mexicain expérimenté de Cadillac : 6 victoires et 39 podiums acquis en Formule 1.",
+    metaDescription: "Sergio Perez (n°11), pilote mexicain expérimenté de Cadillac : biographie, palmarès, 6 victoires, 39 podiums et résultats de sa saison F1 2026.",
     bio: [
       "Sergio Perez a longtemps été l'un des meilleurs spécialistes de la gestion des pneus et des courses opportunistes.",
       "Avec plusieurs victoires et une solide expérience dans le haut de grille, il apporte une vraie expertise technique à chaque projet.",
