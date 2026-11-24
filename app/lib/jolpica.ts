@@ -53,7 +53,8 @@ export function teamName(team: JolpicaConstructor) {
 export async function fetchJolpica<T = Record<string, unknown>>(path: string): Promise<T> {
   const res = await fetch(`${BASE_URL}/${path}`, {
     next: { revalidate: F1_DATA_REVALIDATE },
-    headers: { accept: "application/json" },
+    // Jolpica refuse le User-Agent par défaut de Node (HTTP 403).
+    headers: { accept: "application/json", "User-Agent": "Mozilla/5.0 (compatible; LiveF1Bot/1.0)" },
   });
   if (!res.ok) throw new Error(`Jolpica ${path} : HTTP ${res.status}`);
   const data = await res.json();
@@ -102,4 +103,15 @@ export async function getConstructorStandings(): Promise<ConstructorStanding[]> 
     name: teamName(s.Constructor),
     points: Number(s.points),
   }));
+}
+
+/** Les deux classements, ou null si Jolpica ne répond pas (la page se rabat alors sur le navigateur). */
+export async function getStandings(): Promise<{ drivers: DriverStanding[]; constructors: ConstructorStanding[] } | null> {
+  try {
+    const [{ drivers }, constructors] = await Promise.all([getDriverStandings(), getConstructorStandings()]);
+    return { drivers, constructors };
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 }

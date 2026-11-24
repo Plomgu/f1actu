@@ -2,7 +2,9 @@ import { NextResponse } from "next/server";
 
 import { getConstructorStandings, getDriverStandings } from "../../lib/jolpica";
 
-export const revalidate = 1800;
+// Rendue à chaque requête pour qu'une erreur de Jolpica ne soit jamais figée en
+// réponse statique ; les appels à Jolpica restent eux en cache 30 minutes.
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {

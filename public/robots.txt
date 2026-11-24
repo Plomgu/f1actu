@@ -2,7 +2,6 @@ User-agent: *
 Allow: /
 
 Disallow: /api/
-Disallow: /_next/
 
 Sitemap: https://www.f1actu.fr/sitemap.xml
 Host: https://www.f1actu.fr

@@ -8,6 +8,10 @@ import CookieConsentBanner from "./components/CookieConsentBanner";
 import JsonLd from "./components/JsonLd";
 import "./globals.css";
 
+// Les pages affichent le prochain Grand Prix : on les régénère au moins toutes
+// les heures au lieu de servir le HTML du dernier déploiement.
+export const revalidate = 3600;
+
 const siteJsonLd = [
   {
     "@context": "https://schema.org",
