@@ -7,6 +7,7 @@ import SiteHeader from "../components/SiteHeader";
 import AdBanner from "../components/AdBanner";
 import { teams } from "../ecuries/team-data";
 import { calendar2026, cancelledRaces2026 } from "./calendar-data";
+import { latestArticleForCircuit } from "../articles/article-data";
 
 const monthAccent: Record<string, string> = {
   mars: "from-sky-500 to-blue-600",
@@ -68,6 +69,7 @@ export default function CalendrierPage() {
   const nextRace =
     calendar2026.find((race) => new Date(race.raceDateIso).getTime() > currentTimestamp) ??
     calendar2026[calendar2026.length - 1];
+  const nextRaceArticle = latestArticleForCircuit(nextRace.circuitSlug);
   const groupedByMonth = calendar2026.reduce<Record<string, typeof calendar2026>>((acc, race) => {
     const month = getMonthLabel(race.raceDateLabel);
     if (!acc[month]) acc[month] = [];
@@ -143,6 +145,19 @@ export default function CalendrierPage() {
                     Voir le circuit
                   </Link>
                 </div>
+
+                {nextRaceArticle && (
+                  <Link
+                    href={`/articles/${nextRaceArticle.slug}`}
+                    className="mt-2.5 flex items-center justify-between gap-3 rounded-2xl bg-[#C41230] px-3 py-2.5 text-sm font-bold transition hover:bg-[#9B0E22]"
+                  >
+                    <span>
+                      <span className="block text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">{nextRaceArticle.category}</span>
+                      Lire notre article sur ce Grand Prix
+                    </span>
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -224,6 +239,14 @@ export default function CalendrierPage() {
                             >
                               Ouvrir la fiche circuit
                             </Link>
+                            {latestArticleForCircuit(race.circuitSlug) && (
+                              <Link
+                                href={`/articles/${latestArticleForCircuit(race.circuitSlug)!.slug}`}
+                                className="ml-2 inline-flex items-center rounded-full bg-[#C41230] px-4 py-2 text-xs font-bold text-white transition hover:bg-[#9B0E22]"
+                              >
+                                Lire notre article →
+                              </Link>
+                            )}
                           </div>
                         </div>
 

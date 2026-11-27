@@ -6,6 +6,8 @@ import { Calendar, MapPin, Ruler, Weight, Flag } from "lucide-react";
 
 import SiteHeader from "../../components/SiteHeader";
 import AdBanner from "../../components/AdBanner";
+import { RelatedArticlesBox } from "../../components/ArticleCards";
+import { articlesAbout } from "../../articles/article-data";
 import WeatherCard from "../../components/WeatherCard";
 import { FactCell, StatPanel } from "../../components/HeroPanels";
 import { teams } from "../../ecuries/team-data";
@@ -250,6 +252,8 @@ export default function PilotePageClient({ driver }: { driver: DriverPageData })
                 Voir le circuit
               </Link>
             </div>
+
+            <RelatedArticlesBox items={articlesAbout("drivers", driver.slug)} title={`ARTICLES SUR ${driver.name.toUpperCase()}`} />
 
             <div className="sticky top-6 bg-gray-100 p-8 shadow-xl flex items-center justify-center min-h-[500px] border border-gray-200 rounded-3xl">
               ESPACE PUBLICITE

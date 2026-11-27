@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
@@ -12,9 +13,28 @@ type NewsItem = {
   source: string;
   excerpt: string;
   image: string | null;
+  /** Article de la rédaction F1 Actu (lien interne, badge distinct). */
+  internal?: boolean;
+  category?: string;
 };
 
 const SLIDE_DURATION = 7000;
+
+/** Lien interne pour les articles du site, nouvel onglet pour les actus externes. */
+function SlideLink({ slide, className, children }: { slide: NewsItem; className: string; children: React.ReactNode }) {
+  if (slide.internal) {
+    return (
+      <Link href={slide.link} className={className}>
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <a href={slide.link} target="_blank" rel="noopener noreferrer" className={className}>
+      {children}
+    </a>
+  );
+}
 
 export default function NewsHero({ items }: { items: NewsItem[] }) {
   const slides = items.slice(0, 5);
@@ -77,9 +97,16 @@ export default function NewsHero({ items }: { items: NewsItem[] }) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent" />
 
       <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4 sm:p-6">
-        <span className="rounded-full bg-[#C41230] px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-white">
-          Live News
-        </span>
+        {slide.internal ? (
+          <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-[#0A0F1E] shadow-lg">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#C41230]" />
+            À la une · F1 Actu
+          </span>
+        ) : (
+          <span className="rounded-full bg-[#C41230] px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-white">
+            Live News
+          </span>
+        )}
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8 md:p-12">
@@ -92,7 +119,12 @@ export default function NewsHero({ items }: { items: NewsItem[] }) {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="max-w-2xl"
           >
-            <a href={slide.link} target="_blank" rel="noopener noreferrer" className="group block">
+            <SlideLink slide={slide} className="group block">
+              {slide.internal && slide.category && (
+                <span className="mb-3 inline-block rounded-full bg-[#C41230] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-white">
+                  {slide.category}
+                </span>
+              )}
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight text-white group-hover:text-white/90 transition-colors">
                 {slide.title}
               </h2>
@@ -101,18 +133,16 @@ export default function NewsHero({ items }: { items: NewsItem[] }) {
                   {slide.excerpt}
                 </p>
               )}
-            </a>
+            </SlideLink>
 
             <div className="mt-4 flex flex-wrap items-center gap-2 text-xs sm:text-sm">
-              <a
-                href={slide.link}
-                target="_blank"
-                rel="noopener noreferrer"
+              <SlideLink
+                slide={slide}
                 className="flex items-center gap-1.5 rounded-full bg-[#C41230] px-3 py-1.5 font-bold text-white hover:bg-[#9B0E22] transition-colors"
               >
                 Lire l&rsquo;article
-                <ArrowUpRight className="h-3.5 w-3.5" />
-              </a>
+                {slide.internal ? <ArrowRight className="h-3.5 w-3.5" /> : <ArrowUpRight className="h-3.5 w-3.5" />}
+              </SlideLink>
               <span className="rounded-full bg-white/10 backdrop-blur-sm px-3 py-1.5 text-gray-200 border border-white/10">
                 {slide.source}
               </span>

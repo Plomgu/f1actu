@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 
 import SiteHeader from "../../components/SiteHeader";
 import AdBanner from "../../components/AdBanner";
+import { RelatedArticlesBox } from "../../components/ArticleCards";
+import { articlesAbout } from "../../articles/article-data";
 import WeatherCard from "../../components/WeatherCard";
 import { teams } from "../../ecuries/team-data";
 import { circuitMenu, type CircuitPageData } from "../circuit-data";
@@ -228,6 +230,8 @@ export default function CircuitPageClient({ circuit }: { circuit: CircuitPageDat
                   ))}
               </div>
             </div>
+
+            <RelatedArticlesBox items={articlesAbout("circuits", circuit.slug)} title={`ARTICLES : ${circuit.grandPrix.toUpperCase()}`} />
 
             <div className="sticky top-6 bg-gray-100 p-8 shadow-xl flex items-center justify-center min-h-[500px] border border-gray-200 rounded-3xl">
               ESPACE PUBLICITE

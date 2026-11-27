@@ -7,6 +7,8 @@ import SiteHeader from "./components/SiteHeader";
 import AdBanner from "./components/AdBanner";
 import WeatherCard from "./components/WeatherCard";
 import NewsHero from "./components/NewsHero";
+import { RedactionBand } from "./components/ArticleCards";
+import { articles, formatArticleDate } from "./articles/article-data";
 import { NewsListSkeleton, StandingsSidebarSkeleton } from "./components/Skeleton";
 import { teams } from "./ecuries/team-data";
 import { calendar2026 } from "./calendrier/calendar-data";
@@ -134,6 +136,25 @@ export default function HomeClient({
   }
 
 
+  // Le dernier article de la rédaction ouvre le carrousel, devant les actus externes.
+  const latestArticle = articles[0];
+  const heroItems = latestArticle
+    ? [
+        {
+          title: latestArticle.title,
+          link: `/articles/${latestArticle.slug}`,
+          timestamp: new Date(latestArticle.publishedAt).getTime(),
+          time: formatArticleDate(latestArticle.publishedAt),
+          source: "La rédaction F1 Actu",
+          excerpt: latestArticle.lead,
+          image: latestArticle.cover.src,
+          internal: true,
+          category: latestArticle.category,
+        },
+        ...news,
+      ]
+    : news;
+
   const newsTotalPages = Math.max(1, Math.ceil(news.length / NEWS_PAGE_SIZE));
   const paginatedNews = news.slice((newsPage - 1) * NEWS_PAGE_SIZE, newsPage * NEWS_PAGE_SIZE);
   const groupedNews = groupByDay(paginatedNews);
@@ -162,8 +183,13 @@ export default function HomeClient({
         {/* HERO ACTUS */}
 
         <div className="px-4 pt-4">
-          <NewsHero items={news} />
+          <NewsHero items={heroItems} />
         </div>
+
+
+        {/* ARTICLES DE LA RÉDACTION */}
+
+        <RedactionBand />
 
 
         {/* SLIDER LOGOS */}

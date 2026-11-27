@@ -42,6 +42,10 @@ export default function SiteHeader() {
             style={{ background: "linear-gradient(90deg,#0A0F1E 0%,#131E30 40%,#131E30 60%,#0A0F1E 100%)" }}
           >
             <Link href="/" className="hover:text-red-200 transition whitespace-nowrap">Actu</Link>
+            <Link href="/articles" className="relative hover:text-red-200 transition whitespace-nowrap">
+              Articles
+              <span aria-hidden="true" className="absolute -right-2.5 -top-1 h-1.5 w-1.5 rounded-full bg-[#C41230] ring-2 ring-[#131E30]" />
+            </Link>
 
             {/* Écuries */}
             <div className="relative group cursor-pointer">
@@ -113,6 +117,11 @@ export default function SiteHeader() {
 
           <Link href="/" onClick={closeAll} className="flex items-center text-white font-bold py-4 px-5 hover:bg-white/5 transition">
             Actu
+          </Link>
+
+          <Link href="/articles" onClick={closeAll} className="flex items-center gap-2 text-white font-bold py-4 px-5 hover:bg-white/5 transition">
+            Articles
+            <span className="rounded-full bg-[#C41230] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">Rédaction</span>
           </Link>
 
           {/* Écuries mobile */}

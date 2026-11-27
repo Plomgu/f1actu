@@ -6,6 +6,8 @@ import { CalendarDays, MapPin, UserRound, Cog } from "lucide-react";
 
 import SiteHeader from "../../components/SiteHeader";
 import AdBanner from "../../components/AdBanner";
+import { RelatedArticlesBox } from "../../components/ArticleCards";
+import { articlesAbout } from "../../articles/article-data";
 import WeatherCard from "../../components/WeatherCard";
 import { FactCell, StatPanel } from "../../components/HeroPanels";
 import { teams, type TeamPageData } from "../team-data";
@@ -263,6 +265,8 @@ export default function EcuriePageClient({ team }: { team: TeamPageData }) {
                 Voir le circuit
               </Link>
             </div>
+
+            <RelatedArticlesBox items={articlesAbout("teams", team.slug)} title={`ARTICLES SUR ${team.navName.toUpperCase()}`} />
 
             <div className="sticky top-6 bg-gray-100 p-8 shadow-xl flex items-center justify-center min-h-[500px] border border-gray-200 rounded-3xl">
               ESPACE PUBLICITE

@@ -4,6 +4,7 @@ import { SITE_URL } from "./lib/seo";
 import { circuitPages } from "./circuits/circuit-data";
 import { teamPages } from "./ecuries/team-data";
 import { driverPages } from "./pilotes/driver-data";
+import { articles } from "./articles/article-data";
 
 /**
  * Date de dernière modification réelle des fiches pilotes, écuries et circuits.
@@ -20,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/`, lastModified: now, priority: 1.0, changeFrequency: "hourly" },
     { url: `${SITE_URL}/classement`, lastModified: now, priority: 0.9, changeFrequency: "hourly" },
     { url: `${SITE_URL}/calendrier`, lastModified: now, priority: 0.8, changeFrequency: "daily" },
+    { url: `${SITE_URL}/articles`, lastModified: articles[0] ? new Date(articles[0].publishedAt) : now, priority: 0.9, changeFrequency: "daily" },
     { url: `${SITE_URL}/programme-tv`, lastModified: now, priority: 0.7, changeFrequency: "daily" },
     { url: `${SITE_URL}/pilotes`, lastModified: PROFILES_UPDATED, priority: 0.8, changeFrequency: "weekly" },
     { url: `${SITE_URL}/ecuries`, lastModified: PROFILES_UPDATED, priority: 0.8, changeFrequency: "weekly" },
@@ -47,5 +49,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "weekly",
   }));
 
-  return [...staticPages, ...circuitUrls, ...teamUrls, ...driverUrls];
+  // Articles de la rédaction : date réelle de publication / mise à jour et
+  // image de couverture (aide Google Images et Discover).
+  const articleUrls: MetadataRoute.Sitemap = articles.map((a) => ({
+    url: `${SITE_URL}/articles/${a.slug}`,
+    lastModified: new Date(a.updatedAt ?? a.publishedAt),
+    priority: 0.8,
+    changeFrequency: "weekly",
+    images: [a.cover.src.startsWith("http") ? a.cover.src : `${SITE_URL}${a.cover.src}`],
+  }));
+
+  return [...staticPages, ...articleUrls, ...circuitUrls, ...teamUrls, ...driverUrls];
 }
