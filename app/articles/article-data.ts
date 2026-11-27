@@ -182,6 +182,240 @@ export const articles: Article[] = [
       },
     ],
   },
+  {
+    slug: "kimi-antonelli-anatomie-titre-2026",
+    category: "Portrait",
+    title: "Kimi Antonelli, anatomie d'un titre : comment l'Italien a dominé la saison 2026",
+    lead:
+      "Sacré à Mexico à seulement 20 ans, Kimi Antonelli est devenu le plus jeune champion du monde de l'histoire et le premier Italien titré depuis Alberto Ascari en 1953. Victoires, poles, coups durs et moments clés : retour sur une saison hors norme.",
+    cover: {
+      src: "/articles/kimi-antonelli-anatomie-titre-2026.jpg",
+      alt: "Kimi Antonelli au volant de sa Mercedes",
+      credit: "Visuel F1 Actu",
+    },
+    author: "La rédaction F1 Actu",
+    publishedAt: "2026-11-27",
+    tags: ["Kimi Antonelli", "Mercedes", "Champion du monde", "Saison 2026"],
+    related: {
+      drivers: ["kimi-antonelli", "george-russell", "max-verstappen", "lewis-hamilton"],
+      teams: ["mercedes"],
+      circuits: ["shanghai", "monaco", "monza", "mexico"],
+    },
+    body: [
+      {
+        type: "p",
+        text:
+          "Le 1er novembre, en franchissant la ligne d'arrivée à la 3e place du Grand Prix de Mexico, Kimi Antonelli a fait basculer l'histoire. Avec 119 points d'avance sur Max Verstappen alors qu'il n'en restait plus que 100 à distribuer, le pilote Mercedes ne pouvait plus être rejoint. À 20 ans et 68 jours, il devient le plus jeune champion du monde de Formule 1, pulvérisant le record de Sebastian Vettel (23 ans et 134 jours en 2010) de plus de trois ans.",
+      },
+      {
+        type: "keyFigures",
+        title: "Sa saison en chiffres (après 21 Grands Prix)",
+        items: [
+          { value: "9", label: "victoires en Grand Prix" },
+          { value: "16", label: "podiums en 21 courses" },
+          { value: "8", label: "pole positions" },
+          { value: "402", label: "points au championnat" },
+        ],
+      },
+      { type: "h2", text: "Un départ en trombe : cinq victoires d'affilée" },
+      {
+        type: "p",
+        text:
+          "Deuxième en Australie pour l'ouverture de la saison, Antonelli a ensuite enchaîné une série impressionnante : victoires en Chine, au Japon, à Miami, au Canada puis à Monaco. Cinq succès consécutifs, dont quatre depuis la pole position, et le plus souvent avec le meilleur tour en course en prime. Au soir de Monaco, il comptait déjà 156 points, soit 66 de plus que Lewis Hamilton, son premier poursuivant.",
+      },
+      {
+        type: "p",
+        text:
+          "Dans une saison qui inaugurait une toute nouvelle réglementation technique, Mercedes a visé juste d'entrée. Mais avoir la meilleure voiture ne suffit pas : George Russell, son équipier, disposait du même matériel et ne compte que trois victoires. La différence s'est faite sur la régularité et la capacité d'Antonelli à transformer ses poles en victoires.",
+      },
+      { type: "h2", text: "Le début d'été, seul vrai passage à vide" },
+      {
+        type: "p",
+        text:
+          "Le jeune Italien a pourtant connu un trou d'air. À Barcelone, parti 3e, il abandonne à quelques tours de l'arrivée. Trois semaines plus tard à Silverstone, il signe la pole, remporte le sprint du samedi… puis termine 15e le dimanche, loin des points. Deux zéros en trois courses, de quoi relancer ses adversaires.",
+      },
+      {
+        type: "p",
+        text:
+          "La réponse est venue à Spa-Francorchamps : pole position et victoire, comme pour refermer la parenthèse. Ce sont d'ailleurs ses deux seules courses hors des points de toute la saison, un chiffre qui dit tout de sa constance.",
+      },
+      { type: "h2", text: "Monza, le moment de grâce" },
+      {
+        type: "p",
+        text:
+          "S'il ne fallait retenir qu'une course, ce serait celle-ci. Qualifié 7e de son Grand Prix national, Antonelli s'élance finalement de la 19e place sur la grille. Une situation qui semblait compromettre ses chances devant les tifosi. Il remonte pourtant tout le peloton et s'impose, avec le meilleur tour en course en bonus.",
+      },
+      {
+        type: "image",
+        src: "/circuits/Italie.webp",
+        alt: "Tracé de l'Autodromo Nazionale di Monza",
+        caption: "Monza : parti 19e, Antonelli y a signé la victoire la plus marquante de sa saison.",
+      },
+      {
+        type: "quote",
+        text:
+          "Un Italien qui gagne à Monza depuis le fond de grille, avec une Mercedes : il y a des victoires qui valent plus que 25 points.",
+      },
+      {
+        type: "p",
+        text:
+          "Au soir de Monza, son avance sur Russell est de 66 points. Une semaine plus tard, il gagne encore à Madrid, et la question n'est plus de savoir s'il sera champion, mais quand.",
+      },
+      { type: "h2", text: "Une fin de saison en gestion" },
+      {
+        type: "p",
+        text:
+          "Avec un tel matelas, Antonelli a pu gérer l'automne sans prendre de risques inutiles. Une 5e place à Bakou malgré une qualification ratée (16e), des podiums en Malaisie et à Singapour, puis une neuvième victoire à Austin, depuis la pole. Il ne lui restait plus qu'à conclure, ce qu'il a fait au Mexique avec une 3e place suffisante.",
+      },
+      {
+        type: "standings",
+        title: "Championnat pilotes — après le GP de Las Vegas",
+        rows: [
+          { position: 1, name: "Kimi Antonelli", team: "Mercedes", points: 402, color: "#27F4D2", highlight: true },
+          { position: 2, name: "Max Verstappen", team: "Red Bull", points: 304, color: "#3671C6" },
+          { position: 3, name: "Lewis Hamilton", team: "Ferrari", points: 267, color: "#E8002D" },
+          { position: 4, name: "George Russell", team: "Mercedes", points: 264, color: "#27F4D2" },
+          { position: 5, name: "Lando Norris", team: "McLaren", points: 264, color: "#FF8000" },
+        ],
+        note: "Classement après 21 des 23 manches. Écarts calculés par rapport à Kimi Antonelli.",
+      },
+      { type: "h2", text: "Les clés d'un sacre" },
+      {
+        type: "list",
+        items: [
+          "La vitesse pure : 8 pole positions et 8 meilleurs tours en course, de la Chine au Brésil.",
+          "L'efficacité : 9 victoires en 21 courses, soit près d'une sur deux. Sur ses 8 poles, il en a converti 6 en victoire.",
+          "La constance : 19 arrivées dans les points sur 21, et 16 podiums. Ses adversaires n'ont jamais pu profiter de ses rares faux pas.",
+          "Le mental : après le double zéro de Barcelone et Silverstone, il a répondu par une victoire immédiate à Spa.",
+        ],
+      },
+      { type: "h2", text: "Un titre qui entre dans l'histoire" },
+      {
+        type: "p",
+        text:
+          "Né à Bologne le 25 août 2006, Antonelli n'en est qu'à sa deuxième saison en Formule 1. Recruté par Mercedes en 2025 pour remplacer Lewis Hamilton, il a été jugé très tôt, et parfois sévèrement. Deux ans plus tard, il offre à l'Italie son premier titre pilote depuis Alberto Ascari, sacré en 1952 et 1953. Soixante-treize ans d'attente.",
+      },
+      {
+        type: "p",
+        text:
+          "Il reste deux Grands Prix, au Qatar et à Abou Dhabi, pour enrichir encore ce bilan. Mais l'essentiel est ailleurs : à 20 ans, Kimi Antonelli a déjà tout d'un leader, et la Formule 1 tient peut-être le visage de sa prochaine décennie. Toutes ses statistiques sont à retrouver sur sa fiche pilote, sur F1 Actu.",
+      },
+    ],
+  },
+  {
+    slug: "calendrier-f1-2027",
+    category: "Saison 2027",
+    title: "Calendrier F1 2027 : 24 Grands Prix, 10 sprints et le retour du Portugal et de la Turquie",
+    lead:
+      "La Formule 1 a dévoilé le calendrier de sa saison 2027. Au programme : 24 Grands Prix dans 22 pays, un nombre de sprints qui passe de 6 à 10, une première course sprint à Monaco et deux circuits qui font leur retour. Dates, nouveautés et changements : voici tout ce qu'il faut savoir.",
+    cover: {
+      src: "/articles/calendrier-f1-2027.jpg",
+      alt: "Départ d'un Grand Prix de Formule 1",
+      credit: "Visuel F1 Actu",
+    },
+    author: "La rédaction F1 Actu",
+    publishedAt: "2026-11-27",
+    tags: ["Calendrier", "Saison 2027", "Sprint", "Monaco", "Portugal", "Turquie"],
+    related: {
+      circuits: ["sakhir", "djeddah", "monaco", "monza", "madrid", "barcelone", "zandvoort", "doha", "yas-marina"],
+    },
+    body: [
+      {
+        type: "p",
+        text:
+          "À peine la saison 2026 terminée, il faudra déjà penser à la suivante. Le calendrier 2027, validé par le Conseil mondial du sport automobile de la FIA, compte 24 Grands Prix. Il s'ouvrira le 14 mars à Bahreïn et se refermera le 12 décembre à Abou Dhabi. Entre les deux : 22 pays, cinq continents et plusieurs nouveautés de taille.",
+      },
+      {
+        type: "keyFigures",
+        title: "La saison 2027 en chiffres",
+        items: [
+          { value: "24", label: "Grands Prix au programme" },
+          { value: "10", label: "week-ends sprint (contre 6 en 2026)" },
+          { value: "22", label: "pays visités" },
+          { value: "2", label: "retours : Portugal et Turquie" },
+        ],
+      },
+      { type: "h2", text: "Le calendrier complet" },
+      {
+        type: "list",
+        items: [
+          "14 mars : Bahreïn (Sakhir), sprint",
+          "21 mars : Arabie saoudite (Djeddah)",
+          "4 avril : Australie (Melbourne), sprint",
+          "11 avril : Japon (Suzuka), sprint",
+          "18 avril : Chine (Shanghai)",
+          "2 mai : Miami (États-Unis)",
+          "23 mai : Canada (Montréal), sprint",
+          "6 juin : Monaco, sprint",
+          "20 juin : Portugal (Portimão)",
+          "4 juillet : Grande-Bretagne (Silverstone), sprint",
+          "11 juillet : Autriche (Spielberg)",
+          "25 juillet : Belgique (Spa-Francorchamps)",
+          "1er août : Hongrie (Budapest)",
+          "5 septembre : Italie (Monza), sprint",
+          "12 septembre : Espagne (Madrid)",
+          "26 septembre : Azerbaïdjan (Bakou)",
+          "3 octobre : Turquie (Istanbul), sous réserve d'homologation du circuit",
+          "10 octobre : Singapour (Marina Bay)",
+          "24 octobre : États-Unis (Austin)",
+          "31 octobre : Mexique (Mexico)",
+          "7 novembre : Brésil (São Paulo), sprint",
+          "20 novembre : Las Vegas (États-Unis), course le samedi",
+          "5 décembre : Qatar (Losail), sprint",
+          "12 décembre : Abou Dhabi (Yas Marina), sprint",
+        ],
+      },
+      {
+        type: "p",
+        text:
+          "Les dates indiquées sont celles des courses. Les essais hivernaux auront lieu à Bahreïn, du 24 au 27 février, sur une seule session de quatre jours.",
+      },
+      { type: "h2", text: "Dix sprints, et une première à Monaco" },
+      {
+        type: "p",
+        text:
+          "C'est le grand changement de 2027 : le nombre de week-ends sprint passe de six à dix. Cinq circuits accueilleront ce format pour la première fois : Bahreïn, l'Australie, le Japon, Abou Dhabi et, surtout, Monaco. Le Canada, la Grande-Bretagne, l'Italie, le Brésil et le Qatar complètent la liste.",
+      },
+      {
+        type: "p",
+        text:
+          "Une course sprint dans les rues de la Principauté, où les dépassements sont quasi impossibles, a de quoi surprendre. Elle pourrait au moins donner plus d'importance aux qualifications, déjà décisives à Monaco. Autre conséquence : avec dix sprints, plus de points seront en jeu sur la saison, et la lutte pour le titre pourrait durer plus longtemps.",
+      },
+      {
+        type: "quote",
+        text:
+          "Nous sommes ravis d'accueillir le Portugal et la Türkiye au championnat et d'étendre les courses sprint à dix épreuves.",
+        author: "Stefano Domenicali, PDG de la Formule 1",
+      },
+      { type: "h2", text: "Ce qui change par rapport à 2026" },
+      {
+        type: "list",
+        items: [
+          "Retour du Portugal : le circuit de Portimão retrouve la F1, qu'il n'avait plus accueillie depuis 2021.",
+          "Retour de la Turquie : Istanbul Park revient lui aussi pour la première fois depuis 2021, sous réserve de l'homologation du circuit par la FIA.",
+          "Départs : Barcelone et Zandvoort ne figurent pas au calendrier 2027. L'Espagne reste représentée par Madrid.",
+          "Le Moyen-Orient en ouverture : Bahreïn retrouve sa place traditionnelle de première manche, suivi de Djeddah. En 2026, le Grand Prix de Bahreïn s'était disputé en Malaisie, à Sepang, et l'Arabie saoudite n'avait pas eu lieu.",
+          "L'Australie recule à la 3e place du calendrier, après avoir ouvert la saison 2026.",
+        ],
+      },
+      { type: "h2", text: "Les temps forts à cocher" },
+      {
+        type: "list",
+        items: [
+          "Le doublé d'ouverture Bahreïn – Arabie saoudite, les 14 et 21 mars.",
+          "Le Grand Prix de Monaco et sa toute première course sprint, le week-end du 4 au 6 juin.",
+          "La trêve estivale : après la Hongrie le 1er août, cinq semaines de pause avant Monza.",
+          "Deux enchaînements de trois courses : Bakou – Istanbul – Singapour fin septembre et début octobre, puis Austin – Mexico – São Paulo fin octobre et début novembre.",
+          "Un final au Moyen-Orient : Qatar puis Abou Dhabi, deux week-ends sprint pour décider du titre.",
+        ],
+      },
+      {
+        type: "p",
+        text:
+          "Pour les fans français, la saison européenne se concentrera entre juin et septembre, avec huit Grands Prix entre Monaco et Madrid. Les horaires en heure française et le programme TV de chaque week-end seront à retrouver sur F1 Actu.",
+      },
+    ],
+  },
 ];
 
 export function getArticle(slug: string) {
